@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Bus : MonoBehaviour
 {
-    [SerializeField] private float speed = 10.0f;
-    private Rigidbody rb;
+    [SerializeField] private GameObject player;
+    [SerializeField] private float busSpeed = 10.0f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        player.transform.parent = transform;
     }
 
-    // FixedUpdate is called at a fixed interval (default 50 times per second) for physics calculations
     void FixedUpdate()
     {
-        // Move the bus forward by the speed amount
-        Vector3 velocity = transform.forward * speed;
-        rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+        // Move the bus forward by the busSpeed amount
+        transform.Translate(Vector3.forward * Time.deltaTime * busSpeed);
     }
+
 }
+
+
