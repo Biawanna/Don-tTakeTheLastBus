@@ -1,5 +1,3 @@
-using StarterAssets;
-using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,16 +10,13 @@ public class GameManager : MonoBehaviour
     [Header("CheckPoints")]
     [SerializeField] public Transform playerSpawnPoint;
     [SerializeField] public Transform playerStartPoint;
-    [SerializeField] public Transform checkPointOne;
-    [SerializeField] public Transform checkPointTwo;
 
+    private UICanvasController uICanvasController;
 
-    public bool pCBuild;
-    public int coconuts;
-    public int planks;
-     
     private void Awake()
     {
+        uICanvasController = UICanvasController.Instance;
+
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -33,18 +28,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (autoHandPlayer == null)
-        {
-            autoHandPlayer = GameObject.FindGameObjectWithTag("Player");
-        }
-    }
-
     private void Start()
     {
         autoHandPlayer = GameObject.FindGameObjectWithTag("Player");
-        //UICanvasController.Instance.SetPlayerTransform();
     }
     public void DisableGameObject(GameObject gameObject)
     {
@@ -63,15 +49,11 @@ public class GameManager : MonoBehaviour
             if (playerLives - 1 > 0)
             {
                 playerLives -= 1;
-                UICanvasController.Instance.Dead();
-                coconuts = 0;
-                planks = 0;
+                uICanvasController.Dead();
             }
             else
             {
-                UICanvasController.Instance.GameOver();
-                coconuts = 0;
-                planks = 0;
+                uICanvasController.GameOver();
             }
         }
     }

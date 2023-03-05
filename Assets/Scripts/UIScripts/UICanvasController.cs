@@ -8,7 +8,6 @@ public class UICanvasController : MonoBehaviour
 {
     public static UICanvasController Instance;
    
-
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI objectiveText;
     [SerializeField] private TextMeshProUGUI toolTipText;
@@ -51,15 +50,6 @@ public class UICanvasController : MonoBehaviour
     {
         toolTipText.SetText(textString);
     }
-    public void UpdateCoconutsText()
-    {
-        coconutsText.text = "Coconuts " + GameManager.instance.coconuts.ToString() + "/3";
-    }
-
-    public void UpdatePlanksText()
-    {
-        planksText.text = "Planks " + GameManager.instance.planks.ToString() + "/4";
-    }
 
     public void LivesUpdate()
     {
@@ -68,7 +58,7 @@ public class UICanvasController : MonoBehaviour
     public void GameOver()
     {
         gameOver.SetActive(true);
-        Player.Instance.autoHandPlayer.maxMoveSpeed = 0f;
+        Player.Instance.AutoHandPlayer.maxMoveSpeed = 0f;
 
         OnGameover?.Invoke();
 
@@ -120,7 +110,7 @@ public class UICanvasController : MonoBehaviour
     {
         ToolTips("You died!");
         continueButton.SetActive(true);
-        Player.Instance.autoHandPlayer.maxMoveSpeed = 0f;
+        Player.Instance.AutoHandPlayer.maxMoveSpeed = 0f;
 
         OnDead?.Invoke();
 ;
@@ -142,27 +132,6 @@ public class UICanvasController : MonoBehaviour
         else
         {
             GameOver();
-        }
-    }
-    public void AddCoconuts(int add)
-    {
-        GameManager.instance.coconuts += add;
-        UpdateCoconutsText();
-
-        if (GameManager.instance.coconuts == 3 && GameManager.instance.planks == 4)
-        {
-           buildRaft.SetActive(true);
-        }
-    }
-
-    public void AddPlanks(int add)
-    {
-        GameManager.instance.planks += add;
-        UpdatePlanksText();
-
-        if (GameManager.instance.coconuts == 3 && GameManager.instance.planks == 4)
-        {
-            buildRaft.SetActive(true);
         }
     }
 

@@ -4,39 +4,39 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
-    public AutoHandPlayer autoHandPlayer;
 
+    [SerializeField] private AutoHandPlayer autoHandPlayer;
     [SerializeField] public float playerHealth = 1;
+
+    private SoundManager soundManager;
+
+    public AutoHandPlayer AutoHandPlayer
+    {
+        get { return autoHandPlayer; }
+    }
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        autoHandPlayer = GetComponentInChildren<AutoHandPlayer>();
-
-        transform.position = GameManager.instance.playerSpawnPoint.position;
-        transform.rotation = GameManager.instance.playerSpawnPoint.rotation;
+        soundManager = SoundManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Water"))
         {
-            SoundManager.Instance.walkSound = SoundManager.Instance.walkOnWaterSound;
-            SoundManager.Instance.jumpSound = SoundManager.Instance.jumpOnWaterSound;
+            soundManager.walkSound = soundManager.walkOnWaterSound;
+            soundManager.jumpSound = soundManager.jumpOnWaterSound;
         }
         if (other.CompareTag("Grass"))
         {
-            SoundManager.Instance.walkSound = SoundManager.Instance.walkOnGrassSound;
-            SoundManager.Instance.jumpSound = SoundManager.Instance.jumpOnGrassSound;
+            soundManager.walkSound = soundManager.walkOnGrassSound;
+            soundManager.jumpSound = soundManager.jumpOnGrassSound;
         }
         if (other.CompareTag("Concrete"))
         {
-            SoundManager.Instance.walkSound = SoundManager.Instance.walkOnConcreteSound;
-            SoundManager.Instance.jumpSound = SoundManager.Instance.jumpOnConcreteSound;
+            soundManager.walkSound = soundManager.walkOnConcreteSound;
+            soundManager.jumpSound = soundManager.jumpOnConcreteSound;
         }
     }
 }
