@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         autoHandPlayer = GameObject.FindGameObjectWithTag("Player");
-        UICanvasController.Instance.SetPlayerTransform();
+        //UICanvasController.Instance.SetPlayerTransform();
     }
     public void DisableGameObject(GameObject gameObject)
     {
