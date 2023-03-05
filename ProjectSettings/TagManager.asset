@@ -5,13 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
-  - Monster
   - Water
   - Grass
   - Concrete
-  - BuildRaft
   - CheckPointOne
   - CheckPointTwo
+  - Bus
   layers:
   - Default
   - TransparentFX
