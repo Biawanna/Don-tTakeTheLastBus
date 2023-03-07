@@ -6,10 +6,10 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        if (!dialogue.dialoguePlayed)
-        {
+        //if (!dialogue.dialoguePlayed)
+        //{
             Dialogue.instance.StartDialogue(dialogue);
             dialogue.dialoguePlayed = true;
-        }
+        //}
     }
 }

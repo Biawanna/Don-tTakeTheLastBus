@@ -7,7 +7,7 @@ public class DialogueScriptableObject : ScriptableObject
     [Header("Dialogue Settings")]
     public bool dialoguePlayed = false;
     public DialogueType dialogueType;
-    [TextArea(3, 15)]
+    //[TextArea(3, 25)]
     public string[] sentences;
 }
 

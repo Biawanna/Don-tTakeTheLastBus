@@ -12,44 +12,21 @@ public class Dialogue : MonoBehaviour
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
 
-    [Header("Scriptable Object References")]
-    [SerializeField] private DialogueScriptableObject dialogueObject;
-    //[SerializeField] private DialogueScriptableObject practiceOrbDialogue;
+    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
-    [Header("Text References")]
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    //[SerializeField] private TextMeshProUGUI playArenaDialogueText;
+    [Header("Scriptable Object References")]
+    //[SerializeField] private DialogueScriptableObject dialogueObject;
 
     [Header("Sequence References")]
     //[SerializeField] private DialogueMenuSequence playArenaDialogueSequence;
     //[SerializeField] private DialogueMenuSequence practiceDialogueSequence;
 
 
-    //TextMeshProUGUI dialogueText;
     Queue<string> sentences;
-    //DialogueType dialogueObject;
-    UICanvasController uICanvasController;
 
-    //public DialogueMenuSequence PracticeDialogueSequence
-    //{
-    //    get => practiceDialogueSequence;
-    //    private set => practiceDialogueSequence = value;
-    //}
-    //public DialogueMenuSequence PlayArenaDialogueSequence
-    //{
-    //    get => playArenaDialogueSequence;
-    //    private set => playArenaDialogueSequence = value;
-    //}
-    //public DialogueScriptableObject PlayArenaDialogue
-    //{
-    //    get => dialogueObject;
-    //    set => dialogueObject = value;
-    //}
-    //public DialogueScriptableObject PracticeOrbDialogue
-    //{
-    //    get => practiceOrbDialogue;
-    //    set => practiceOrbDialogue = value;
-    //}
+    UICanvasController uICanvasController;
+    private TextMeshProUGUI dialogueText;
+    private DialogueType dialogueObject;
 
     private void Awake()
     {
@@ -60,6 +37,7 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
+        dialogueText = textMeshProUGUI;
     }
 
     public void StartDialogue(DialogueScriptableObject dialogue)
@@ -73,11 +51,12 @@ public class Dialogue : MonoBehaviour
         switch (dialogue.dialogueType)
         {
             case DialogueType.busDriver:
+                dialogueObject = DialogueType.busDriver;
                 //uICanvasController.ShowPlayArenaMenuButtons(false);
-                //dialogueObject = DialogueType.busDriver;
                 //playArenaDialogueSequence.OpenCloseDialogueSequence(true);
                 break;
             case DialogueType.scout:
+                dialogueObject = DialogueType.scout;
                 //dialogueObject = DialogueType.practiceOrbDialogue;
                 //practiceDialogueSequence.OpenCloseDialogueSequence(true);
                 break;
@@ -103,19 +82,19 @@ public class Dialogue : MonoBehaviour
 
     public void EndDialogue()
     {
-        //switch (dialogueObject)
-        //{
-        //    case DialogueType.busDriver;
-        //        //uICanvasController.ShowPlayArenaMenuButtons(true);
-        //        //playArenaDialogueSequence.OpenCloseDialogueSequence(false);
-        //        break;
-        //    case DialogueType.practiceOrbDialogue:
-        //        uICanvasController.ShowPracticeMenuButtons(true);
-        //        practiceDialogueSequence.OpenCloseDialogueSequence(false);
-        //        break;
-        //    default:
-        //        break;
-        //    }
+        switch (dialogueObject)
+        {
+            case DialogueType.busDriver:
+                //uICanvasController.ShowPlayArenaMenuButtons(true);
+                //playArenaDialogueSequence.OpenCloseDialogueSequence(false);
+                break;
+            case DialogueType.scout:
+                //uICanvasController.ShowPracticeMenuButtons(true);
+                //practiceDialogueSequence.OpenCloseDialogueSequence(false);
+                break;
+            default:
+                break;
+        }
     }
 
     public IEnumerator TypeSentence(string sentence)
@@ -126,14 +105,5 @@ public class Dialogue : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(dialogueTypingSpeed);
         }
-    }
-
-    /// <summary>
-    /// Sets dialogue text to play arena and enables the popup
-    /// </summary>
-    public void PlayDialogueText()
-    {
-        //playArenaDialogueSequence.OpenCloseDialogueSequence(true);
-        //dialogueText = playArenaDialogueText;
     }
 }

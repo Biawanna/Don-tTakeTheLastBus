@@ -33,6 +33,10 @@ public class UICanvasController : MonoBehaviour
         Instance = this;
         meshRenderer = fadeScreen.GetComponent<MeshRenderer>();
     }
+
+    public TextMeshProUGUI ToolTipText
+    { get { return toolTipText; } }
+
     private void Start()
     {
         OnStartScene?.Invoke();
