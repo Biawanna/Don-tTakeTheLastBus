@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
   dialogueType: 7
-  sentences: []
+  sentences:
+  - 'Whoof
+
+'

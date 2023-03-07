@@ -3,7 +3,7 @@ using DG.Tweening;
 public class DialogueSequence : MonoBehaviour
 {
     /// <summary>
-    /// This script handles dialogue animations
+    /// This script handles dialogueManager animations
     /// </summary>
     [SerializeField] private AnimSequenceScriptableObject animSequence;
     [SerializeField] private GameObject dialogueObject;
@@ -20,7 +20,7 @@ public class DialogueSequence : MonoBehaviour
     }
 
     /// <summary>
-    /// Closes the dialogue immediately
+    /// Closes the dialogueManager immediately
     /// </summary>
     public void CloseDialogueSequenceImmediately()
     {
@@ -28,7 +28,7 @@ public class DialogueSequence : MonoBehaviour
     }
 
     /// <summary>
-    /// Closes the dialogue with delay/duration parameters
+    /// Closes the dialogueManager with delay/duration parameters
     /// </summary>
     private void CloseDialogueSequence()
     {
