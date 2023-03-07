@@ -10,41 +10,44 @@ public class UICanvasController : MonoBehaviour
    
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI objectiveText;
-    [SerializeField] private TextMeshProUGUI toolTipText;
-    [SerializeField] private TextMeshProUGUI livesText;
-    [SerializeField] private TextMeshProUGUI coconutsText;
-    [SerializeField] private TextMeshProUGUI planksText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [Header("Fade References")]
+    [SerializeField] FadeScreen fadeScreen;
+
+    [Header("Menu References")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject continueButton;
 
-    [SerializeField] private float toolTipTime;
-
-    [SerializeField] public GameObject buildRaft;
-    [SerializeField] FadeScreen fadeScreen;
+    private GameManager gameManager;
     private MeshRenderer meshRenderer;
-
     public UnityEvent OnGameover;
     public UnityEvent OnDead;
     public UnityEvent OnStartScene;
     private void Awake()
     {
         Instance = this;
+        gameManager = GameManager.instance;
         meshRenderer = fadeScreen.GetComponent<MeshRenderer>();
     }
 
     public TextMeshProUGUI ToolTipText
-    { get { return toolTipText; } }
+    { get { return dialogueText; } }
 
     private void Start()
     {
         OnStartScene?.Invoke();
-        if (livesText != null)
-        {
-            LivesUpdate();
-        }
     }
+
+
+
+
+
+
+
+
+
     public void ChangeText(string textString)
     {
         objectiveText.SetText(textString);
@@ -52,13 +55,9 @@ public class UICanvasController : MonoBehaviour
 
     public void ToolTips(string textString)
     {
-        toolTipText.SetText(textString);
+        dialogueText.SetText(textString);
     }
 
-    public void LivesUpdate()
-    {
-        livesText.SetText("Lives: " + GameManager.instance.playerLives.ToString());  
-    }
     public void GameOver()
     {
         gameOver.SetActive(true);
@@ -69,19 +68,17 @@ public class UICanvasController : MonoBehaviour
     }
     public void Restart()
     {
-        Time.timeScale = 1f;
+        gameManager.ResumeGame();
         gameOver.SetActive(false);
 
         meshRenderer.enabled = true;
-        GameManager.instance.playerLives = 3;
-        GameManager.instance.playerSpawnPoint = GameManager.instance.playerStartPoint;
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         StartCoroutine(GoToSceneAsyncRoutine(currentScene));
     }
 
     public void MainMenu()
     {
-        Time.timeScale = 1f;
+        gameManager.ResumeGame();
         meshRenderer.enabled = true;
         StartCoroutine(GoToSceneAsyncRoutine(0));
     }
@@ -95,13 +92,13 @@ public class UICanvasController : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0f;
+        gameManager.PauseGame();
         pauseMenu.SetActive(true);
     }
 
     public void Resume()
     {
-        Time.timeScale = 1f;
+        gameManager.ResumeGame();
         pauseMenu.SetActive(false);
     }
 
@@ -117,32 +114,13 @@ public class UICanvasController : MonoBehaviour
         Player.Instance.AutoHandPlayer.maxMoveSpeed = 0f;
 
         OnDead?.Invoke();
-;
     }
 
     public void Continue()
     {
-        Time.timeScale = 1f;
+        gameManager.ResumeGame();
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
-    }
-    public void PlayerInstantDeath()
-    {
-        if (GameManager.instance.playerLives - 1 > 0)
-        {
-            GameManager.instance.playerLives -= 1;
-            Dead();
-        }
-        else
-        {
-            GameOver();
-        }
-    }
-
-    public void SetPlayerTransform()
-    {
-        GameManager.instance.autoHandPlayer.transform.position = GameManager.instance.playerSpawnPoint.position;
-        GameManager.instance.autoHandPlayer.transform.rotation = GameManager.instance.playerSpawnPoint.rotation;
     }
 
     public void ChangeSkyBox(Material material)

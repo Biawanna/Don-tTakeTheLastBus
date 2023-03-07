@@ -12,7 +12,7 @@ public class Dialogue : MonoBehaviour
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
 
-    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+    //[SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
     [Header("Scriptable Object References")]
     //[SerializeField] private DialogueScriptableObject dialogueObject;
@@ -25,9 +25,15 @@ public class Dialogue : MonoBehaviour
     Queue<string> sentences;
 
     UICanvasController uICanvasController;
-    private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
     private DialogueType dialogueObject;
 
+    public TextMeshProUGUI DialogueText
+    {
+        get { return dialogueText; }
+        set { dialogueText = value; }
+    }
+       
     private void Awake()
     {
         instance = this;
@@ -37,7 +43,6 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
-        dialogueText = textMeshProUGUI;
     }
 
     public void StartDialogue(DialogueScriptableObject dialogue)
@@ -85,10 +90,14 @@ public class Dialogue : MonoBehaviour
         switch (dialogueObject)
         {
             case DialogueType.busDriver:
+                dialogueText.text = " ";
+                dialogueText = null;
                 //uICanvasController.ShowPlayArenaMenuButtons(true);
                 //playArenaDialogueSequence.OpenCloseDialogueSequence(false);
                 break;
             case DialogueType.scout:
+                  dialogueText.text = " ";
+                dialogueText = null;
                 //uICanvasController.ShowPracticeMenuButtons(true);
                 //practiceDialogueSequence.OpenCloseDialogueSequence(false);
                 break;

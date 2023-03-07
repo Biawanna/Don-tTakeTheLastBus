@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
   m_Name: Scout
   m_EditorClassIdentifier: 
-  dialoguePlayed: 0
+  dialoguePlayed: 1
   dialogueType: 1
-  sentences: []
+  sentences:
+  - nonononononon
