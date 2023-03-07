@@ -12,32 +12,27 @@ public class Dialogue : MonoBehaviour
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
 
-    //[SerializeField] private TextMeshProUGUI textMeshProUGUI;
-
-    [Header("Scriptable Object References")]
-    //[SerializeField] private DialogueScriptableObject dialogueObject;
-
-    [Header("Sequence References")]
-    //[SerializeField] private DialogueMenuSequence playArenaDialogueSequence;
-    //[SerializeField] private DialogueMenuSequence practiceDialogueSequence;
-
+    private TextMeshProUGUI dialogueText;
+    private DialogueTrigger dialogueTrigger;
+    private DialogueType dialogueObject;
 
     Queue<string> sentences;
-
-    UICanvasController uICanvasController;
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    private DialogueType dialogueObject;
 
     public TextMeshProUGUI DialogueText
     {
         get { return dialogueText; }
         set { dialogueText = value; }
     }
+
+    public DialogueTrigger DialogueTrigger
+    {
+        get { return dialogueTrigger; }
+        set { dialogueTrigger = value; }
+    }
        
     private void Awake()
     {
         instance = this;
-        uICanvasController = UICanvasController.Instance;
     }
 
     private void Start()
@@ -57,13 +52,11 @@ public class Dialogue : MonoBehaviour
         {
             case DialogueType.busDriver:
                 dialogueObject = DialogueType.busDriver;
-                //uICanvasController.ShowPlayArenaMenuButtons(false);
-                //playArenaDialogueSequence.OpenCloseDialogueSequence(true);
+
                 break;
             case DialogueType.scout:
                 dialogueObject = DialogueType.scout;
-                //dialogueObject = DialogueType.practiceOrbDialogue;
-                //practiceDialogueSequence.OpenCloseDialogueSequence(true);
+             
                 break;
             default:
                 break;
@@ -90,16 +83,12 @@ public class Dialogue : MonoBehaviour
         switch (dialogueObject)
         {
             case DialogueType.busDriver:
-                dialogueText.text = " ";
-                dialogueText = null;
-                //uICanvasController.ShowPlayArenaMenuButtons(true);
-                //playArenaDialogueSequence.OpenCloseDialogueSequence(false);
+                dialogueTrigger.CloseDialogue();
+
                 break;
             case DialogueType.scout:
-                  dialogueText.text = " ";
-                dialogueText = null;
-                //uICanvasController.ShowPracticeMenuButtons(true);
-                //practiceDialogueSequence.OpenCloseDialogueSequence(false);
+                dialogueTrigger.CloseDialogue();
+
                 break;
             default:
                 break;

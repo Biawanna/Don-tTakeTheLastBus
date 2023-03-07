@@ -9,6 +9,8 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Dialogue dialogue;
 
+    private DialogueSequence sequence;
+
     public GameObject DialoguePopup
     {
         get { return dialoguePopup; }
@@ -17,8 +19,11 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Start()
     {
-        if(dialogueText != null)
+        sequence = gameObject.GetComponent<DialogueSequence>();
+
+        if (dialogueText != null)
         {
+            sequence.CloseDialogueSequenceImmediately();
             dialogueText.text = " ";
         }
     }
@@ -29,10 +34,25 @@ public class DialogueTrigger : MonoBehaviour
         //{
         if (dialogue.DialogueText == null)
         {
-            dialogue.DialogueText = dialogueText;
-            dialogue.StartDialogue(dialogueScriptable);
-            dialogueScriptable.dialoguePlayed = true;
+            OpenDialogue();
         }
         //}
+    }
+
+    public void OpenDialogue()
+    {
+        dialogue.DialogueText = dialogueText;
+        dialogue.DialogueTrigger = this;
+
+        dialogue.StartDialogue(dialogueScriptable);
+        dialogueScriptable.dialoguePlayed = true;
+        sequence.OpenCloseDialogueSequence(true);
+    }
+
+    public void CloseDialogue()
+    {
+        sequence.OpenCloseDialogueSequence(false);
+        dialogueText.text = " ";
+        dialogue.DialogueText = null;
     }
 }
