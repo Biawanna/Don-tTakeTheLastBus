@@ -5,17 +5,12 @@ using UnityEngine.EventSystems;
 public class OnMouseEnterScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private Color color;
-    public Renderer rend;
+    public Renderer[] rend;
 
     public UnityEvent MouseEnterEvent;
     public UnityEvent MouseExitEvent;
     public UnityEvent MouseUpEvent;
     public UnityEvent MouseDownEvent;
-
-    void Start()
-    {
-        rend = GetComponent<Renderer>();
-    }
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
@@ -41,11 +36,17 @@ public class OnMouseEnterScript : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void ChangeObjectColor()
     {
-        rend.material.color = color;
+        foreach (Renderer r in rend)
+        {
+            r.material.color = color;
+        }
     }
 
     public void ObjectColorBackToNormal()
     {
-        rend.material.color = Color.white;
+        foreach(Renderer r in rend)
+        {
+            r.material.color = Color.white;
+        }
     }
 }
