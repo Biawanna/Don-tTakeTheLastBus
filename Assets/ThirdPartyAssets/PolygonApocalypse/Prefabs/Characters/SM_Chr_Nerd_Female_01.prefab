@@ -704,8 +704,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145363672}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.415}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.164}
   m_LocalScale: {x: 0.0019999996, y: 0.002, z: 0.0019999996}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -714,7 +714,7 @@ RectTransform:
   - {fileID: 1298572949}
   m_Father: {fileID: 4179057696693178}
   m_RootOrder: 31
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.009, y: 1.1730005}
@@ -1033,8 +1033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0f66c57b9b1db46bd6167021120083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueScriptable: {fileID: 0}
-  dialogueText: {fileID: 0}
+  dialogueScriptable: {fileID: 11400000, guid: cde4241f4cf919e44a28db9d29aea238, type: 2}
+  dialogueText: {fileID: 125170342}
   dialogueManager: {fileID: 0}
 --- !u!114 &1827788693
 MonoBehaviour:
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animSequence: {fileID: 11400000, guid: bac5794056158f848bcee8a7174d8dd5, type: 2}
-  dialogueObject: {fileID: 0}
+  dialogueObject: {fileID: 2145363672}
 --- !u!114 &1827788694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6967,7 +6967,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.76458836, b: 1, a: 1}
-  rend: {fileID: 0}
+  rend:
+  - {fileID: 137968625294081488}
+  - {fileID: 23151803390155388}
+  - {fileID: 23929462299426726}
+  - {fileID: 23650011516447582}
+  - {fileID: 23362283785443598}
   MouseEnterEvent:
     m_PersistentCalls:
       m_Calls: []
