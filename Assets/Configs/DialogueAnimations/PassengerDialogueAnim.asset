@@ -15,7 +15,7 @@ MonoBehaviour:
   animOpenReverse: 0
   animCloseReverse: 0
   originalPosition: {x: 0.002, y: 0.002, z: 0.002}
-  animOpenDuration: 0.3
-  animCloseDuration: 0.3
-  openAnimDelay: 0.3
-  closeAnimDelay: 0.3
+  animOpenDuration: 0.2
+  animCloseDuration: 0.2
+  openAnimDelay: 0.2
+  closeAnimDelay: 0.2
