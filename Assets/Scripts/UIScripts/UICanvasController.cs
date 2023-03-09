@@ -12,6 +12,10 @@ public class UICanvasController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI objectiveText;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [Header("Objective Text Settings")]
+    [SerializeField] private string objectiveString;
+    [SerializeField] private float objectiveTextDestroyTime;
+
     [Header("Fade References")]
     [SerializeField] FadeScreen fadeScreen;
 
@@ -38,15 +42,11 @@ public class UICanvasController : MonoBehaviour
     private void Start()
     {
         OnStartScene?.Invoke();
+
+        objectiveText.text = objectiveString;
+
+        StartCoroutine(ObjectiveTextRoutine(objectiveTextDestroyTime));
     }
-
-
-
-
-
-
-
-
 
     public void ChangeText(string textString)
     {
@@ -141,5 +141,14 @@ public class UICanvasController : MonoBehaviour
             yield return null;
         }
         operation.allowSceneActivation = true;
+    }
+
+    private IEnumerator ObjectiveTextRoutine(float destroyTime)
+    {
+        objectiveText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(destroyTime);
+        objectiveText.gameObject.SetActive(false);
+
+        yield break;
     }
 }
