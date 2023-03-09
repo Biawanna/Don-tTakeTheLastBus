@@ -54,7 +54,7 @@ namespace StarterAssets
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
-		// player
+		// playerTranform
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
@@ -146,7 +146,7 @@ namespace StarterAssets
 				// Update Cinemachine camera target pitch
 				CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
 
-				// rotate the player left and right
+				// rotate the playerTranform left and right
 				transform.Rotate(Vector3.up * _rotationVelocity);
 			}
 		}
@@ -187,14 +187,14 @@ namespace StarterAssets
 			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is a move input rotate player when the player is moving
+			// if there is a move input rotate playerTranform when the playerTranform is moving
 			if (_input.move != Vector2.zero)
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 			}
 
-			// move the player
+			// move the playerTranform
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
