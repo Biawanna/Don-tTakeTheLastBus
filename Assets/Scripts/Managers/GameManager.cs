@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject autoHandPlayer;
     private UICanvasController uICanvasController;
 
+    public GameObject Player
+    {
+        get { return autoHandPlayer; }
+        set { autoHandPlayer = value; }
+    }
+
     private void Awake()
     {
         uICanvasController = UICanvasController.Instance;
