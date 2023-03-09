@@ -5,9 +5,9 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
-    [SerializeField] private AutoHandPlayer autoHandPlayer;
-    [SerializeField] public float playerHealth = 1;
+    [SerializeField] private InventoryScriptableObject inventory;
 
+    private AutoHandPlayer autoHandPlayer;
     private SoundManager soundManager;
 
     public AutoHandPlayer AutoHandPlayer
