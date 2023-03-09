@@ -10,10 +10,9 @@ public class Player : MonoBehaviour
     private AutoHandPlayer autoHandPlayer;
     private SoundManager soundManager;
 
-    public AutoHandPlayer AutoHandPlayer
-    {
-        get { return autoHandPlayer; }
-    }
+    public InventoryScriptableObject Inventory { get { return inventory; } }
+
+    public AutoHandPlayer AutoHandPlayer { get { return autoHandPlayer; } }
 
     private void Awake()
     {
