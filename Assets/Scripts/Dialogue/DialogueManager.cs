@@ -12,9 +12,14 @@ public class DialogueManager : MonoBehaviour
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
 
+    [Header("Dialogue Scriptable Objects")]
+    [SerializeField] private InventoryScriptableObject inventoryScriptableObject;
+    [SerializeField] private DialogueTrigger[] dialogueTriggers;
+
     private TextMeshProUGUI dialogueText;
-    private DialogueTrigger dialogueTrigger;
+    private DialogueTrigger currentDialogueTrigger;
     private DialogueType dialogueObject;
+    private int incrementDialogueIndex = 1;
 
     Queue<string> sentences;
 
@@ -24,10 +29,10 @@ public class DialogueManager : MonoBehaviour
         set { dialogueText = value; }
     }
 
-    public DialogueTrigger DialogueTrigger
+    public DialogueTrigger CurrentDialogueTrigger
     {
-        get { return dialogueTrigger; }
-        set { dialogueTrigger = value; }
+        get { return currentDialogueTrigger; }
+        set { currentDialogueTrigger = value; }
     }
        
     private void Awake()
@@ -51,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         switch (dialogue.dialogueType)
         {
             case DialogueType.busDriver:
-                dialogueTrigger.PlayRandomDialogue();
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
             case DialogueType.scout:
@@ -63,6 +68,13 @@ public class DialogueManager : MonoBehaviour
 
                 break;
             case DialogueType.biker:
+                inventoryScriptableObject.dogTreat = true;
+
+                currentDialogueTrigger.SetCurrentDialogueIndex(incrementDialogueIndex);
+
+                GetDialogueTriggerByType(DialogueType.beagle).SetCurrentDialogueIndex(incrementDialogueIndex);
+
+
                 //dialogueObject = DialogueType.scout;
 
                 break;
@@ -71,7 +83,16 @@ public class DialogueManager : MonoBehaviour
 
                 break;
             case DialogueType.beagle:
-                //dialogueObject = DialogueType.scout;
+
+                if (inventoryScriptableObject.dogTreat == true) 
+                { currentDialogueTrigger.SetCurrentDialogueIndex(incrementDialogueIndex); }
+
+                if (GetDialogueByName("ThankYou"))
+                {
+                    Debug.Log("Do Something");
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
 
                 break;
             case DialogueType.coolMan:
@@ -136,19 +157,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        switch (dialogueObject)
-        {
-            case DialogueType.busDriver:
-                dialogueTrigger.CloseDialogue();
-
-                break;
-            case DialogueType.scout:
-                dialogueTrigger.CloseDialogue();
-
-                break;
-            default:
-                break;
-        }
+        currentDialogueTrigger.CloseDialogue();
     }
 
     public IEnumerator TypeSentence(string sentence)
@@ -163,7 +172,33 @@ public class DialogueManager : MonoBehaviour
 
     public void OpenPassengerDialogue()
     {
-        StartDialogue(dialogueTrigger.CurrentDialogue);
-        //dialogueTrigger.CurrentDialogue.dialoguePlayed = true;
+        StartDialogue(currentDialogueTrigger.CurrentDialogue);
+        //currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
+    }
+
+    public DialogueTrigger GetDialogueTriggerByType(DialogueType type)
+    {
+        for (int i = 0; i < dialogueTriggers.Length; i++)
+        {
+            if (dialogueTriggers[i].CurrentDialogue.dialogueType == type)
+            {
+                return dialogueTriggers[i];
+            }
+        }
+
+        // if no DialogueTrigger with the specified type is found, return null
+        return null;
+    }
+
+
+    public bool GetDialogueByName(string dialogue)
+    {
+        if (currentDialogueTrigger.CurrentDialogue.dialogueName.ToString() == dialogue)
+        {
+            bool correct = true;
+            return correct;
+        }
+
+        return false;
     }
 }

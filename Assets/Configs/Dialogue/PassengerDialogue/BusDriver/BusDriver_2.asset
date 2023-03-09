@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: BusDriver_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueNumber: 3
   dialogueType: 0
   sentences:
-  - you shouldn't be here
+  - I can't remember my name.
+  - I can't remember why I am here.
+  - Do you know why we're here?

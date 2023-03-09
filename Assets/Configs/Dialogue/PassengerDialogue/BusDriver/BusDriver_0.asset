@@ -16,5 +16,6 @@ MonoBehaviour:
   dialogueNumber: 1
   dialogueType: 0
   sentences:
-  - hi
-  - what do you want?
+  - Mhmmm
+  - I am just a bus driver right?
+  - What do I know?

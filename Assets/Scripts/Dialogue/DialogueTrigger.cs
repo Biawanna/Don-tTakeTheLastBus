@@ -9,8 +9,14 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Dialogue References")]
     [SerializeField] private DialogueScriptableObject[] dialogueScriptable;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private DialogueManager dialogueManager;
 
+    [Header("UI References")]
+    [SerializeField] private GameObject yesButton;
+    [SerializeField] private GameObject noButton;
+    [SerializeField] private GameObject nextButton;
+    [SerializeField] private GameObject skipButton;
+
+    private DialogueManager dialogueManager;
     private NPC npc;
     private DialogueSequence sequence;
     private DialogueScriptableObject currentDialogue;
@@ -26,16 +32,20 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Start()
     {
+        dialogueManager = DialogueManager.instance;
+
         npc = GetComponent<NPC>();
+
         sequence = gameObject.GetComponent<DialogueSequence>();
 
         if (dialogueText != null)
         {
             sequence.CloseDialogueSequenceImmediately();
-            dialogueText.text = " ";
         }
 
-        if(dialogueScriptable != null) { currentDialogue = dialogueScriptable[dialogueIndex]; }
+        if (dialogueScriptable != null) { currentDialogue = dialogueScriptable[dialogueIndex]; }
+
+        HideOnStart();
     }
 
     /// <summary>
@@ -84,10 +94,31 @@ public class DialogueTrigger : MonoBehaviour
     /// <summary>
     /// Sets the current dialogue index.
     /// </summary>
-    private void SetCurrentDialogueIndex(int index)
+    public void SetCurrentDialogueIndex(int increaseIndex)
     {
-        currentDialogue = dialogueScriptable[index];
+        if (dialogueIndex == dialogueScriptable.Length - 1)
+        {
+            return;
+        }
+        else
+        {
+            currentDialogue = dialogueScriptable[dialogueIndex + increaseIndex];
+        }
     }
+
+    /// <summary>
+    /// Toggles the yes, no, skip and nxt buttons.
+    /// True sets the yes and no buttons visible.
+    /// </summary>
+    /// <param name="showOptions"></param>
+    public void ToggleDialogueOptions(bool showOptions)
+    {
+        yesButton.SetActive(showOptions);
+        noButton.SetActive(showOptions);
+        skipButton.SetActive(!showOptions);
+        nextButton.SetActive(!showOptions);
+    }
+
 
     /// <summary>
     /// Clears TextMeshProUGUI text, sets dialogue field to null.
@@ -105,7 +136,7 @@ public class DialogueTrigger : MonoBehaviour
     private void SetDialogueTriggerText()
     {
         dialogueManager.DialogueText = dialogueText;
-        dialogueManager.DialogueTrigger = this;
+        dialogueManager.CurrentDialogueTrigger = this;
     }
 
     /// <summary>
@@ -122,5 +153,15 @@ public class DialogueTrigger : MonoBehaviour
     private void OpenDialogueSequence()
     {
         sequence.OpenCloseDialogueSequence(true);
+    }
+
+    private void ToggleObjectVisibilty(bool visibility, GameObject gameObject)
+    {
+        gameObject.SetActive(visibility);
+    }
+
+    private void HideOnStart()
+    {
+        ToggleDialogueOptions(false);
     }
 }
