@@ -9,6 +9,7 @@ public class InventoryScriptableObject : ScriptableObject
     public bool headPhones;
     public bool holyWater;
     public bool dogBone;
+    public bool soul;
     public int cans = 0;
 }
 

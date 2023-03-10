@@ -85,8 +85,22 @@ public class DialogueManager : MonoBehaviour
 
                 break;
 
-            case DialoguePerson.patient:
-                //dialogueObject = DialoguePerson.scout;
+            case DialoguePerson.inpatient:
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackGame))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
+                {
+                    inventoryScriptableObject.soul = true;
+                    IncrementDialogueIndex();
+                }
 
                 break;
             case DialoguePerson.biker:
