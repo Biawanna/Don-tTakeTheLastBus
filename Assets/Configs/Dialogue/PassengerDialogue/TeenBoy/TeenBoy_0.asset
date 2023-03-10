@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: TeenBoy_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 0
   dialogueType: 4
   sentences:
-  - I like video games
+  - "I seem to have misplaced \nmy soul."
+  - 'If you find it I''ll trade you for
+
+    a can of pop.'

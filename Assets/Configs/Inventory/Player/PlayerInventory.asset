@@ -16,5 +16,5 @@ MonoBehaviour:
   headPhones: 0
   holyWater: 1
   dogBone: 0
-  soul: 0
+  soul: 1
   cans: 0
