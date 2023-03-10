@@ -42,7 +42,6 @@ public class BlackJackGame : MonoBehaviour
        
 
         dealerName = dialogueTrigger.CurrentDialogue.dialogueType.ToString();
-        //dealerName = "inpatient";
 
         retryButtons.SetActive(false);
         gameButtons.SetActive(false);
@@ -78,7 +77,7 @@ public class BlackJackGame : MonoBehaviour
                 else if (dealerScore == playerScore)
                 {
                     messageText.text = "Push!";
-                    Reset();
+                    Restart();
                 }
                 else
                 {
@@ -167,6 +166,7 @@ public class BlackJackGame : MonoBehaviour
 
         Deal();
     }
+
     private void UpdateBlackJackScoreUI()
     {
         playerScoreText.text = "Player Score: " + playerScore.ToString();
@@ -192,6 +192,9 @@ public class BlackJackGame : MonoBehaviour
         if (!dialogueManager.InventoryScriptableObject.soul)
         {
             gameInProgress=false;
+            retryButtons.SetActive(false);
+
+            dialogueTrigger.ToggleDialogueOptions(false);
             dialogueTrigger.IncreaseCurrentDialogueIndex();
             ClearBlackJackText();
             dialogueTrigger.OpenDialogue();
