@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI dialogueText;
     private DialogueTrigger currentDialogueTrigger;
     private DialoguePerson dialogueObject;
+    private GameManager gameManager;
 
     Queue<string> sentences;
 
@@ -48,6 +49,7 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
+        gameManager = GameManager.instance;
     }
 
     public void StartDialogue(DialogueScriptableObject dialogue)
@@ -130,16 +132,20 @@ public class DialogueManager : MonoBehaviour
                 break;
             case DialoguePerson.beagle:
 
-                if (inventoryScriptableObject.dogTreat == true) 
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.holyWater == true)
                 {
                     IncrementDialogueIndex();
                 }
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                else if (GetDialogueBySentenceType(DialogueSentenceType.dogWater))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
                 }
 
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    IncrementDialogueIndex();
+                }
 
                 break;
             case DialoguePerson.coolMan:
@@ -254,5 +260,10 @@ public class DialogueManager : MonoBehaviour
     public void IncrementDialogueIndex()
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
+    }
+
+    public void SetDogBoneBool(bool set)
+    {
+        gameManager.SetBool(inventoryScriptableObject.dogBone, set);
     }
 }

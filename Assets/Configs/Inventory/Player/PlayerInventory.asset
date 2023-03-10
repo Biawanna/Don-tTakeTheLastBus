@@ -15,4 +15,5 @@ MonoBehaviour:
   dogTreat: 0
   headPhones: 0
   holyWater: 1
+  dogBone: 0
   cans: 0

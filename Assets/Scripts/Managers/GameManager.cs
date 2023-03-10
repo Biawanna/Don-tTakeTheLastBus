@@ -67,5 +67,8 @@ public class GameManager : MonoBehaviour
     {
         gameObject.SetActive(enable);
     }
-
+    public void SetBool(bool boolToSet, bool set)
+    {
+        boolToSet = set;
+    }
 }
