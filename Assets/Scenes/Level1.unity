@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.27261582, g: 0.12656662, b: 0.13682267, a: 1}
+  m_IndirectSpecularColor: {r: 0.27286363, g: 0.13067436, b: 0.1403557, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -595,7 +595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 103.9}
+  m_AnchoredPosition: {x: 0, y: 171.59999}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56658869
@@ -1788,7 +1788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 180.1}
+  m_AnchoredPosition: {x: 0, y: 126.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174773022
@@ -3938,7 +3938,7 @@ GameObject:
   - component: {fileID: 500359059}
   - component: {fileID: 500359058}
   m_Layer: 5
-  m_Name: '2Button '
+  m_Name: '1 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4009,13 +4009,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 500359058}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: D
@@ -5816,7 +5816,7 @@ GameObject:
   - component: {fileID: 656634237}
   - component: {fileID: 656634236}
   m_Layer: 5
-  m_Name: '3Button '
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5887,13 +5887,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 656634236}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: E
@@ -9938,7 +9938,7 @@ GameObject:
   - component: {fileID: 1029437078}
   - component: {fileID: 1029437077}
   m_Layer: 5
-  m_Name: '4Button '
+  m_Name: '3 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10009,13 +10009,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1029437077}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: J
@@ -10359,7 +10359,7 @@ PrefabInstance:
     - target: {fileID: 2860514786609816707, guid: 1ccd268bf8f9ad64f95d3c9399b4c0d0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 104.9
+      value: 172.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ccd268bf8f9ad64f95d3c9399b4c0d0, type: 3}
@@ -10381,6 +10381,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1050169811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860514785739864713, guid: 1ccd268bf8f9ad64f95d3c9399b4c0d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050169808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050169812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860514785115934830, guid: 1ccd268bf8f9ad64f95d3c9399b4c0d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050169808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050169813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860514786225461854, guid: 1ccd268bf8f9ad64f95d3c9399b4c0d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050169808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050169814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860514785307542835, guid: 1ccd268bf8f9ad64f95d3c9399b4c0d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050169808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050169815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860514786028176092, guid: 1ccd268bf8f9ad64f95d3c9399b4c0d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050169808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1059749512 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8879305941772675367, guid: 5613f4c97033adc4e8178b9ed697a84b,
@@ -10968,7 +10998,7 @@ GameObject:
   - component: {fileID: 1133623597}
   - component: {fileID: 1133623596}
   m_Layer: 5
-  m_Name: '1Button '
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11039,13 +11069,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1133623596}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: C
@@ -11700,7 +11730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187480496}
   m_Layer: 0
-  m_Name: Letters
+  m_Name: BoardButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11714,7 +11744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187480495}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -2, y: -494, z: 70.50001}
+  m_LocalPosition: {x: -2, y: -483, z: 70.50001}
   m_LocalScale: {x: 500.00006, y: 500, z: 500.00006}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14762,7 +14792,7 @@ GameObject:
   - component: {fileID: 1555559933}
   - component: {fileID: 1555559932}
   m_Layer: 5
-  m_Name: 6Button
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14833,13 +14863,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1555559932}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: L
@@ -16376,7 +16406,7 @@ GameObject:
   - component: {fileID: 1783654277}
   - component: {fileID: 1783654276}
   m_Layer: 5
-  m_Name: 8Button
+  m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16447,13 +16477,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1783654276}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: R
@@ -17932,7 +17962,7 @@ GameObject:
   - component: {fileID: 1926973015}
   - component: {fileID: 1926973014}
   m_Layer: 5
-  m_Name: '9Button '
+  m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18003,13 +18033,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1926973014}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: S
@@ -19238,7 +19268,7 @@ GameObject:
   - component: {fileID: 1993956407}
   - component: {fileID: 1993956406}
   m_Layer: 5
-  m_Name: '7Button '
+  m_Name: '6 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19309,13 +19339,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1993956406}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Q
@@ -20896,7 +20926,7 @@ GameObject:
   - component: {fileID: 2088077458}
   - component: {fileID: 2088077457}
   m_Layer: 5
-  m_Name: 5Button
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20967,13 +20997,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059749521}
-        m_TargetAssemblyTypeName: HangmanGame, Assembly-CSharp
-        m_MethodName: GuessLetter
-        m_Mode: 5
+      - m_Target: {fileID: 8880318244953374711}
+        m_TargetAssemblyTypeName: TicTacToeGame, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2088077457}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: K
@@ -24164,6 +24194,36 @@ PrefabInstance:
       propertyPath: rend.Array.data[2]
       value: 
       objectReference: {fileID: 259671341}
+    - target: {fileID: 8880318245198255815, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: dialogueObject
+      value: 
+      objectReference: {fileID: 1050169812}
+    - target: {fileID: 8880318245198255865, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: noButton
+      value: 
+      objectReference: {fileID: 1050169814}
+    - target: {fileID: 8880318245198255865, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: yesButton
+      value: 
+      objectReference: {fileID: 1050169815}
+    - target: {fileID: 8880318245198255865, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: nextButton
+      value: 
+      objectReference: {fileID: 1050169813}
+    - target: {fileID: 8880318245198255865, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: skipButton
+      value: 
+      objectReference: {fileID: 1050169811}
+    - target: {fileID: 8880318245198255865, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1050169810}
     - target: {fileID: 8880318245401241009, guid: 5613f4c97033adc4e8178b9ed697a84b,
         type: 3}
       propertyPath: dialogueScriptable.Array.size
