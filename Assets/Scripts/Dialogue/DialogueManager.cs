@@ -19,7 +19,6 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI dialogueText;
     private DialogueTrigger currentDialogueTrigger;
     private DialoguePerson dialogueObject;
-    private GameManager gameManager;
 
     Queue<string> sentences;
 
@@ -49,7 +48,6 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
-        gameManager = GameManager.instance;
     }
 
     public void StartDialogue(DialogueScriptableObject dialogue)
@@ -262,8 +260,4 @@ public class DialogueManager : MonoBehaviour
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
 
-    public void SetDogBoneBool(bool set)
-    {
-        gameManager.SetBool(inventoryScriptableObject.dogBone, set);
-    }
 }
