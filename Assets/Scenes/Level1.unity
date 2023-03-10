@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.27506953, g: 0.13195229, b: 0.14150342, a: 1}
+  m_IndirectSpecularColor: {r: 0.27593672, g: 0.13355356, b: 0.1435743, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12782,6 +12782,23 @@ PrefabInstance:
       propertyPath: StartSelecting.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8880318244953374718, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: dialogueScriptable.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880318244953374718, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: dialogueScriptable.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: fe02c898b41b8074eb2b128c177feabd,
+        type: 2}
+    - target: {fileID: 8880318244953374718, guid: 5613f4c97033adc4e8178b9ed697a84b,
+        type: 3}
+      propertyPath: dialogueScriptable.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 314a803872964024891d3f2d1a5a600c,
+        type: 2}
     - target: {fileID: 8880318244989945801, guid: 5613f4c97033adc4e8178b9ed697a84b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

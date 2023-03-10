@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
 
     private TextMeshProUGUI dialogueText;
     private DialogueTrigger currentDialogueTrigger;
-    private DialogueType dialogueObject;
+    private DialoguePerson dialogueObject;
     private int incrementDialogueIndex = 1;
 
     Queue<string> sentences;
@@ -55,45 +55,51 @@ public class DialogueManager : MonoBehaviour
 
         switch (dialogue.dialogueType)
         {
-            case DialogueType.busDriver:
+            case DialoguePerson.busDriver:
                 currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
-            case DialogueType.scout:
+            case DialoguePerson.scout:
 
-                if (GetDialogueByName("RPSGame"))
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
                 {
-                    Debug.Log("Do Something");
+                    IncrementDialogueIndex();
+                }
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.RPSGame))
+                {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
                 }
 
 
                 break;
-            case DialogueType.patient:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.patient:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.biker:
+            case DialoguePerson.biker:
                 inventoryScriptableObject.dogTreat = true;
 
                 currentDialogueTrigger.SetCurrentDialogueIndex(incrementDialogueIndex);
 
-                GetDialogueTriggerByType(DialogueType.beagle).SetCurrentDialogueIndex(incrementDialogueIndex);
+                GetDialogueTriggerByType(DialoguePerson.beagle).SetCurrentDialogueIndex(incrementDialogueIndex);
 
 
-                //dialogueObject = DialogueType.scout;
-
-                break;
-            case DialogueType.punk:
-                //dialogueObject = DialogueType.scout;
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.beagle:
+            case DialoguePerson.punk:
+                //dialogueObject = DialoguePerson.scout;
+
+                break;
+            case DialoguePerson.beagle:
 
                 if (inventoryScriptableObject.dogTreat == true) 
-                { currentDialogueTrigger.SetCurrentDialogueIndex(incrementDialogueIndex); }
+                {
+                    IncrementDialogueIndex();
+                }
 
-                if (GetDialogueByName("ThankYou"))
+                if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
                     Debug.Log("Do Something");
                     currentDialogueTrigger.ToggleDialogueOptions(true);
@@ -101,44 +107,44 @@ public class DialogueManager : MonoBehaviour
 
 
                 break;
-            case DialogueType.coolMan:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.coolMan:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.eastern:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.eastern:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.emo:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.emo:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.homeless:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.homeless:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.jock:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.jock:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.islander:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.islander:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.wanderer:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.wanderer:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.waitress:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.waitress:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.nerd:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.nerd:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialogueType.teenBoy:
-                //dialogueObject = DialogueType.scout;
+            case DialoguePerson.teenBoy:
+                //dialogueObject = DialoguePerson.scout;
 
                 break;
             default:
@@ -182,7 +188,7 @@ public class DialogueManager : MonoBehaviour
         //currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
     }
 
-    public DialogueTrigger GetDialogueTriggerByType(DialogueType type)
+    public DialogueTrigger GetDialogueTriggerByType(DialoguePerson type)
     {
         for (int i = 0; i < dialogueTriggers.Length; i++)
         {
@@ -196,15 +202,22 @@ public class DialogueManager : MonoBehaviour
         return null;
     }
 
-
-    public bool GetDialogueByName(string dialogue)
+    public bool GetDialogueBySentenceType(DialogueSentenceType dialogueSentenceType)
     {
-        if (currentDialogueTrigger.CurrentDialogue.dialogueName.ToString() == dialogue)
+        if (currentDialogueTrigger.CurrentDialogue.dialogueSentenceType == dialogueSentenceType)
         {
             bool correct = true;
             return correct;
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Moves the dialoguetrigggers current index to the next one.
+    /// </summary>
+    private void IncrementDialogueIndex()
+    {
+        currentDialogueTrigger.SetCurrentDialogueIndex(incrementDialogueIndex);
     }
 }

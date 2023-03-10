@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: Scout_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueName: RPSGame
+  dialogueName: Intro
   dialogueType: 1
   sentences:
-  - "Do you want to play \nrock, paper, scissors?"
+  - 'I''ve been trying to think
+
+    of ways to pass the
+
+    time...'
+  - 'Wish I had cards. Let
+
+    me think on it.'

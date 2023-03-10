@@ -1,4 +1,4 @@
-public enum DialogueType
+public enum DialoguePerson
 {
     busDriver, 
     scout, 
@@ -16,4 +16,11 @@ public enum DialogueType
     emo, 
     eastern,
     homeless
+}
+
+public enum DialogueSentenceType
+{
+    intro, 
+    RPSGame, 
+    thankYou
 }
