@@ -77,7 +77,9 @@ public class BlackJackGame : MonoBehaviour
                 else if (dealerScore == playerScore)
                 {
                     messageText.text = "Push!";
-                    Restart();
+
+                    retryButtons.SetActive(true);
+                    gameButtons.SetActive(false);
                 }
                 else
                 {
