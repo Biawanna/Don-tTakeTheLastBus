@@ -59,7 +59,7 @@ public class RPSGame : MonoBehaviour
         // Reset the text labels
         winText.text = "";
         playerScoreText.text = "Player: 0";
-        npcScoreText.text = "Scout: 0";
+        npcScoreText.text = dialogueTrigger.CurrentDialogue.dialogueType.ToString() + ": 0";
 
         StartCoroutine(RPSWinRoutine());
     }
@@ -77,15 +77,21 @@ public class RPSGame : MonoBehaviour
         {
             case GameResult.Win:
                 playerScore++;
+                winText.text = "Point player";
+                roundCount++;
+
                 break;
             case GameResult.Loss:
                 npcScore++;
+                winText.text = "Point " + dialogueTrigger.CurrentDialogue.dialogueType.ToString();
+                roundCount++;
+
                 break;
             case GameResult.Draw:
+                winText.text = "Draw";
+
                 break;
         }
-
-        roundCount++;
         UpdateScore();
     }
 
@@ -164,7 +170,6 @@ public class RPSGame : MonoBehaviour
         while(true)
         {
 
-            UpdateScore();
             // Check if the game is over
             if (roundCount >= numRounds)
             {
@@ -172,7 +177,6 @@ public class RPSGame : MonoBehaviour
                 if (playerScore > npcScore)
                 {
                     winText.text = "You win!";
-                    UpdateScore();
 
                     ToggleRPSButtons(false);
                     ToggleRetryButtons(true);
@@ -180,8 +184,7 @@ public class RPSGame : MonoBehaviour
                 }
                 else if (playerScore < npcScore)
                 {
-                    winText.text = "Scout wins!";
-                    UpdateScore();
+                    winText.text = dialogueTrigger.CurrentDialogue.dialogueType.ToString() + " wins!";
 
                     ToggleRPSButtons(false);
                     ToggleRetryButtons(true);
@@ -190,7 +193,6 @@ public class RPSGame : MonoBehaviour
                 else
                 {
                     winText.text = "Draw!";
-                    UpdateScore();
 
                     ToggleRPSButtons(false);
                     ToggleRetryButtons(true);
