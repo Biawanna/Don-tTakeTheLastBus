@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -71,38 +72,49 @@ public class RPSGame : MonoBehaviour
         // Determine the result of the round
         GameResult result = GetResult(playerHandSign, npcHandSign);
 
-        // Update the scores and round count
-        if (result == GameResult.Win)
+        // Update the scores and round count based on the result
+        switch (result)
         {
-            playerScore++;
+            case GameResult.Win:
+                playerScore++;
+                break;
+            case GameResult.Loss:
+                npcScore++;
+                break;
+            case GameResult.Draw:
+                break;
         }
-        else if (result == GameResult.Loss)
-        {
-            npcScore++;
-        }
+
         roundCount++;
         UpdateScore();
     }
 
+
     GameResult GetResult(HandSign playerHandSign, HandSign npcHandSign)
     {
-        if (playerHandSign == HandSign.Rock && npcHandSign == HandSign.Scissors ||
-            playerHandSign == HandSign.Paper && npcHandSign == HandSign.Rock ||
-            playerHandSign == HandSign.Scissors && npcHandSign == HandSign.Paper)
-        {
-            return GameResult.Win;
-        }
-        else if (playerHandSign == HandSign.Rock && npcHandSign == HandSign.Paper ||
-                 playerHandSign == HandSign.Paper && npcHandSign == HandSign.Scissors ||
-                 playerHandSign == HandSign.Scissors && npcHandSign == HandSign.Rock)
-        {
-            return GameResult.Loss;
-        }
-        else
+        // Define the winning combinations of hand signs
+        Dictionary<HandSign, HandSign> winningCombinations = new Dictionary<HandSign, HandSign>
+    {
+        { HandSign.Rock, HandSign.Scissors },
+        { HandSign.Paper, HandSign.Rock },
+        { HandSign.Scissors, HandSign.Paper }
+    };
+
+        // Determine the result of the round based on the hand signs
+        if (playerHandSign == npcHandSign)
         {
             return GameResult.Draw;
         }
+        else if (winningCombinations[playerHandSign] == npcHandSign)
+        {
+            return GameResult.Win;
+        }
+        else
+        {
+            return GameResult.Loss;
+        }
     }
+
 
     public void OnRockClick()
     {
@@ -151,6 +163,8 @@ public class RPSGame : MonoBehaviour
     {
         while(true)
         {
+
+            UpdateScore();
             // Check if the game is over
             if (roundCount >= numRounds)
             {
