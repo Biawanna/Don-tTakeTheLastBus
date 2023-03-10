@@ -16,4 +16,4 @@ MonoBehaviour:
   dialogueSentenceType: 0
   dialogueType: 12
   sentences:
-  - You should've repented when you had the chance.
+  - "You should've repented when \nyou had the chance."

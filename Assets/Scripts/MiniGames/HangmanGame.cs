@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class HangmanGame : MonoBehaviour
 {
+    [Header("Hangman Settings")]
+    [SerializeField] private int numberOfGuesses;
+    [SerializeField] private string[] wordList = { "apple", "banana", "cherry", "orange", "pear" };
+
     // UI elements
     [SerializeField] private TextMeshProUGUI wordText;
     [SerializeField] private TextMeshProUGUI messageText;
@@ -12,21 +16,16 @@ public class HangmanGame : MonoBehaviour
     [SerializeField] private GameObject lettersObject;
     [SerializeField] private Button[] letterButtons;
 
-    // Word list
-    private string[] wordList = { "apple", "banana", "cherry", "orange", "pear" };
-
     // Game variables
     private string word;
     private char[] letters;
     private int remainingGuesses = 6;
     private List<char> guessedLetters = new List<char>();
     private DialogueTrigger dialogueTrigger;
-    private DialogueManager dialogueManager;
 
     private void Start()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
-        dialogueManager = DialogueManager.instance;
 
         ToggleHangmanRetryButtons(false);
         ToggleHangmanLetter(false);
@@ -39,11 +38,13 @@ public class HangmanGame : MonoBehaviour
         ToggleHangmanRetryButtons(false);
         ToggleHangmanLetter(true);
 
+        remainingGuesses = numberOfGuesses;
+
         // Choose a random word from the word list
         word = wordList[Random.Range(0, wordList.Length)];
 
         // Create an array of the letters in the word
-        letters = word.ToCharArray();
+        letters = word.ToLower().ToCharArray();
 
         // Initialize the UI
         wordText.text = new string('_', letters.Length);
@@ -60,14 +61,15 @@ public class HangmanGame : MonoBehaviour
     public void GuessLetter(string letter)
     {
         // Get the first character of the string as the guessed letter
-        char guessedLetter = letter[0];
+        char guessedLetter = char.ToLower(letter[0]);
 
         // Disable the button to prevent the player from guessing the same letter twice
-        Button button = letterButtons[guessedLetter - 'A'];
+        Button button = letterButtons[guessedLetter - 'a'];
         button.interactable = false;
 
         // Check if the letter is in the word
         bool foundLetter = false;
+
 
         for (int i = 0; i < letters.Length; i++)
         {
@@ -121,6 +123,7 @@ public class HangmanGame : MonoBehaviour
             messageText.text = "Guess a letter! Remaining guesses: " + remainingGuesses + " Guessed letters: " + string.Join(", ", guessedLetters);
         }
     }
+
 
     public void EndHangManGame()
     {
