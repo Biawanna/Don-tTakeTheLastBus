@@ -50,7 +50,6 @@ public class RPSGame : MonoBehaviour
     {
         dialogueTrigger.ToggleYesNoButtons(false);
         ToggleRetryButtons(false);
-
         ToggleRPSButtons(true);
 
         // Reset the scores and round count
@@ -154,12 +153,21 @@ public class RPSGame : MonoBehaviour
 
     private void PlayerWins()
     {
+        ToggleRPSButtons(false);
+        ToggleRetryButtons(true);
+
         if (!dialogueManager.InventoryScriptableObject.headPhones)
         {
             dialogueTrigger.IncreaseCurrentDialogueIndex();
             ClearRPSText();
             dialogueTrigger.OpenDialogue();
         }
+    }
+
+    private void PlayerLosesOrDraw()
+    {
+        ToggleRPSButtons(false);
+        ToggleRetryButtons(true);
     }
 
     public void ToggleRetryButtons(bool showOptions)
@@ -189,26 +197,22 @@ public class RPSGame : MonoBehaviour
                 if (playerScore > npcScore)
                 {
                     winText.text = "You win!";
-
                     PlayerWins();
-                    ToggleRPSButtons(false);
-                    ToggleRetryButtons(true);
+                   
                     yield break;
                 }
                 else if (playerScore < npcScore)
                 {
                     winText.text = dialogueTrigger.CurrentDialogue.dialogueType.ToString() + " wins!";
-
-                    ToggleRPSButtons(false);
-                    ToggleRetryButtons(true);
+                    PlayerLosesOrDraw();
+                   
                     yield break;
                 }
                 else
                 {
                     winText.text = "Draw!";
+                    PlayerLosesOrDraw();
 
-                    ToggleRPSButtons(false);
-                    ToggleRetryButtons(true);
                     yield break;
                 }
             }

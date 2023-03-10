@@ -60,4 +60,9 @@ public class Player : MonoBehaviour
     {
         inventory.dogBone = true;
     }
+
+    public void SetPopCanTrue()
+    {
+        inventory.popCan = true;
+    }
 }

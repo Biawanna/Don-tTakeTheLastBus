@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Patient_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 0
   dialogueType: 3
   sentences:
-  - I hit my head
+  - Ahhh fresh meat!
+  - 'I found a deck of cards laying
+
+    on the ground. Hehe.'

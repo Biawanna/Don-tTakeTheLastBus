@@ -3,7 +3,7 @@ public enum DialoguePerson
     busDriver, 
     scout, 
     biker,
-    patient, 
+    inpatient, 
     teenBoy, 
     coolMan,
     islander, 
@@ -29,5 +29,7 @@ public enum DialogueSentenceType
     dogWater,
     hangmanGame,
     hangManWin,
+    blackJackGame,
+    blackJackWin,
     none
 }
