@@ -12,10 +12,11 @@ public enum DialoguePerson
     wanderer, 
     waitress, 
     punk,
+    nun,
     nerd,
     emo, 
     eastern,
-    homeless
+    homeless, 
 }
 
 public enum DialogueSentenceType
@@ -25,5 +26,6 @@ public enum DialogueSentenceType
     RPSWin,
     thankYou, 
     dogtreat, 
+    hangmanGame,
     none
 }

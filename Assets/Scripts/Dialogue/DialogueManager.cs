@@ -109,6 +109,20 @@ public class DialogueManager : MonoBehaviour
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
+
+            case DialoguePerson.nun:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.hangmanGame))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                break;
             case DialoguePerson.beagle:
 
                 if (inventoryScriptableObject.dogTreat == true) 

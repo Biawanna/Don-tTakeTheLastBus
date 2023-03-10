@@ -28,12 +28,12 @@ public class RPSGame : MonoBehaviour
     public TextMeshProUGUI npcScoreText;
     public int numRounds = 3;
 
+    private float rpsWaitTime = 0.1f;
     private int playerScore;
     private int npcScore;
     private int roundCount;
     private HandSign npcHandSign;
     private DialogueTrigger dialogueTrigger;
-    private float rpsWaitTime = 0.1f;
     private DialogueManager dialogueManager;
 
     private void Start()
