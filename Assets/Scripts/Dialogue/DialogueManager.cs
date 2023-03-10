@@ -19,7 +19,6 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI dialogueText;
     private DialogueTrigger currentDialogueTrigger;
     private DialoguePerson dialogueObject;
-    private int incrementDialogueIndex = 1;
 
     Queue<string> sentences;
 
@@ -120,6 +119,12 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangmanGame))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
+                {
+                    inventoryScriptableObject.holyWater = true;
+                    IncrementDialogueIndex();
                 }
 
                 break;
@@ -248,6 +253,6 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void IncrementDialogueIndex()
     {
-        currentDialogueTrigger.SetCurrentDialogueIndex();
+        currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
 }

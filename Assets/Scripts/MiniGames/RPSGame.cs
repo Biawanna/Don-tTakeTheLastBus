@@ -156,7 +156,7 @@ public class RPSGame : MonoBehaviour
     {
         if (!dialogueManager.InventoryScriptableObject.headPhones)
         {
-            dialogueTrigger.SetCurrentDialogueIndex();
+            dialogueTrigger.IncreaseCurrentDialogueIndex();
             ClearRPSText();
             dialogueTrigger.OpenDialogue();
         }

@@ -22,10 +22,12 @@ public class HangmanGame : MonoBehaviour
     private int remainingGuesses = 6;
     private List<char> guessedLetters = new List<char>();
     private DialogueTrigger dialogueTrigger;
+    private DialogueManager dialogueManager;
 
     private void Start()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
+        dialogueManager = DialogueManager.instance;
 
         ToggleHangmanRetryButtons(false);
         ToggleHangmanLetter(false);
@@ -98,6 +100,7 @@ public class HangmanGame : MonoBehaviour
         {
             // Player has won
             messageText.text = "You win!";
+            HangManWin();
             foreach (Button b in letterButtons)
             {
                 b.interactable = false;
@@ -133,6 +136,15 @@ public class HangmanGame : MonoBehaviour
         dialogueTrigger.CloseDialogue();
     }
 
+    private void HangManWin()
+    {
+        if (!dialogueManager.InventoryScriptableObject.holyWater)
+        {
+            dialogueTrigger.IncreaseCurrentDialogueIndex();
+            ClearHangmanText();
+            dialogueTrigger.OpenDialogue();
+        }
+    }
     private void ToggleHangmanRetryButtons(bool showOptions)
     {
         dialogueTrigger.ToggleObjectVisibilty(showOptions, retryButtons);

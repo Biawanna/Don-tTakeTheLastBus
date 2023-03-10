@@ -27,5 +27,6 @@ public enum DialogueSentenceType
     thankYou, 
     dogtreat, 
     hangmanGame,
+    hangManWin,
     none
 }
