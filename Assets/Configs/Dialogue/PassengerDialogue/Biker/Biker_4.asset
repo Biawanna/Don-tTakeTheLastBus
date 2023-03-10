@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
-  m_Name: Biker_2
+  m_Name: Biker_4
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 2
+  dialogueSentenceType: 5
   dialogueType: 2
   sentences:
-  - "If you snatch me a pair of\nheadphones I'll give you \na dog treat?"
+  - Highway to hell!

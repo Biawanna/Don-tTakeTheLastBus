@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Biker_3
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 3
+  dialogueSentenceType: 0
   dialogueType: 2
   sentences:
   - 'Thanks for the headphones!

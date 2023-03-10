@@ -24,5 +24,6 @@ public enum DialogueSentenceType
     RPSGame,
     RPSWin,
     thankYou, 
-    dogtreat
+    dogtreat, 
+    none
 }

@@ -92,14 +92,16 @@ public class DialogueManager : MonoBehaviour
                 break;
             case DialoguePerson.biker:
 
+                
                 if (GetDialogueBySentenceType(DialogueSentenceType.intro))
                 {
                     IncrementDialogueIndex();
                 }
 
-                else if (inventoryScriptableObject.headPhones)
+                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin ) && inventoryScriptableObject.headPhones == true)
                 {
                     inventoryScriptableObject.dogTreat = true;
+                    IncrementDialogueIndex();
                 }
 
                 break;
