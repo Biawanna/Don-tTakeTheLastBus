@@ -5,20 +5,36 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
-    [SerializeField] private AutoHandPlayer autoHandPlayer;
-    [SerializeField] public float playerHealth = 1;
+    [SerializeField] private InventoryScriptableObject inventory;
 
+    private AutoHandPlayer autoHandPlayer;
     private SoundManager soundManager;
+    private UICanvasController canvasController;
 
-    public AutoHandPlayer AutoHandPlayer
-    {
-        get { return autoHandPlayer; }
-    }
+    public InventoryScriptableObject Inventory { get { return inventory; } }
+
+    public AutoHandPlayer AutoHandPlayer { get { return autoHandPlayer; } }
+
 
     private void Awake()
     {
         Instance = this;
         soundManager = SoundManager.Instance;
+    }
+
+    private void Start()
+    {
+        canvasController = UICanvasController.Instance;
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("XRI_Right_PrimaryButton"))
+        {
+            Debug.Log("Paused");
+
+            canvasController.Pause();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

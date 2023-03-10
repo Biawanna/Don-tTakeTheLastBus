@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beagle_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueName: Food
   dialogueType: 7
   sentences:
   - 'Whoof

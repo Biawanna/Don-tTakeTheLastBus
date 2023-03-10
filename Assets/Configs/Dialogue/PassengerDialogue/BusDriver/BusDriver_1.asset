@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: BusDriver_1
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueNumber: 2
   dialogueType: 0
   sentences:
-  - hello
-  - it's working
+  - 'I feel as though I''ve been
+
+    driving for an eternity.'
+  - 'All this darkness. You get lost
+
+    in it.'

@@ -1,11 +1,20 @@
 using UnityEngine;
-
+using Autohand;
 public class GameManager : MonoBehaviour
 {
-   public static GameManager instance;
+    public static GameManager instance;
 
-    [SerializeField] private GameObject autoHandPlayer;
-    private UICanvasController uICanvasController;
+    [Header("Player Speed Settings")]
+    [SerializeField] private float playerStop = 0;
+
+    [Header("Pointer References")]
+    [SerializeField] private GameObject grabPointerL;
+    [SerializeField] private GameObject grabPointerR;
+    [SerializeField] private GameObject teleportPointer;
+
+    private float playerMaxSpeed;
+    private GameObject autoHandPlayer;
+    private AutoHandPlayer autoHandScript;
 
     public GameObject Player
     {
@@ -15,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        uICanvasController = UICanvasController.Instance;
 
         if (instance != null && instance != this)
         {
@@ -28,18 +36,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DisableGameObject(GameObject gameObject)
+    private void Start()
     {
-        gameObject.SetActive(false);
-    }
+        autoHandPlayer = GameObject.FindGameObjectWithTag("Player");
 
+        autoHandScript = autoHandPlayer.GetComponentInChildren<AutoHandPlayer>();
+
+        playerMaxSpeed = autoHandScript.maxMoveSpeed;
+    }
+   
     public void PauseGame()
     {
-        Time.timeScale = 0f;
+        autoHandScript.maxMoveSpeed = playerStop;
+
+        EnableGameObject(teleportPointer, false);
+        EnableGameObject(grabPointerL, false);
+        EnableGameObject(grabPointerR, false);
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
+        autoHandScript.maxMoveSpeed = playerMaxSpeed;
+
+        EnableGameObject(teleportPointer, true);
+        EnableGameObject(grabPointerL, true);
+        EnableGameObject(grabPointerR, true);
     }
+
+    public void EnableGameObject(GameObject gameObject, bool enable)
+    {
+        gameObject.SetActive(enable);
+    }
+
 }
