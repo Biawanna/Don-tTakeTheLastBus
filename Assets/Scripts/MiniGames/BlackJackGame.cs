@@ -191,6 +191,7 @@ public class BlackJackGame : MonoBehaviour
 
         if (!dialogueManager.InventoryScriptableObject.soul)
         {
+            gameInProgress=false;
             dialogueTrigger.IncreaseCurrentDialogueIndex();
             ClearBlackJackText();
             dialogueTrigger.OpenDialogue();
