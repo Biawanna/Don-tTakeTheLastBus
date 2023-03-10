@@ -9,15 +9,32 @@ public class Player : MonoBehaviour
 
     private AutoHandPlayer autoHandPlayer;
     private SoundManager soundManager;
+    private UICanvasController canvasController;
 
     public InventoryScriptableObject Inventory { get { return inventory; } }
 
     public AutoHandPlayer AutoHandPlayer { get { return autoHandPlayer; } }
 
+
     private void Awake()
     {
         Instance = this;
         soundManager = SoundManager.Instance;
+    }
+
+    private void Start()
+    {
+        canvasController = UICanvasController.Instance;
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("XRI_Right_PrimaryButton"))
+        {
+            Debug.Log("Paused");
+
+            canvasController.Pause();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
