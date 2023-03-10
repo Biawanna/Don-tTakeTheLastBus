@@ -7,5 +7,6 @@ public class InventoryScriptableObject : ScriptableObject
     [Header("Invetory Settings")]
     public bool dogTreat;
     public int cans = 0;
+    public bool headPhones;
 }
 

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b9e4472f06f3c4ca133bc4900f7a5b, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  dogTreat: 0
+  dogTreat: 1
   cans: 0
+  headPhones: 1

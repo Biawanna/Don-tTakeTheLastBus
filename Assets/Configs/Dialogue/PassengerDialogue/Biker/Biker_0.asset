@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Biker_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 0
   dialogueType: 2
   sentences:
-  - I like to bike
-  - Hears a treat for the dog!
+  - Highway to hell...
+  - You know that song?

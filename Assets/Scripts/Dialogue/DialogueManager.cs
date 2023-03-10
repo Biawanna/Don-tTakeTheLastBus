@@ -34,6 +34,12 @@ public class DialogueManager : MonoBehaviour
         get { return currentDialogueTrigger; }
         set { currentDialogueTrigger = value; }
     }
+
+    public InventoryScriptableObject InventoryScriptableObject
+    {
+        get { return inventoryScriptableObject; }
+        set { inventoryScriptableObject = value; }
+    }
        
     private void Awake()
     {
@@ -59,6 +65,7 @@ public class DialogueManager : MonoBehaviour
                 currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
+
             case DialoguePerson.scout:
 
                 if (GetDialogueBySentenceType(DialogueSentenceType.intro))
@@ -66,26 +73,34 @@ public class DialogueManager : MonoBehaviour
                     IncrementDialogueIndex();
                 }
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.RPSGame))
+                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSGame))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
                 }
 
+                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
+                {
+                    inventoryScriptableObject.headPhones = true;
+                    IncrementDialogueIndex();
+                }
 
                 break;
+
             case DialoguePerson.patient:
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
             case DialoguePerson.biker:
-                inventoryScriptableObject.dogTreat = true;
 
-                currentDialogueTrigger.SetCurrentDialogueIndex(incrementDialogueIndex);
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+                {
+                    IncrementDialogueIndex();
+                }
 
-                GetDialogueTriggerByType(DialoguePerson.beagle).SetCurrentDialogueIndex(incrementDialogueIndex);
-
-
-                //dialogueObject = DialoguePerson.scout;
+                else if (inventoryScriptableObject.headPhones)
+                {
+                    inventoryScriptableObject.dogTreat = true;
+                }
 
                 break;
             case DialoguePerson.punk:
@@ -101,7 +116,6 @@ public class DialogueManager : MonoBehaviour
 
                 if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    Debug.Log("Do Something");
                     currentDialogueTrigger.ToggleDialogueOptions(true);
                 }
 
@@ -216,8 +230,8 @@ public class DialogueManager : MonoBehaviour
     /// <summary>
     /// Moves the dialoguetrigggers current index to the next one.
     /// </summary>
-    private void IncrementDialogueIndex()
+    public void IncrementDialogueIndex()
     {
-        currentDialogueTrigger.SetCurrentDialogueIndex(incrementDialogueIndex);
+        currentDialogueTrigger.SetCurrentDialogueIndex();
     }
 }

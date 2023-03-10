@@ -92,17 +92,18 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the current dialogue index.
+    /// Increase the current dialogue index.
     /// </summary>
-    public void SetCurrentDialogueIndex(int increaseIndex)
+    public void SetCurrentDialogueIndex()
     {
-        if (dialogueIndex == dialogueScriptable.Length - 1)
+        if (dialogueIndex + 1 > dialogueScriptable.Length)
         {
             return;
         }
         else
         {
-            currentDialogue = dialogueScriptable[dialogueIndex + increaseIndex];
+            currentDialogue = dialogueScriptable[dialogueIndex + 1];
+            dialogueIndex++;
         }
     }
 

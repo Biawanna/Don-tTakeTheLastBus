@@ -21,6 +21,8 @@ public enum DialoguePerson
 public enum DialogueSentenceType
 {
     intro, 
-    RPSGame, 
-    thankYou
+    RPSGame,
+    RPSWin,
+    thankYou, 
+    dogtreat
 }

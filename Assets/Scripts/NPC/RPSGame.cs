@@ -34,10 +34,12 @@ public class RPSGame : MonoBehaviour
     private HandSign npcHandSign;
     private DialogueTrigger dialogueTrigger;
     private float rpsWaitTime = 0.1f;
+    private DialogueManager dialogueManager;
 
     private void Start()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
+        dialogueManager = DialogueManager.instance;
 
         ToggleRetryButtons(false);
         ToggleRPSButtons(false);
@@ -150,6 +152,16 @@ public class RPSGame : MonoBehaviour
         dialogueTrigger.CloseDialogue();
     }
 
+    private void PlayerWins()
+    {
+        if (!dialogueManager.InventoryScriptableObject.headPhones)
+        {
+            dialogueTrigger.SetCurrentDialogueIndex();
+            ClearRPSText();
+            dialogueTrigger.OpenDialogue();
+        }
+    }
+
     public void ToggleRetryButtons(bool showOptions)
     {
         dialogueTrigger.ToggleObjectVisibilty(showOptions, retryButtons);
@@ -178,6 +190,7 @@ public class RPSGame : MonoBehaviour
                 {
                     winText.text = "You win!";
 
+                    PlayerWins();
                     ToggleRPSButtons(false);
                     ToggleRetryButtons(true);
                     yield break;
