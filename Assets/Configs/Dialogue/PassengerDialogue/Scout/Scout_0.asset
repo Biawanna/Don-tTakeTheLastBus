@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scout_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueName: Hello
+  dialogueName: RPSGame
   dialogueType: 1
   sentences:
-  - nonononononon
+  - "Do you want to play \nrock, paper, scissors?"

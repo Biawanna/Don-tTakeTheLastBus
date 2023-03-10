@@ -60,8 +60,14 @@ public class DialogueManager : MonoBehaviour
 
                 break;
             case DialogueType.scout:
-                //dialogueObject = DialogueType.scout;
-             
+
+                if (GetDialogueByName("RPSGame"))
+                {
+                    Debug.Log("Do Something");
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+
                 break;
             case DialogueType.patient:
                 //dialogueObject = DialogueType.scout;

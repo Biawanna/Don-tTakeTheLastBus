@@ -119,11 +119,28 @@ public class DialogueTrigger : MonoBehaviour
         nextButton.SetActive(!showOptions);
     }
 
+    public void ToggleYesNoButtons(bool showOptions)
+    {
+        yesButton.SetActive(showOptions);
+        noButton.SetActive(showOptions);
+    }
+
+    public void ToggleObjectsVisibilty(bool visibility, GameObject[] gameObject)
+    {
+        foreach (GameObject obj in gameObject)
+        {
+            obj.SetActive(visibility);
+        }
+    }
+    public void ToggleObjectVisibilty(bool visibility, GameObject gameObject)
+    {
+        gameObject.SetActive(visibility);
+    }
 
     /// <summary>
     /// Clears TextMeshProUGUI text, sets dialogue field to null.
     /// </summary>
-    private void ClearDialogueText(TextMeshProUGUI text)
+    public void ClearDialogueText(TextMeshProUGUI text)
     {
         text.text = " ";
         dialogueManager.DialogueText = null;
@@ -153,11 +170,6 @@ public class DialogueTrigger : MonoBehaviour
     private void OpenDialogueSequence()
     {
         sequence.OpenCloseDialogueSequence(true);
-    }
-
-    private void ToggleObjectVisibilty(bool visibility, GameObject gameObject)
-    {
-        gameObject.SetActive(visibility);
     }
 
     private void HideOnStart()
