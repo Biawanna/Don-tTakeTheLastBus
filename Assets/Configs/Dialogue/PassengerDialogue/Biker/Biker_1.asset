@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Biker_1
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 2
+  dialogueSentenceType: 0
   dialogueType: 2
   sentences:
-  - 'Waht do you wnat?
+  - 'I miss my motorcycle.
 
 '

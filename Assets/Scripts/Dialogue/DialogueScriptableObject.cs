@@ -6,8 +6,8 @@ public class DialogueScriptableObject : ScriptableObject
 {
     [Header("Dialogue Settings")]
     public bool dialoguePlayed = false;
-    public string dialogueName;
-    public DialogueType dialogueType;
+    public DialogueSentenceType dialogueSentenceType;
+    public DialoguePerson dialogueType;
     [TextArea(3, 5)]
     public string[] sentences;
 }

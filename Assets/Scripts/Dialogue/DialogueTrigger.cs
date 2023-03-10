@@ -92,17 +92,18 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the current dialogue index.
+    /// Increase the current dialogue index.
     /// </summary>
-    public void SetCurrentDialogueIndex(int increaseIndex)
+    public void IncreaseCurrentDialogueIndex()
     {
-        if (dialogueIndex == dialogueScriptable.Length - 1)
+        if (dialogueIndex + 1 > dialogueScriptable.Length)
         {
             return;
         }
         else
         {
-            currentDialogue = dialogueScriptable[dialogueIndex + increaseIndex];
+            currentDialogue = dialogueScriptable[dialogueIndex + 1];
+            dialogueIndex++;
         }
     }
 
@@ -119,11 +120,28 @@ public class DialogueTrigger : MonoBehaviour
         nextButton.SetActive(!showOptions);
     }
 
+    public void ToggleYesNoButtons(bool showOptions)
+    {
+        yesButton.SetActive(showOptions);
+        noButton.SetActive(showOptions);
+    }
+
+    public void ToggleObjectsVisibilty(bool visibility, GameObject[] gameObject)
+    {
+        foreach (GameObject obj in gameObject)
+        {
+            obj.SetActive(visibility);
+        }
+    }
+    public void ToggleObjectVisibilty(bool visibility, GameObject gameObject)
+    {
+        gameObject.SetActive(visibility);
+    }
 
     /// <summary>
     /// Clears TextMeshProUGUI text, sets dialogue field to null.
     /// </summary>
-    private void ClearDialogueText(TextMeshProUGUI text)
+    public void ClearDialogueText(TextMeshProUGUI text)
     {
         text.text = " ";
         dialogueManager.DialogueText = null;
@@ -153,11 +171,6 @@ public class DialogueTrigger : MonoBehaviour
     private void OpenDialogueSequence()
     {
         sequence.OpenCloseDialogueSequence(true);
-    }
-
-    private void ToggleObjectVisibilty(bool visibility, GameObject gameObject)
-    {
-        gameObject.SetActive(visibility);
     }
 
     private void HideOnStart()

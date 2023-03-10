@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beagle_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueName: Whoof
+  dialogueSentenceType: 0
   dialogueType: 7
   sentences:
   - Whooooof!
