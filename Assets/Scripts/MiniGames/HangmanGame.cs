@@ -30,6 +30,7 @@ public class HangmanGame : MonoBehaviour
 
         ToggleHangmanRetryButtons(false);
         ToggleHangmanLetter(false);
+        ClearHangmanText();
     }
 
     public void NewGame()
