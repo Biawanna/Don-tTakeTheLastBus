@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beagle_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 0
+  dialogueSentenceType: 3
   dialogueType: 7
   sentences:
-  - Whooooof!
+  - "Whoof! Tevoro perked up \nand gave you his bone.\nHow useful."

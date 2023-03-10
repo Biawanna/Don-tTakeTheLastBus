@@ -55,4 +55,9 @@ public class Player : MonoBehaviour
             soundManager.jumpSound = soundManager.jumpOnConcreteSound;
         }
     }
+
+    public void SetDogBoneTrue()
+    {
+        inventory.dogBone = true;
+    }
 }

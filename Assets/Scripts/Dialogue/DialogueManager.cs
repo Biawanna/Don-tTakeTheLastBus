@@ -130,16 +130,20 @@ public class DialogueManager : MonoBehaviour
                 break;
             case DialoguePerson.beagle:
 
-                if (inventoryScriptableObject.dogTreat == true) 
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.holyWater == true)
                 {
                     IncrementDialogueIndex();
                 }
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                else if (GetDialogueBySentenceType(DialogueSentenceType.dogWater))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
                 }
 
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    IncrementDialogueIndex();
+                }
 
                 break;
             case DialoguePerson.coolMan:
@@ -255,4 +259,5 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
+
 }
