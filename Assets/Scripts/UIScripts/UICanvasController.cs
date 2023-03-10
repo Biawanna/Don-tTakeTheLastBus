@@ -39,6 +39,7 @@ public class UICanvasController : MonoBehaviour
     public TextMeshProUGUI ToolTipText
     { get { return dialogueText; } }
 
+
     private void Start()
     {
         OnStartScene?.Invoke();
