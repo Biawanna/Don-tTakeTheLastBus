@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dogTreat: 1
   headPhones: 1
-  holyWater: 1
+  holyWater: 0
   dogBone: 1
   soul: 1
   popCan: 1
