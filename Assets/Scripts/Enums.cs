@@ -36,5 +36,6 @@ public enum DialogueSentenceType
     popCan,
     coconut,
     coffee,
+    newspaper,
     none
 }

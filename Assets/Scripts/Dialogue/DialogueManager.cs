@@ -232,6 +232,26 @@ public class DialogueManager : MonoBehaviour
 
                 break;
 
+            case DialoguePerson.homeless:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.newspaper == true)
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.newspaper))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(false);
+                    IncrementDialogueIndex();
+                }
+
+                break;
+
             case DialoguePerson.waitress:
 
                 if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.coffee == true)
@@ -280,10 +300,7 @@ public class DialogueManager : MonoBehaviour
 
                 break;
           
-            case DialoguePerson.homeless:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
+            
            
             case DialoguePerson.wanderer:
                 //dialogueObject = DialoguePerson.scout;

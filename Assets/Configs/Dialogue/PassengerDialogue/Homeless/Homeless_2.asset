@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
-  m_Name: Homeless_0
+  m_Name: Homeless_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 0
+  dialogueSentenceType: 3
   dialogueType: 16
   sentences:
-  - I could use some reading material.
-  - I used to have a home filled to the brim with books and now I just stare into
-    nothingness.
+  - Ahhhh. Words. I hope you fared well in hangman. I love that game.
