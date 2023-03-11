@@ -31,5 +31,8 @@ public enum DialogueSentenceType
     hangManWin,
     blackJackGame,
     blackJackWin,
+    ticTacToeGame,
+    ticToeWin,
+    popCan,
     none
 }

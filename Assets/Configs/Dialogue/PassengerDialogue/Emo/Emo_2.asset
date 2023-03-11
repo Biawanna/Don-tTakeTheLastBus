@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
-  m_Name: Nun_1
+  m_Name: Emo_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 6
-  dialogueType: 12
+  dialogueSentenceType: 10
+  dialogueType: 14
   sentences:
-  - Dare to play hangman?
+  - "Thanks for the pop! Want to \nplay tic tac toe?"

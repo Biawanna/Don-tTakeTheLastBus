@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Emo_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
-  dialogueType: 13
+  dialogueSentenceType: 0
+  dialogueType: 14
   sentences:
-  - emo gurl
+  - "It get's dreary peering into \na pit of darkness day in\nday out...\n"
+  - I could use a can of pop.

@@ -6,44 +6,61 @@ public class TicTacToeGame : MonoBehaviour
 {
     public string playerSymbol = "X";
     public string aiSymbol = "O";
-    public TextMeshProUGUI playerTurnText;
+    //public TextMeshProUGUI playerTurnText;
     public TextMeshProUGUI gameOverText;
+    [SerializeField] private GameObject boardGameObject;
+    [SerializeField] private GameObject retryButtons;
+    [SerializeField] private Button[] boardButtons;
     private string[] board = new string[9];
     private bool playerTurn = true;
+    private DialogueTrigger dialogueTrigger;
+    private DialogueManager dialogueManager;
 
     void Start()
     {
+        dialogueTrigger = GetComponent<DialogueTrigger>();
+        dialogueManager = DialogueManager.instance;
+
         for (int i = 0; i < board.Length; i++)
         {
             board[i] = "";
         }
+
+        boardGameObject.SetActive(false);
+        retryButtons.SetActive(false);
+        ClearTicTacToeText();
     }
 
-    void UpdatePlayerTurnText()
-    {
-        playerTurnText.text = playerTurn ? "Player Turn" : "AI Turn";
-    }
+    //void UpdatePlayerTurnText()
+    //{
+    //    playerTurnText.text = playerTurn ? "Player Turn" : "Emo Turn";
+    //}
 
     bool CheckForGameOver()
     {
         if (CheckForWin(playerSymbol))
         {
             gameOverText.text = "Player Wins!";
+            retryButtons.SetActive(true);
+
             return true;
         }
 
         if (CheckForWin(aiSymbol))
         {
-            gameOverText.text = "AI Wins!";
+            gameOverText.text = "Emo Wins!";
+            retryButtons.SetActive(true);
+
             return true;
         }
 
         if (CheckForTie())
         {
             gameOverText.text = "Tie!";
+            retryButtons.SetActive(true);
+
             return true;
         }
-
         return false;
     }
 
@@ -98,8 +115,9 @@ public class TicTacToeGame : MonoBehaviour
         if (board[index] == "")
         {
             board[index] = playerSymbol;
-            UpdatePlayerTurnText();
-            button.GetComponentInChildren<Text>().text = playerSymbol;
+
+            //UpdatePlayerTurnText();
+            button.GetComponentInChildren<TextMeshProUGUI>().text = playerSymbol;
 
             if (CheckForGameOver())
             {
@@ -107,34 +125,68 @@ public class TicTacToeGame : MonoBehaviour
             }
 
             playerTurn = false;
-            UpdatePlayerTurnText();
+            //UpdatePlayerTurnText();
             DoAITurn();
         }
     }
 
     void DoAITurn()
     {
-        int index = Random.Range(0, 9);
+        int index = -1;
 
-        if (board[index] == "")
+        while (index == -1 || board[index] != "")
         {
-            board[index] = aiSymbol;
-            buttonAtIndex(index).GetComponentInChildren<Text>().text = aiSymbol;
-
-            if (!CheckForGameOver())
-            {
-                playerTurn = true;
-                UpdatePlayerTurnText();
-            }
+            index = Random.Range(0, board.Length);
         }
-        else
+
+        board[index] = aiSymbol;
+
+        boardButtons[index].GetComponentInChildren<TextMeshProUGUI>().text = aiSymbol;
+
+        if (!CheckForGameOver())
         {
-            DoAITurn();
+            playerTurn = true;
+            //UpdatePlayerTurnText();
         }
     }
+
+
 
     Button buttonAtIndex(int index)
     {
         return transform.Find(index.ToString()).GetComponent<Button>();
+    }
+
+    public void NewTicTacToeGame()
+    {
+        boardGameObject.SetActive(true);
+        RestartTicTacToe();
+        //UpdatePlayerTurnText();
+    }
+
+    public void EndTicTacToe()
+    {
+        boardGameObject.SetActive(false);
+        retryButtons.SetActive(false);
+        dialogueTrigger.ToggleYesNoButtons(false);
+
+        dialogueTrigger.CloseDialogue();
+    }
+
+    private void ClearTicTacToeText()
+    {
+        gameOverText.text = "";
+        //playerTurnText.text = "";
+    }
+
+    public void RestartTicTacToe()
+    {
+        foreach (Button i in boardButtons)
+        {
+            i.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        }
+
+        dialogueTrigger.ToggleYesNoButtons(false);
+        gameOverText.text = "";
     }
 }
