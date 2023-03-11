@@ -138,10 +138,6 @@ public class DialogueManager : MonoBehaviour
                 }
 
                 break;
-            case DialoguePerson.punk:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
 
             case DialoguePerson.nun:
 
@@ -299,8 +295,6 @@ public class DialogueManager : MonoBehaviour
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
-          
-            
            
             case DialoguePerson.wanderer:
                 //dialogueObject = DialoguePerson.scout;
@@ -311,7 +305,12 @@ public class DialogueManager : MonoBehaviour
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
-           
+
+            case DialoguePerson.punk:
+                //dialogueObject = DialoguePerson.scout;
+
+                break;
+
             default:
                 break;
         }

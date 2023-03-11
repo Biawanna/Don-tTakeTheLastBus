@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nerd_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueName: 
-  dialogueType: 12
+  dialogueSentenceType: 0
+  dialogueType: 13
   sentences:
   - I like to read
