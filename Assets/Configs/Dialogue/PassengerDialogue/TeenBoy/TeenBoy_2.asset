@@ -16,4 +16,6 @@ MonoBehaviour:
   dialogueSentenceType: 3
   dialogueType: 4
   sentences:
-  - "Thank you! I can't wait \nto feel something...\nanything again."
+  - 'Thank you! I can''t wait to feel something...
+
+    anything again.'

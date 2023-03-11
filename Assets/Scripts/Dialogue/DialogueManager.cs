@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 /// <summary>
@@ -61,7 +62,16 @@ public class DialogueManager : MonoBehaviour
         switch (dialogue.dialogueType)
         {
             case DialoguePerson.busDriver:
-                currentDialogueTrigger.PlayRandomDialogue();
+
+                if (CheckIfPlayerWins())
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.gameComplete))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
 
                 break;
 
@@ -138,10 +148,6 @@ public class DialogueManager : MonoBehaviour
                 }
 
                 break;
-            case DialoguePerson.punk:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
 
             case DialoguePerson.nun:
 
@@ -158,6 +164,26 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.holyWater = true;
+                    IncrementDialogueIndex();
+                }
+
+                break;
+
+            case DialoguePerson.nerd:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
+                {
+                    inventoryScriptableObject.catPicture = true;
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.none))
+                {
                     IncrementDialogueIndex();
                 }
 
@@ -232,6 +258,26 @@ public class DialogueManager : MonoBehaviour
 
                 break;
 
+            case DialoguePerson.homeless:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.newspaper == true)
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.newspaper))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(false);
+                    IncrementDialogueIndex();
+                }
+
+                break;
+
             case DialoguePerson.waitress:
 
                 if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.coffee == true)
@@ -272,29 +318,30 @@ public class DialogueManager : MonoBehaviour
                 break;
 
             case DialoguePerson.coolMan:
-                //dialogueObject = DialoguePerson.scout;
+
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
             case DialoguePerson.eastern:
-                //dialogueObject = DialoguePerson.scout;
 
-                break;
-          
-            case DialoguePerson.homeless:
-                //dialogueObject = DialoguePerson.scout;
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
            
             case DialoguePerson.wanderer:
-                //dialogueObject = DialoguePerson.scout;
+
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
          
-            case DialoguePerson.nerd:
-                //dialogueObject = DialoguePerson.scout;
+          
+
+            case DialoguePerson.punk:
+
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
-           
+
             default:
                 break;
         }
@@ -368,5 +415,22 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
+    private bool CheckIfPlayerWins()
+    {
+        var requiredItems = new[]
+        {
+        inventoryScriptableObject.catPicture,
+        inventoryScriptableObject.headPhones,
+        inventoryScriptableObject.coconut,
+        inventoryScriptableObject.soul,
+        inventoryScriptableObject.holyWater,
+        inventoryScriptableObject.coffee,
+        inventoryScriptableObject.dogBone,
+        inventoryScriptableObject.dogTreat,
+        inventoryScriptableObject.popCan,
+        inventoryScriptableObject.newspaper
+        };
 
+        return requiredItems.All(item => item);
+    }
 }

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Homeless_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
-  dialogueType: 15
+  dialogueSentenceType: 0
+  dialogueType: 16
   sentences:
-  - spare a dollar?
+  - I could use some reading material.
+  - I used to have a home filled to the brim with books and now I just stare into
+    nothingness.

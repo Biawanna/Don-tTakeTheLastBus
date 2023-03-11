@@ -16,4 +16,4 @@ MonoBehaviour:
   dialogueSentenceType: 11
   dialogueType: 14
   sentences:
-  - "You won but the only \nthing I have is a coconut.\nIt's all yours."
+  - You won but the only item I have is a coconut. It's all yours.

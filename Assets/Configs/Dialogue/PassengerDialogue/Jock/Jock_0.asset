@@ -16,9 +16,5 @@ MonoBehaviour:
   dialogueSentenceType: 0
   dialogueType: 8
   sentences:
-  - 'Tevoro could use a good
-
-    bone to chew on.'
-  - 'I''ll give you coffee
-
-    for a dog bone.'
+  - Tevoro could use a good bone to chew on.
+  - I'll give you coffee for a dog bone.

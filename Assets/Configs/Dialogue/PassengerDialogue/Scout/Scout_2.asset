@@ -16,6 +16,4 @@ MonoBehaviour:
   dialogueSentenceType: 2
   dialogueType: 1
   sentences:
-  - 'Alright, I guess I''ll give you
-
-    my headphones.'
+  - Alright, I guess I'll give you my headphones.

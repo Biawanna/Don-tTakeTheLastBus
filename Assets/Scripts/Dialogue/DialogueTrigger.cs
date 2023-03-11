@@ -96,7 +96,7 @@ public class DialogueTrigger : MonoBehaviour
     /// </summary>
     public void IncreaseCurrentDialogueIndex()
     {
-        if (dialogueIndex + 1 > dialogueScriptable.Length)
+        if (dialogueIndex + 1 > dialogueScriptable.Length -1)
         {
             return;
         }

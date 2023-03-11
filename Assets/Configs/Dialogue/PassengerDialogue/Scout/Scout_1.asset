@@ -16,4 +16,4 @@ MonoBehaviour:
   dialogueSentenceType: 1
   dialogueType: 1
   sentences:
-  - "Do you want to play \nrock, paper, scissors?"
+  - Do you want to play rock, paper, scissors?

@@ -138,7 +138,14 @@ public class HangmanGame : MonoBehaviour
 
     private void HangManWin()
     {
-        if (!dialogueManager.InventoryScriptableObject.holyWater)
+        if (!dialogueManager.InventoryScriptableObject.holyWater && dialogueTrigger.CurrentDialogue.dialogueType == DialoguePerson.nun)
+        {
+            dialogueTrigger.IncreaseCurrentDialogueIndex();
+            ClearHangmanText();
+            dialogueTrigger.OpenDialogue();
+        }
+
+        else if (!dialogueManager.InventoryScriptableObject.catPicture && dialogueTrigger.CurrentDialogue.dialogueType == DialoguePerson.nerd)
         {
             dialogueTrigger.IncreaseCurrentDialogueIndex();
             ClearHangmanText();

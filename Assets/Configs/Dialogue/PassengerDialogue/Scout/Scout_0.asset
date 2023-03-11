@@ -16,9 +16,5 @@ MonoBehaviour:
   dialogueSentenceType: 0
   dialogueType: 1
   sentences:
-  - 'I''ve been trying to think
-
-    of ways to pass the
-
-    time...'
-  - "Wish I had  a deck of \ncards. Let me think on it."
+  - I've been trying to think of ways to pass the time...
+  - Wish I had  a deck of cards. Let me think on it.

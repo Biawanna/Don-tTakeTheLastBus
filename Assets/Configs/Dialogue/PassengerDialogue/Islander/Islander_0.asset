@@ -16,9 +16,5 @@ MonoBehaviour:
   dialogueSentenceType: 0
   dialogueType: 6
   sentences:
-  - 'Bula! Tevoro means
-
-    devil in Fijian. Did
-
-    you know?'
-  - "I could really use \nsome coconut \nright now... or\ngrog."
+  - Bula! Tevoro means devil in Fijian. Did you know?
+  - I could really use some coconut right now... or grog.

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Emo_4
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 13
+  dialogueSentenceType: 10
   dialogueType: 14
   sentences:
   - Want to play tic tac toe?

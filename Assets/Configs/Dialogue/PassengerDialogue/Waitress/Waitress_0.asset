@@ -16,9 +16,5 @@ MonoBehaviour:
   dialogueSentenceType: 0
   dialogueType: 10
   sentences:
-  - 'Coffee is my
-
-    favorite part of
-
-    any day.'
-  - "I sorely miss it.\nCan you fetch me \nsome?"
+  - Coffee is my favorite part of any day.
+  - I sorely miss it. Can you fetch me some?
