@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Waitress_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 0
   dialogueType: 10
   sentences:
-  - want a coffee?
+  - 'Coffee is my
+
+    favorite part of
+
+    any day.'
+  - "I sorely miss it.\nCan you fetch me \nsome?"

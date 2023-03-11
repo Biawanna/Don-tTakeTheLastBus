@@ -212,6 +212,46 @@ public class DialogueManager : MonoBehaviour
 
                 break;
 
+            case DialoguePerson.jock:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.dogBone == true)
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.dogBone))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(false);
+                    IncrementDialogueIndex();
+                }
+
+                break;
+
+            case DialoguePerson.waitress:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.coffee == true)
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.coffee))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(false);
+                    IncrementDialogueIndex();
+                }
+
+                break;
+
             case DialoguePerson.beagle:
 
                 if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.holyWater == true)
@@ -230,6 +270,7 @@ public class DialogueManager : MonoBehaviour
                 }
 
                 break;
+
             case DialoguePerson.coolMan:
                 //dialogueObject = DialoguePerson.scout;
 
@@ -243,19 +284,12 @@ public class DialogueManager : MonoBehaviour
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialoguePerson.jock:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
            
             case DialoguePerson.wanderer:
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialoguePerson.waitress:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
+         
             case DialoguePerson.nerd:
                 //dialogueObject = DialoguePerson.scout;
 

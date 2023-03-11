@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
-  m_Name: Jock_0
+  m_Name: Jock_3
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 0
+  dialogueSentenceType: 14
   dialogueType: 8
   sentences:
-  - 'Tevoro could use a good
+  - 'Tevoro is my best
 
-    bone to chew on.'
-  - 'I''ll give you coffee
-
-    for a dog bone.'
+    friend. '
+  - "I don't know what \nI'd do without him."

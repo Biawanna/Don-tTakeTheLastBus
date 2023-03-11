@@ -35,5 +35,6 @@ public enum DialogueSentenceType
     ticToeWin,
     popCan,
     coconut,
+    coffee,
     none
 }

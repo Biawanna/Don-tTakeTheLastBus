@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
-  m_Name: Jock_0
+  m_Name: Waitress_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 0
-  dialogueType: 8
+  dialogueSentenceType: 3
+  dialogueType: 10
   sentences:
-  - 'Tevoro could use a good
+  - 'You''re the best!
 
-    bone to chew on.'
-  - 'I''ll give you coffee
+    I can''t believe it!
 
-    for a dog bone.'
+    Thank you!'
