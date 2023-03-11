@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
-  m_Name: Emo_3
+  m_Name: Islander_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 11
-  dialogueType: 14
+  dialogueSentenceType: 3
+  dialogueType: 6
   sentences:
-  - "You won but the only \nthing I have is a coconut.\nIt's all yours."
+  - Vinaka vaka levu!
+  - "Ay man,  it's not grog \nbut it will do. "
+  - 'Here, you can keep this
+
+    old newspaper. Vinaka.'

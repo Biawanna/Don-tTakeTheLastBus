@@ -36,7 +36,7 @@ public class TicTacToeGame : MonoBehaviour
         if (CheckForWin(playerSymbol))
         {
             gameOverText.text = "Player Wins!";
-            retryButtons.SetActive(true);
+            PlayerWinsTicTacToe();
 
             return true;
         }
@@ -164,11 +164,6 @@ public class TicTacToeGame : MonoBehaviour
         dialogueTrigger.CloseDialogue();
     }
 
-    private void ClearTicTacToeText()
-    {
-        gameOverText.text = "";
-    }
-
     public void RestartTicTacToe()
     {
         // Reset the board array to its initial state
@@ -187,5 +182,25 @@ public class TicTacToeGame : MonoBehaviour
         // Reset other UI elements
         dialogueTrigger.ToggleYesNoButtons(false);
         gameOverText.text = "";
+    }
+    private void ClearTicTacToeText()
+    {
+        gameOverText.text = "";
+    }
+
+    private void PlayerWinsTicTacToe()
+    {
+        retryButtons.SetActive(true);
+
+        if (!dialogueManager.InventoryScriptableObject.coconut)
+        {
+            retryButtons.SetActive(false);
+
+            dialogueTrigger.ToggleDialogueOptions(false);
+            dialogueTrigger.IncreaseCurrentDialogueIndex();
+            boardGameObject.SetActive(false);
+            ClearTicTacToeText();
+            dialogueTrigger.OpenDialogue();
+        }
     }
 }

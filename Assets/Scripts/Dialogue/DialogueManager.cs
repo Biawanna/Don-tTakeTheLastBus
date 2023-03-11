@@ -180,6 +180,36 @@ public class DialogueManager : MonoBehaviour
                     currentDialogueTrigger.ToggleDialogueOptions(true);
                 }
 
+                else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
+                {
+                    inventoryScriptableObject.coconut = true;
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.none))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                break;
+
+            case DialoguePerson.islander:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.coconut == true)
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.coconut))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    IncrementDialogueIndex();
+                }
+
                 break;
 
             case DialoguePerson.beagle:
@@ -217,10 +247,7 @@ public class DialogueManager : MonoBehaviour
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialoguePerson.islander:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
+           
             case DialoguePerson.wanderer:
                 //dialogueObject = DialoguePerson.scout;
 
