@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CoolMan_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 0
   dialogueType: 5
   sentences:
-  - I am cool
+  - You ever feel trapped in your own nightmare?

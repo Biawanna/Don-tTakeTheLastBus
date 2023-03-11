@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: BusDriver_1
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 2
+  dialogueSentenceType: 0
   dialogueType: 0
   sentences:
-  - 'I feel as though I''ve been
-
-    driving for an eternity.'
-  - 'All this darkness. You get lost
-
-    in it.'
+  - I feel as though I've been driving for an eternity.
+  - All this darkness. You get lost in it.

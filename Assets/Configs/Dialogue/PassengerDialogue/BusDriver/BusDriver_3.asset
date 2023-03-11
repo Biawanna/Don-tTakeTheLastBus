@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BusDriver_3
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 4
+  dialogueSentenceType: 0
   dialogueType: 0
   sentences:
-  - "I've always done the best \nI can."
+  - I've always done the best I can.
   - Sometimes it's not enough.

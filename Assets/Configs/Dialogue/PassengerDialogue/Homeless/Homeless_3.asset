@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Homeless_3
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 16
+  dialogueSentenceType: 17
   dialogueType: 16
   sentences:
-  - It's dated December 13th 2022. Wonder what that means.
+  - 'Crash kills 16 people. It''s dated December 27th 2022. Sigh. '

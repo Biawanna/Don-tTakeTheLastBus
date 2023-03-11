@@ -37,5 +37,6 @@ public enum DialogueSentenceType
     coconut,
     coffee,
     newspaper,
+    gameComplete,
     none
 }

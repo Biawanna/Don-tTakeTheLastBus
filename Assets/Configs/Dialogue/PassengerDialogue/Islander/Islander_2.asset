@@ -17,7 +17,5 @@ MonoBehaviour:
   dialogueType: 6
   sentences:
   - Vinaka vaka levu!
-  - "Ay man,  it's not grog \nbut it will do. "
-  - 'Here, you can keep this
-
-    old newspaper. Vinaka.'
+  - 'Ay man,  it''s not grog but it will do. '
+  - Here, you can keep this old newspaper. Vinaka.

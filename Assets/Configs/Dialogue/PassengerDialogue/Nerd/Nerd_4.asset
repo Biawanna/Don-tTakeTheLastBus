@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23b9e4472f06f3c4ca133bc4900f7a5b, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
+  m_Name: Nerd_4
   m_EditorClassIdentifier: 
-  dogTreat: 1
-  headPhones: 1
-  holyWater: 1
-  dogBone: 1
-  soul: 1
-  popCan: 1
-  coconut: 1
-  coffee: 0
-  newspaper: 1
-  catPicture: 0
+  dialoguePlayed: 0
+  dialogueSentenceType: 17
+  dialogueType: 13
+  sentences:
+  - Want to play catman?
+  - Want to play hangcat?

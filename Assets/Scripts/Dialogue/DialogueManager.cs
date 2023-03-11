@@ -61,6 +61,7 @@ public class DialogueManager : MonoBehaviour
         switch (dialogue.dialogueType)
         {
             case DialoguePerson.busDriver:
+
                 currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
@@ -154,6 +155,26 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.holyWater = true;
+                    IncrementDialogueIndex();
+                }
+
+                break;
+
+            case DialoguePerson.nerd:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
+                {
+                    inventoryScriptableObject.catPicture = true;
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.none))
+                {
                     IncrementDialogueIndex();
                 }
 
@@ -288,7 +309,8 @@ public class DialogueManager : MonoBehaviour
                 break;
 
             case DialoguePerson.coolMan:
-                //dialogueObject = DialoguePerson.scout;
+
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
             case DialoguePerson.eastern:
@@ -301,10 +323,7 @@ public class DialogueManager : MonoBehaviour
 
                 break;
          
-            case DialoguePerson.nerd:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
+          
 
             case DialoguePerson.punk:
                 //dialogueObject = DialoguePerson.scout;

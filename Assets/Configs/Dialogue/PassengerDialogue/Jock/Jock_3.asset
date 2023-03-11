@@ -16,7 +16,5 @@ MonoBehaviour:
   dialogueSentenceType: 14
   dialogueType: 8
   sentences:
-  - 'Tevoro is my best
-
-    friend. '
-  - "I don't know what \nI'd do without him."
+  - 'Tevoro is my best friend. '
+  - I don't know what I'd do without him.

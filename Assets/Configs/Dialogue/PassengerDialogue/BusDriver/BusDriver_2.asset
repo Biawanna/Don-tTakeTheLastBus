@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: BusDriver_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 3
+  dialogueSentenceType: 0
   dialogueType: 0
   sentences:
-  - I can't remember my name.
-  - I can't remember why I am here.
-  - Do you know why we're here?
+  - Have you had a chance to talk to the others?

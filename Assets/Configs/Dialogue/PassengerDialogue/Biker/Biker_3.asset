@@ -16,6 +16,4 @@ MonoBehaviour:
   dialogueSentenceType: 0
   dialogueType: 2
   sentences:
-  - 'Thanks for the headphones!
-
-    Here''s your dog bone!'
+  - Thanks for the headphones! Here's your dog bone!
