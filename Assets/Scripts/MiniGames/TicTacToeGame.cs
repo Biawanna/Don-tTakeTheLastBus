@@ -6,7 +6,6 @@ public class TicTacToeGame : MonoBehaviour
 {
     public string playerSymbol = "X";
     public string aiSymbol = "O";
-    //public TextMeshProUGUI playerTurnText;
     public TextMeshProUGUI gameOverText;
     [SerializeField] private GameObject boardGameObject;
     [SerializeField] private GameObject retryButtons;
@@ -31,10 +30,6 @@ public class TicTacToeGame : MonoBehaviour
         ClearTicTacToeText();
     }
 
-    //void UpdatePlayerTurnText()
-    //{
-    //    playerTurnText.text = playerTurn ? "Player Turn" : "Emo Turn";
-    //}
 
     bool CheckForGameOver()
     {
@@ -116,7 +111,6 @@ public class TicTacToeGame : MonoBehaviour
         {
             board[index] = playerSymbol;
 
-            //UpdatePlayerTurnText();
             button.GetComponentInChildren<TextMeshProUGUI>().text = playerSymbol;
 
             if (CheckForGameOver())
@@ -125,7 +119,6 @@ public class TicTacToeGame : MonoBehaviour
             }
 
             playerTurn = false;
-            //UpdatePlayerTurnText();
             DoAITurn();
         }
     }
@@ -146,10 +139,8 @@ public class TicTacToeGame : MonoBehaviour
         if (!CheckForGameOver())
         {
             playerTurn = true;
-            //UpdatePlayerTurnText();
         }
     }
-
 
 
     Button buttonAtIndex(int index)
@@ -160,8 +151,8 @@ public class TicTacToeGame : MonoBehaviour
     public void NewTicTacToeGame()
     {
         boardGameObject.SetActive(true);
+        retryButtons.SetActive(false);
         RestartTicTacToe();
-        //UpdatePlayerTurnText();
     }
 
     public void EndTicTacToe()
@@ -176,16 +167,24 @@ public class TicTacToeGame : MonoBehaviour
     private void ClearTicTacToeText()
     {
         gameOverText.text = "";
-        //playerTurnText.text = "";
     }
 
     public void RestartTicTacToe()
     {
-        foreach (Button i in boardButtons)
+        // Reset the board array to its initial state
+        for (int i = 0; i < board.Length; i++)
         {
-            i.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            board[i] = "";
         }
 
+        // Clear the text of all buttons and reset their names
+        for (int i = 0; i < boardButtons.Length; i++)
+        {
+            boardButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = "";
+            boardButtons[i].name = i.ToString();
+        }
+
+        // Reset other UI elements
         dialogueTrigger.ToggleYesNoButtons(false);
         gameOverText.text = "";
     }

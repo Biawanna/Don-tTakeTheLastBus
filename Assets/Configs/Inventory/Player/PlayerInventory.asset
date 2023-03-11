@@ -17,5 +17,5 @@ MonoBehaviour:
   holyWater: 0
   dogBone: 0
   soul: 1
-  popCan: 0
+  popCan: 1
   cans: 0
