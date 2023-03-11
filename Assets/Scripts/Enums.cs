@@ -25,11 +25,15 @@ public enum DialogueSentenceType
     RPSGame,
     RPSWin,
     thankYou, 
-    dogtreat, 
+    dogBone, 
     dogWater,
     hangmanGame,
     hangManWin,
     blackJackGame,
     blackJackWin,
+    ticTacToeGame,
+    ticToeWin,
+    popCan,
+    coconut,
     none
 }

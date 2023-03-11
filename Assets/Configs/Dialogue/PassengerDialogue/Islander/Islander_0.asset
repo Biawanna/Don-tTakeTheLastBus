@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Islander_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 0
   dialogueType: 6
   sentences:
-  - 'Take me back to fiji
+  - 'Bula! Tevoro means
 
-'
+    devil in Fijian. Did
+
+    you know?'
+  - "I could really use \nsome coconut \nright now... or\ngrog."

@@ -65,4 +65,8 @@ public class Player : MonoBehaviour
     {
         inventory.popCan = true;
     }
+    public void SetNewspaperTrue()
+    {
+        inventory.newspaper = true;
+    }
 }

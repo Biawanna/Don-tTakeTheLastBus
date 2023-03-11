@@ -11,6 +11,9 @@ public class InventoryScriptableObject : ScriptableObject
     public bool dogBone;
     public bool soul;
     public bool popCan;
+    public bool coconut;
+    public bool coffee;
+    public bool newspaper;
     public int cans = 0;
 }
 

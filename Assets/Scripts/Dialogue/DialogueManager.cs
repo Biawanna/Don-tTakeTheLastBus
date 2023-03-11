@@ -162,6 +162,56 @@ public class DialogueManager : MonoBehaviour
                 }
 
                 break;
+
+            case DialoguePerson.emo:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro ) && inventoryScriptableObject.popCan == true)
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.popCan))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.ticTacToeGame))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
+                {
+                    inventoryScriptableObject.coconut = true;
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.none))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                break;
+
+            case DialoguePerson.islander:
+
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.coconut == true)
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.coconut))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    IncrementDialogueIndex();
+                }
+
+                break;
+
             case DialoguePerson.beagle:
 
                 if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.holyWater == true)
@@ -188,10 +238,7 @@ public class DialogueManager : MonoBehaviour
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialoguePerson.emo:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
+          
             case DialoguePerson.homeless:
                 //dialogueObject = DialoguePerson.scout;
 
@@ -200,10 +247,7 @@ public class DialogueManager : MonoBehaviour
                 //dialogueObject = DialoguePerson.scout;
 
                 break;
-            case DialoguePerson.islander:
-                //dialogueObject = DialoguePerson.scout;
-
-                break;
+           
             case DialoguePerson.wanderer:
                 //dialogueObject = DialoguePerson.scout;
 

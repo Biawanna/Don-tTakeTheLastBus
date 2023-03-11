@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nun_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 6
+  dialogueSentenceType: 7
   dialogueType: 12
   sentences:
   - "Die another day I suppose.\nYou win. Have some holy \nwater. Cleanse your filth."

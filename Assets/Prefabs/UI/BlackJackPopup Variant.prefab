@@ -489,12 +489,12 @@ PrefabInstance:
     - target: {fileID: 2739152144948024165, guid: b8ad4b6b90f7bd849999ac935583a137,
         type: 3}
       propertyPath: m_Name
-      value: BlackJackPopup Variant
+      value: DialoguePopup Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2739152144948024166, guid: b8ad4b6b90f7bd849999ac935583a137,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8ad4b6b90f7bd849999ac935583a137, type: 3}
