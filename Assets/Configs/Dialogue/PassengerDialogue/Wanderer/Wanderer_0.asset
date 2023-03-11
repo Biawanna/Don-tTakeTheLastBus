@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wanderer_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 0
   dialogueType: 9
   sentences:
-  - I am lost
+  - I am lost.

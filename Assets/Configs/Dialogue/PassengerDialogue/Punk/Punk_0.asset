@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Punk_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueName: 
+  dialogueSentenceType: 0
   dialogueType: 11
   sentences:
-  - 'piss off
+  - 'Sod off.
 
 '

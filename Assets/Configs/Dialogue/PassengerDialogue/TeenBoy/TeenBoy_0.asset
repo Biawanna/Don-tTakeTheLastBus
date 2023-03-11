@@ -16,7 +16,5 @@ MonoBehaviour:
   dialogueSentenceType: 0
   dialogueType: 4
   sentences:
-  - "I seem to have misplaced \nmy soul."
-  - 'If you find it I''ll trade you for
-
-    a can of pop.'
+  - I seem to haveI seem to have misplaced my soul.
+  - If you find it I'll trade you for a can of pop.

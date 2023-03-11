@@ -16,8 +16,4 @@ MonoBehaviour:
   dialogueSentenceType: 3
   dialogueType: 10
   sentences:
-  - 'You''re the best!
-
-    I can''t believe it!
-
-    Thank you!'
+  - You're the best! I can't believe it! Thank you!

@@ -160,6 +160,7 @@ public class TicTacToeGame : MonoBehaviour
         boardGameObject.SetActive(false);
         retryButtons.SetActive(false);
         dialogueTrigger.ToggleYesNoButtons(false);
+        ClearTicTacToeText();
 
         dialogueTrigger.CloseDialogue();
     }
