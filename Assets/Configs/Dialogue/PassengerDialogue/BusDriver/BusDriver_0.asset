@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: BusDriver_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueNumber: 1
+  dialogueSentenceType: 17
   dialogueType: 0
   sentences:
-  - Mhmmm
-  - I am just a bus driver right?
-  - What do I know?
+  - Mhmm.
+  - Come back when you've spoken with everyone.

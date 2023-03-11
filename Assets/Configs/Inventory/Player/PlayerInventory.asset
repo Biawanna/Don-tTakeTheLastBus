@@ -22,3 +22,4 @@ MonoBehaviour:
   coffee: 0
   newspaper: 0
   catPicture: 0
+  playerWins: 0

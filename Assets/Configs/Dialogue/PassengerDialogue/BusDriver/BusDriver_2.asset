@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BusDriver_2
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 0
+  dialogueSentenceType: 16
   dialogueType: 0
   sentences:
-  - Have you had a chance to talk to the others?
+  - You beat the game! Return to main menu or stay in limbo a little longer?

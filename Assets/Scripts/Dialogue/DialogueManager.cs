@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 /// <summary>
@@ -62,7 +63,15 @@ public class DialogueManager : MonoBehaviour
         {
             case DialoguePerson.busDriver:
 
-                currentDialogueTrigger.PlayRandomDialogue();
+                if (CheckIfPlayerWins())
+                {
+                    IncrementDialogueIndex();
+                }
+
+                else if (GetDialogueBySentenceType(DialogueSentenceType.gameComplete))
+                {
+                    currentDialogueTrigger.ToggleDialogueOptions(true);
+                }
 
                 break;
 
@@ -314,19 +323,22 @@ public class DialogueManager : MonoBehaviour
 
                 break;
             case DialoguePerson.eastern:
-                //dialogueObject = DialoguePerson.scout;
+
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
            
             case DialoguePerson.wanderer:
-                //dialogueObject = DialoguePerson.scout;
+
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
          
           
 
             case DialoguePerson.punk:
-                //dialogueObject = DialoguePerson.scout;
+
+                currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
 
@@ -403,5 +415,22 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
+    private bool CheckIfPlayerWins()
+    {
+        var requiredItems = new[]
+        {
+        inventoryScriptableObject.catPicture,
+        inventoryScriptableObject.headPhones,
+        inventoryScriptableObject.coconut,
+        inventoryScriptableObject.soul,
+        inventoryScriptableObject.holyWater,
+        inventoryScriptableObject.coffee,
+        inventoryScriptableObject.dogBone,
+        inventoryScriptableObject.dogTreat,
+        inventoryScriptableObject.popCan,
+        inventoryScriptableObject.newspaper
+        };
 
+        return requiredItems.All(item => item);
+    }
 }

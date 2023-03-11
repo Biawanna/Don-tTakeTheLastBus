@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
-  m_Name: BusDriver_4
+  m_Name: Eastern_1
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
-  dialogueSentenceType: 16
-  dialogueType: 0
+  dialogueSentenceType: 0
+  dialogueType: 15
   sentences:
-  - Seems like you've satisfied the souls of the dead. You may leave and rest in
-    peace.
+  - My kids are the lights of my life.
