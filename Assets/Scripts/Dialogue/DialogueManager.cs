@@ -124,6 +124,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
+                    IncrementDialogueIndex();
                 }
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
@@ -229,6 +230,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.coconut))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
+                    IncrementDialogueIndex();
                 }
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
@@ -248,6 +250,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.dogBone))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
+                    IncrementDialogueIndex();
                 }
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
@@ -268,6 +271,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.newspaper))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
+                    IncrementDialogueIndex();
                 }
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
@@ -308,6 +312,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.dogWater))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
+                    IncrementDialogueIndex();
                 }
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
