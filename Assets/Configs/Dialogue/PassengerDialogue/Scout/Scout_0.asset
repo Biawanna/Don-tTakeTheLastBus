@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Scout_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 21300000, guid: 51a65763f9c1bfa4ebf4dd11044ea747, type: 3}
   dialogueSentenceType: 0
   dialogueType: 1
   sentences:

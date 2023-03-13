@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nun_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 21300000, guid: a885e375401d0894cbf3f5744f26da84, type: 3}
   dialogueSentenceType: 0
   dialogueType: 12
   sentences:

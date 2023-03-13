@@ -421,6 +421,11 @@ public class DialogueManager : MonoBehaviour
 
     private void UpdateIconSprite(Sprite sprite)
     {
+        if (sprite == null)
+        {
+            return;
+        }
+
         iconSpawnPoint.sprite = sprite;
     
         //// Destroy the coconut sprite after 2 seconds
