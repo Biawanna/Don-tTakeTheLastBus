@@ -29,6 +29,9 @@ public class DialogueTrigger : MonoBehaviour
     public DialogueScriptableObject CurrentDialogue
     { get { return currentDialogue; } set { currentDialogue = value; } }
 
+    public Sprite Icon
+        { get { return currentDialogue.icon; } private set { } }
+
 
     private void Start()
     {

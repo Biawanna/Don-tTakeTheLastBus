@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 /// <summary>
 /// This script holds DialogueManager methods.
 /// </summary>
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
+    [Header("Icon References")]
+    [SerializeField] private Image iconSpawnPoint;
 
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
@@ -16,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue Scriptable Objects")]
     [SerializeField] private InventoryScriptableObject inventoryScriptableObject;
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
+
 
     private TextMeshProUGUI dialogueText;
     private DialogueTrigger currentDialogueTrigger;
@@ -144,7 +149,8 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin ) && inventoryScriptableObject.headPhones == true)
                 {
-                    inventoryScriptableObject.dogTreat = true;
+                    inventoryScriptableObject.dogBone = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -413,6 +419,14 @@ public class DialogueManager : MonoBehaviour
         return false;
     }
 
+    private void UpdateIconSprite(Sprite sprite)
+    {
+        iconSpawnPoint.sprite = sprite;
+    
+        //// Destroy the coconut sprite after 2 seconds
+        //Destroy(coconutGO, 2f);
+    }
+
     /// <summary>
     /// Moves the dialoguetrigggers current index to the next one.
     /// </summary>
@@ -431,7 +445,6 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.holyWater,
         inventoryScriptableObject.coffee,
         inventoryScriptableObject.dogBone,
-        inventoryScriptableObject.dogTreat,
         inventoryScriptableObject.popCan,
         inventoryScriptableObject.newspaper
         };
