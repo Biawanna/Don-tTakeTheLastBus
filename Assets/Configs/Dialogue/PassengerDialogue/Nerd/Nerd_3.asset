@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nerd_3
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 21300000, guid: ce2a2c8d481b92542910b9bc6cbe915f, type: 3}
   dialogueSentenceType: 17
   dialogueType: 13
   sentences:

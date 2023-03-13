@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Biker_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 21300000, guid: 6f7bf3cd41cd1d1419e05146381a5fd0, type: 3}
   dialogueSentenceType: 0
   dialogueType: 2
   sentences:

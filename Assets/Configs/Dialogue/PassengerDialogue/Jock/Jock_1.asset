@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Jock_1
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 21300000, guid: 40426f9447a44c342a29d0ed7202f793, type: 3}
   dialogueSentenceType: 4
   dialogueType: 8
   sentences:

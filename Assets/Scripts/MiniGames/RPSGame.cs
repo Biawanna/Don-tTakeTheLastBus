@@ -146,9 +146,9 @@ public class RPSGame : MonoBehaviour
 
     public void EndRPSGame()
     {
+        dialogueTrigger.CloseDialogue();
         ToggleRetryButtons(false);
         ClearRPSText();
-        dialogueTrigger.CloseDialogue();
     }
 
     private void PlayerWins()
@@ -160,8 +160,9 @@ public class RPSGame : MonoBehaviour
         {
             ToggleRetryButtons(false);
             dialogueTrigger.ToggleDialogueOptions(false);
-            dialogueTrigger.IncreaseCurrentDialogueIndex();
             ClearRPSText();
+
+            dialogueTrigger.IncreaseCurrentDialogueIndex();
             dialogueTrigger.OpenDialogue();
         }
     }

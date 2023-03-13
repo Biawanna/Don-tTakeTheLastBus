@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Emo_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 21300000, guid: 3e2a18f1fc216d04a96f498455bb6242, type: 3}
   dialogueSentenceType: 0
   dialogueType: 14
   sentences:

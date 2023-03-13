@@ -1,14 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 /// <summary>
 /// This script holds DialogueManager methods.
 /// </summary>
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
+    [Header("Icon References")]
+    [SerializeField] private Image iconSpawnPoint;
+    [SerializeField] private FadeCanvas iconFadeCanvas;
 
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
@@ -16,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue Scriptable Objects")]
     [SerializeField] private InventoryScriptableObject inventoryScriptableObject;
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
+
 
     private TextMeshProUGUI dialogueText;
     private DialogueTrigger currentDialogueTrigger;
@@ -49,6 +55,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
+
+        iconFadeCanvas.FadeOut(0);
     }
 
     public void StartDialogue(DialogueScriptableObject dialogue)
@@ -90,6 +98,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
                 {
                     inventoryScriptableObject.headPhones = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -109,6 +118,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
                 {
                     inventoryScriptableObject.soul = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -129,6 +139,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -144,7 +155,12 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin ) && inventoryScriptableObject.headPhones == true)
                 {
-                    inventoryScriptableObject.dogTreat = true;
+                    inventoryScriptableObject.dogBone = true;
+                    IncrementDialogueIndex();
+                }
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -165,6 +181,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.holyWater = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -180,6 +197,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.catPicture = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -210,6 +228,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
                 {
                     inventoryScriptableObject.coconut = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -235,6 +254,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -256,6 +276,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(false);
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -413,6 +434,18 @@ public class DialogueManager : MonoBehaviour
         return false;
     }
 
+    private void UpdateIconSprite(Sprite sprite)
+    {
+        if (sprite == null)
+        {
+            return;
+        }
+
+        iconSpawnPoint.sprite = sprite;
+
+        iconFadeCanvas.StartFadeInFadeOutRoutine();
+    }
+
     /// <summary>
     /// Moves the dialoguetrigggers current index to the next one.
     /// </summary>
@@ -431,7 +464,6 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.holyWater,
         inventoryScriptableObject.coffee,
         inventoryScriptableObject.dogBone,
-        inventoryScriptableObject.dogTreat,
         inventoryScriptableObject.popCan,
         inventoryScriptableObject.newspaper
         };

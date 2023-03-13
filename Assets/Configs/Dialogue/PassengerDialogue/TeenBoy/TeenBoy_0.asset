@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: TeenBoy_0
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 21300000, guid: 8cfdcf33c85db864fbf3e5c3a77feeaa, type: 3}
   dialogueSentenceType: 0
   dialogueType: 4
   sentences:
-  - I seem to haveI seem to have misplaced my soul.
+  - I seemed to have misplaced my soul.
   - If you find it I'll trade you for a can of pop.

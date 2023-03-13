@@ -6,6 +6,7 @@ public class DialogueScriptableObject : ScriptableObject
 {
     [Header("Dialogue Settings")]
     public bool dialoguePlayed = false;
+    public Sprite icon;
     public DialogueSentenceType dialogueSentenceType;
     public DialoguePerson dialogueType;
     [TextArea(3, 5)]
