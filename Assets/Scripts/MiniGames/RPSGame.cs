@@ -146,14 +146,15 @@ public class RPSGame : MonoBehaviour
 
     public void EndRPSGame()
     {
+        dialogueTrigger.CloseDialogue();
         ToggleRetryButtons(false);
         ClearRPSText();
-        dialogueTrigger.CloseDialogue();
     }
 
     private void PlayerWins()
     {
         ToggleRPSButtons(false);
+        ToggleRetryButtons(true);
 
         if (!dialogueManager.InventoryScriptableObject.headPhones)
         {
@@ -163,11 +164,6 @@ public class RPSGame : MonoBehaviour
 
             dialogueTrigger.IncreaseCurrentDialogueIndex();
             dialogueTrigger.OpenDialogue();
-        }
-        else if (dialogueManager.InventoryScriptableObject.headPhones)
-        {
-            ToggleRetryButtons(true);
-            winText.text = "You win!";
         }
     }
 
@@ -203,6 +199,7 @@ public class RPSGame : MonoBehaviour
                 // Determine the winner
                 if (playerScore > npcScore)
                 {
+                    winText.text = "You win!";
                     PlayerWins();
                    
                     yield break;
