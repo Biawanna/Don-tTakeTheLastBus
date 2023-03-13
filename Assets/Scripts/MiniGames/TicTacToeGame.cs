@@ -1,19 +1,29 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TicTacToeGame : MonoBehaviour
 {
-    public string playerSymbol = "X";
-    public string aiSymbol = "O";
-    public TextMeshProUGUI gameOverText;
+    [Header("Tic Tac Toe Settings")]
+    [SerializeField] private string ticTacToeDifficultyLevel;
+    [SerializeField] private string playerSymbol = "X";
+    [SerializeField] private string aiSymbol = "O";
+
+    [Header("UI References")]
+    [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private GameObject boardGameObject;
     [SerializeField] private GameObject retryButtons;
     [SerializeField] private Button[] boardButtons;
+
     private string[] board = new string[9];
+    private string aiName;
+    private string playersName = "Player";
     private bool playerTurn = true;
+    private bool playerMoved = false;
     private DialogueTrigger dialogueTrigger;
     private DialogueManager dialogueManager;
+    private float aiDelay = 0.5f;
 
     void Start()
     {
@@ -25,6 +35,7 @@ public class TicTacToeGame : MonoBehaviour
             board[i] = "";
         }
 
+        aiName = dialogueTrigger.CurrentDialogue.dialogueType.ToString();
         boardGameObject.SetActive(false);
         retryButtons.SetActive(false);
         ClearTicTacToeText();
@@ -35,7 +46,7 @@ public class TicTacToeGame : MonoBehaviour
     {
         if (CheckForWin(playerSymbol))
         {
-            gameOverText.text = "Player Wins!";
+            gameOverText.text = playersName + " Wins!";
             PlayerWinsTicTacToe();
 
             return true;
@@ -43,7 +54,7 @@ public class TicTacToeGame : MonoBehaviour
 
         if (CheckForWin(aiSymbol))
         {
-            gameOverText.text = "Emo Wins!";
+            gameOverText.text = aiName + " Wins!";
             retryButtons.SetActive(true);
 
             return true;
@@ -107,10 +118,9 @@ public class TicTacToeGame : MonoBehaviour
     {
         int index = int.Parse(button.name);
 
-        if (board[index] == "")
+        if (board[index] == "" && playerTurn && !playerMoved)
         {
             board[index] = playerSymbol;
-
             button.GetComponentInChildren<TextMeshProUGUI>().text = playerSymbol;
 
             if (CheckForGameOver())
@@ -118,23 +128,36 @@ public class TicTacToeGame : MonoBehaviour
                 return;
             }
 
+            playerMoved = true;
             playerTurn = false;
-            DoAITurn();
+            StartCoroutine(DoAITurnWithDelay());
         }
     }
 
-    void DoAITurn()
-    {
-        int index = -1;
 
-        while (index == -1 || board[index] != "")
+    void DoAITurn(int difficultyLevel)
+    {
+        int bestScore = int.MinValue;
+        int bestMove = -1;
+
+        for (int i = 0; i < board.Length; i++)
         {
-            index = Random.Range(0, board.Length);
+            if (board[i] == "")
+            {
+                board[i] = aiSymbol;
+                int score = Minimax(board, 0, false, difficultyLevel);
+                board[i] = "";
+
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    bestMove = i;
+                }
+            }
         }
 
-        board[index] = aiSymbol;
-
-        boardButtons[index].GetComponentInChildren<TextMeshProUGUI>().text = aiSymbol;
+        board[bestMove] = aiSymbol;
+        boardButtons[bestMove].GetComponentInChildren<TextMeshProUGUI>().text = aiSymbol;
 
         if (!CheckForGameOver())
         {
@@ -167,6 +190,9 @@ public class TicTacToeGame : MonoBehaviour
 
     public void RestartTicTacToe()
     {
+        playerMoved = false;
+        playerTurn = true;
+
         // Reset the board array to its initial state
         for (int i = 0; i < board.Length; i++)
         {
@@ -182,7 +208,7 @@ public class TicTacToeGame : MonoBehaviour
 
         // Reset other UI elements
         dialogueTrigger.ToggleYesNoButtons(false);
-        gameOverText.text = "";
+        gameOverText.text = playersName + "'s turn";
     }
     private void ClearTicTacToeText()
     {
@@ -204,4 +230,181 @@ public class TicTacToeGame : MonoBehaviour
             dialogueTrigger.OpenDialogue();
         }
     }
+    int Minimax(string[] board, int depth, bool maximizingPlayer, int difficultyLevel)
+    {
+        if (CheckForWin(aiSymbol))
+        {
+            return 10 - depth;
+        }
+
+        if (CheckForWin(playerSymbol))
+        {
+            return -10 + depth;
+        }
+
+        if (CheckForTie())
+        {
+            return 0;
+        }
+
+        if (depth >= difficultyLevel)
+        {
+            return 0;
+        }
+
+        int bestScore = maximizingPlayer ? int.MinValue : int.MaxValue;
+
+        for (int i = 0; i < board.Length; i++)
+        {
+            if (board[i] == "")
+            {
+                board[i] = maximizingPlayer ? aiSymbol : playerSymbol;
+                int score = Minimax(board, depth + 1, !maximizingPlayer, difficultyLevel);
+                board[i] = "";
+
+                if (maximizingPlayer)
+                {
+                    bestScore = Mathf.Max(bestScore, score);
+                }
+                else
+                {
+                    bestScore = Mathf.Min(bestScore, score);
+                }
+            }
+        }
+
+        return bestScore;
+    }
+
+    private int Evaluate(string[] board, string playerSymbol, string aiSymbol)
+    {
+        int score = 0;
+
+        // Check rows
+        for (int i = 0; i < 9; i += 3)
+        {
+            if (board[i] == aiSymbol && board[i + 1] == aiSymbol && board[i + 2] == aiSymbol)
+            {
+                score += 100;
+            }
+            else if (board[i] == playerSymbol && board[i + 1] == playerSymbol && board[i + 2] == playerSymbol)
+            {
+                score -= 100;
+            }
+        }
+
+        // Check columns
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i] == aiSymbol && board[i + 3] == aiSymbol && board[i + 6] == aiSymbol)
+            {
+                score += 100;
+            }
+            else if (board[i] == playerSymbol && board[i + 3] == playerSymbol && board[i + 6] == playerSymbol)
+            {
+                score -= 100;
+            }
+        }
+
+        // Check diagonals
+        if (board[0] == aiSymbol && board[4] == aiSymbol && board[8] == aiSymbol)
+        {
+            score += 100;
+        }
+        else if (board[0] == playerSymbol && board[4] == playerSymbol && board[8] == playerSymbol)
+        {
+            score -= 100;
+        }
+
+        if (board[2] == aiSymbol && board[4] == aiSymbol && board[6] == aiSymbol)
+        {
+            score += 100;
+        }
+        else if (board[2] == playerSymbol && board[4] == playerSymbol && board[6] == playerSymbol)
+        {
+            score -= 100;
+        }
+
+        // Check for open lines
+        for (int i = 0; i < 9; i += 3)
+        {
+            if (board[i] == aiSymbol && board[i + 1] == aiSymbol && board[i + 2] == "")
+            {
+                score += 10;
+            }
+            else if (board[i] == playerSymbol && board[i + 1] == playerSymbol && board[i + 2] == "")
+            {
+                score -= 10;
+            }
+
+            if (board[i] == aiSymbol && board[i + 2] == aiSymbol && board[i + 1] == "")
+            {
+                score += 10;
+            }
+            else if (board[i] == playerSymbol && board[i + 2] == playerSymbol && board[i + 1] == "")
+            {
+                score -= 10;
+            }
+
+            if (board[i + 1] == aiSymbol && board[i + 2] == aiSymbol && board[i] == "")
+            {
+                score += 10;
+            }
+            else if (board[i + 1] == playerSymbol && board[i + 2] == playerSymbol && board[i] == "")
+            {
+                score -= 10;
+            }
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i] == aiSymbol && board[i + 3] == aiSymbol && board[i + 6] == "")
+            {
+                score += 10;
+            }
+            else if (board[i] == playerSymbol && board[i + 3] == playerSymbol && board[i + 6] == "")
+            {
+                score -= 10;
+            }
+        }
+
+        return score;
+    }
+
+    IEnumerator DoAITurnWithDelay()
+    {
+        gameOverText.text = aiName + "'s turn";
+
+        yield return new WaitForSeconds(aiDelay);
+
+        int difficultyLevel = 0;
+
+        switch (ticTacToeDifficultyLevel)
+        {
+            case "Easy":
+                difficultyLevel = 2;
+                break;
+            case "Medium":
+                difficultyLevel = 4;
+                break;
+            case "Hard":
+                difficultyLevel = 6;
+                break;
+        }
+
+        DoAITurn(difficultyLevel);
+
+        // Check if the game is over
+        if (CheckForGameOver())
+        {
+            yield break;
+        }
+
+        // Switch turns
+        playerTurn = true;
+        playerMoved = false;
+        gameOverText.text = playersName + "'s turn";
+    }
 }
+
+

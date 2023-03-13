@@ -4369,18 +4369,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8880318245698012737}
     m_Modifications:
-    - target: {fileID: 731166714, guid: 0ac3d11c8cf5cc84e842a38373f754e8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1133271694, guid: 0ac3d11c8cf5cc84e842a38373f754e8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1620687582, guid: 0ac3d11c8cf5cc84e842a38373f754e8, type: 3}
-      propertyPath: dialogueManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1264826857531514, guid: 0ac3d11c8cf5cc84e842a38373f754e8, type: 3}
       propertyPath: m_Name
       value: EmoFemale
@@ -4428,16 +4416,6 @@ PrefabInstance:
     - target: {fileID: 4350831834186614, guid: 0ac3d11c8cf5cc84e842a38373f754e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6533651023276764531, guid: 0ac3d11c8cf5cc84e842a38373f754e8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6533651023896579488, guid: 0ac3d11c8cf5cc84e842a38373f754e8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac3d11c8cf5cc84e842a38373f754e8, type: 3}
