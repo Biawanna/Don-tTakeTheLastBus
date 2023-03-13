@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -11,6 +8,8 @@ public class SoundManager : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource buttonAudioSource;
+    [SerializeField] private AudioClip buttonSound;
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] public AudioClip walkSound;
     [SerializeField] public AudioClip jumpSound;
@@ -21,37 +20,66 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioClip walkOnWaterSound;
     [SerializeField] public AudioClip walkOnGrassSound;
 
-    private Coroutine soundRoutine;
+    [Header("Button Settings")]
+    [SerializeField] private float minButtonPitch;
+    [SerializeField] private float maxButtonPitch;
+
+    //private Coroutine soundRoutine;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    private void OnEnable()
+    /// <summary>
+    /// Plays an audio clip
+    /// </summary>
+    public void PlaySound(AudioSource audioSource, AudioClip audioClip)
     {
-        if (SceneManager.GetActiveScene().buildIndex > 0)
-        {
-            soundRoutine = StartCoroutine(RandomSoundCoroutine());
-        }
+        audioSource.PlayOneShot(audioClip);
     }
 
-    public IEnumerator RandomSoundCoroutine()
+    /// <summary>
+    /// Plays an audio clip with a random pitch between two ranges
+    /// </summary>
+    private void RandomPitch(AudioSource audioSource, float minPitch, float maxPitch)
     {
-        while (true)
-        {
-            audioSource.PlayOneShot(RandomSound(audioClips));
-            yield return new WaitForSeconds(soundRate);
-        }
-    }
-    public void StopAudio(AudioSource audioSource)
-    {
-        audioSource.Stop();
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
     }
 
-    public void StopSoundCoroutine()
+    /// <summary>
+    /// Plays the button audio clip with a random pitch between two ranges
+    /// </summary>
+    public void PlayButtonSound(AudioSource audioSource)
     {
-        StopCoroutine(soundRoutine);
+        RandomPitch(audioSource, minButtonPitch, maxButtonPitch);
+        PlaySound(audioSource, buttonSound);
     }
-    public AudioClip RandomSound(AudioClip[] audioClips) => audioClips[Random.Range(0, audioClips.Length)];
+
+    //private void OnEnable()
+    //{
+    //    if (SceneManager.GetActiveScene().buildIndex > 0)
+    //    {
+    //        soundRoutine = StartCoroutine(RandomSoundCoroutine());
+    //    }
+    //}
+
+    //    public IEnumerator RandomSoundCoroutine()
+    //    {
+    //        while (true)
+    //        {
+    //            audioSource.PlayOneShot(RandomSound(audioClips));
+    //            yield return new WaitForSeconds(soundRate);
+    //        }
+    //    }
+    //    public void StopAudio(AudioSource audioSource)
+    //    {
+    //        audioSource.Stop();
+    //    }
+
+    //    public void StopSoundCoroutine()
+    //    {
+    //        StopCoroutine(soundRoutine);
+    //    }
+    //    public AudioClip RandomSound(AudioClip[] audioClips) => audioClips[Random.Range(0, audioClips.Length)];
 }
