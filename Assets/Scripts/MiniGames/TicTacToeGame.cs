@@ -130,7 +130,7 @@ public class TicTacToeGame : MonoBehaviour
     }
 
 
-    void DoAITurn()
+    void DoAITurn(int difficultyLevel)
     {
         int bestScore = int.MinValue;
         int bestMove = -1;
@@ -140,7 +140,7 @@ public class TicTacToeGame : MonoBehaviour
             if (board[i] == "")
             {
                 board[i] = aiSymbol;
-                int score = Minimax(board, 0, false);
+                int score = Minimax(board, 0, false, difficultyLevel);
                 board[i] = "";
 
                 if (score > bestScore)
@@ -159,7 +159,6 @@ public class TicTacToeGame : MonoBehaviour
             playerTurn = true;
         }
     }
-
 
 
     Button buttonAtIndex(int index)
@@ -226,60 +225,52 @@ public class TicTacToeGame : MonoBehaviour
             dialogueTrigger.OpenDialogue();
         }
     }
-    int Minimax(string[] board, int depth, bool isMaximizing)
+    int Minimax(string[] board, int depth, bool maximizingPlayer, int difficultyLevel)
     {
-        int score = Evaluate(board, playerSymbol, aiSymbol);
-
         if (CheckForWin(aiSymbol))
         {
             return 10 - depth;
         }
-        else if (CheckForWin(playerSymbol))
+
+        if (CheckForWin(playerSymbol))
         {
-            return depth - 10;
+            return -10 + depth;
         }
-        else if (CheckForTie())
+
+        if (CheckForTie())
         {
             return 0;
         }
 
-        if (isMaximizing)
+        if (depth >= difficultyLevel)
         {
-            int bestScore = int.MinValue;
+            return 0;
+        }
 
-            for (int i = 0; i < board.Length; i++)
+        int bestScore = maximizingPlayer ? int.MinValue : int.MaxValue;
+
+        for (int i = 0; i < board.Length; i++)
+        {
+            if (board[i] == "")
             {
-                if (board[i] == "")
-                {
-                    board[i] = aiSymbol;
-                    int s = Minimax(board, depth + 1, false);
-                    board[i] = "";
+                board[i] = maximizingPlayer ? aiSymbol : playerSymbol;
+                int score = Minimax(board, depth + 1, !maximizingPlayer, difficultyLevel);
+                board[i] = "";
 
-                    bestScore = Mathf.Max(bestScore, s);
+                if (maximizingPlayer)
+                {
+                    bestScore = Mathf.Max(bestScore, score);
+                }
+                else
+                {
+                    bestScore = Mathf.Min(bestScore, score);
                 }
             }
-
-            return bestScore;
         }
-        else
-        {
-            int bestScore = int.MaxValue;
 
-            for (int i = 0; i < board.Length; i++)
-            {
-                if (board[i] == "")
-                {
-                    board[i] = playerSymbol;
-                    int s = Minimax(board, depth + 1, true);
-                    board[i] = "";
-
-                    bestScore = Mathf.Min(bestScore, s);
-                }
-            }
-
-            return bestScore;
-        }
+        return bestScore;
     }
+
     private int Evaluate(string[] board, string playerSymbol, string aiSymbol)
     {
         int score = 0;
@@ -374,14 +365,27 @@ public class TicTacToeGame : MonoBehaviour
 
         return score;
     }
-    private IEnumerator DoAITurnWithDelay()
-    {
-        gameOverText.text = aiName + "'s turn";
 
-        // Wait for a short delay to simulate the AI thinking
+    IEnumerator DoAITurnWithDelay()
+    {
         yield return new WaitForSeconds(aiDelay);
 
-        DoAITurn();
+        int difficultyLevel = 0;
+
+        switch (GameManager.instance.DifficultyLevel)
+        {
+            case "Easy":
+                difficultyLevel = 2;
+                break;
+            case "Medium":
+                difficultyLevel = 4;
+                break;
+            case "Hard":
+                difficultyLevel = 6;
+                break;
+        }
+
+        DoAITurn(difficultyLevel);
 
         // Check if the game is over
         if (CheckForGameOver())
