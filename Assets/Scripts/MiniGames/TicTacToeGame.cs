@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,9 +12,13 @@ public class TicTacToeGame : MonoBehaviour
     [SerializeField] private GameObject retryButtons;
     [SerializeField] private Button[] boardButtons;
     private string[] board = new string[9];
+    private string aiName;
+    private string playersName = "Player";
     private bool playerTurn = true;
+    private bool playerMoved = false;
     private DialogueTrigger dialogueTrigger;
     private DialogueManager dialogueManager;
+    private float aiDelay = 0.5f;
 
     void Start()
     {
@@ -25,6 +30,7 @@ public class TicTacToeGame : MonoBehaviour
             board[i] = "";
         }
 
+        aiName = dialogueTrigger.CurrentDialogue.dialogueType.ToString();
         boardGameObject.SetActive(false);
         retryButtons.SetActive(false);
         ClearTicTacToeText();
@@ -35,7 +41,7 @@ public class TicTacToeGame : MonoBehaviour
     {
         if (CheckForWin(playerSymbol))
         {
-            gameOverText.text = "Player Wins!";
+            gameOverText.text = playersName + " Wins!";
             PlayerWinsTicTacToe();
 
             return true;
@@ -43,7 +49,7 @@ public class TicTacToeGame : MonoBehaviour
 
         if (CheckForWin(aiSymbol))
         {
-            gameOverText.text = "Emo Wins!";
+            gameOverText.text = aiName + " Wins!";
             retryButtons.SetActive(true);
 
             return true;
@@ -107,10 +113,9 @@ public class TicTacToeGame : MonoBehaviour
     {
         int index = int.Parse(button.name);
 
-        if (board[index] == "")
+        if (board[index] == "" && playerTurn && !playerMoved)
         {
             board[index] = playerSymbol;
-
             button.GetComponentInChildren<TextMeshProUGUI>().text = playerSymbol;
 
             if (CheckForGameOver())
@@ -118,10 +123,12 @@ public class TicTacToeGame : MonoBehaviour
                 return;
             }
 
+            playerMoved = true;
             playerTurn = false;
-            DoAITurn();
+            StartCoroutine(DoAITurnWithDelay());
         }
     }
+
 
     void DoAITurn()
     {
@@ -179,6 +186,9 @@ public class TicTacToeGame : MonoBehaviour
 
     public void RestartTicTacToe()
     {
+        playerMoved = false;
+        playerTurn = true;
+
         // Reset the board array to its initial state
         for (int i = 0; i < board.Length; i++)
         {
@@ -194,7 +204,7 @@ public class TicTacToeGame : MonoBehaviour
 
         // Reset other UI elements
         dialogueTrigger.ToggleYesNoButtons(false);
-        gameOverText.text = "";
+        gameOverText.text = playersName + "'s turn";
     }
     private void ClearTicTacToeText()
     {
@@ -363,6 +373,26 @@ public class TicTacToeGame : MonoBehaviour
         }
 
         return score;
+    }
+    private IEnumerator DoAITurnWithDelay()
+    {
+        gameOverText.text = aiName + "'s turn";
+
+        // Wait for a short delay to simulate the AI thinking
+        yield return new WaitForSeconds(aiDelay);
+
+        DoAITurn();
+
+        // Check if the game is over
+        if (CheckForGameOver())
+        {
+            yield break;
+        }
+
+        // Switch turns
+        playerTurn = true;
+        playerMoved = false;
+        gameOverText.text = playersName + "'s turn";
     }
 }
 
