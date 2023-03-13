@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class TicTacToeGame : MonoBehaviour
 {
-    public string playerSymbol = "X";
-    public string aiSymbol = "O";
-    public TextMeshProUGUI gameOverText;
+    [Header("Tic Tac Toe Settings")]
+    [SerializeField] private string ticTacToeDifficultyLevel;
+    [SerializeField] private string playerSymbol = "X";
+    [SerializeField] private string aiSymbol = "O";
+
+    [Header("UI References")]
+    [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private GameObject boardGameObject;
     [SerializeField] private GameObject retryButtons;
     [SerializeField] private Button[] boardButtons;
+
     private string[] board = new string[9];
     private string aiName;
     private string playersName = "Player";
@@ -368,11 +373,13 @@ public class TicTacToeGame : MonoBehaviour
 
     IEnumerator DoAITurnWithDelay()
     {
+        gameOverText.text = aiName + "'s turn";
+
         yield return new WaitForSeconds(aiDelay);
 
         int difficultyLevel = 0;
 
-        switch (GameManager.instance.DifficultyLevel)
+        switch (ticTacToeDifficultyLevel)
         {
             case "Easy":
                 difficultyLevel = 2;

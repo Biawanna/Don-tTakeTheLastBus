@@ -4,9 +4,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [Header("Tic Tac Toe Difficulty")]
-    [SerializeField] private string difficultyLevel;
-
     [Header("Player Speed Settings")]
     [SerializeField] private float playerStop = 0;
 
@@ -23,12 +20,6 @@ public class GameManager : MonoBehaviour
     {
         get { return autoHandPlayer; }
         set { autoHandPlayer = value; }
-    }
-
-    public string DifficultyLevel
-    {
-        get { return difficultyLevel; } 
-        private set { difficultyLevel = value; }
     }
 
     private void Awake()
