@@ -125,22 +125,34 @@ public class TicTacToeGame : MonoBehaviour
 
     void DoAITurn()
     {
-        int index = -1;
+        int bestScore = int.MinValue;
+        int bestMove = -1;
 
-        while (index == -1 || board[index] != "")
+        for (int i = 0; i < board.Length; i++)
         {
-            index = Random.Range(0, board.Length);
+            if (board[i] == "")
+            {
+                board[i] = aiSymbol;
+                int score = Minimax(board, 0, false);
+                board[i] = "";
+
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    bestMove = i;
+                }
+            }
         }
 
-        board[index] = aiSymbol;
-
-        boardButtons[index].GetComponentInChildren<TextMeshProUGUI>().text = aiSymbol;
+        board[bestMove] = aiSymbol;
+        boardButtons[bestMove].GetComponentInChildren<TextMeshProUGUI>().text = aiSymbol;
 
         if (!CheckForGameOver())
         {
             playerTurn = true;
         }
     }
+
 
 
     Button buttonAtIndex(int index)
@@ -204,4 +216,154 @@ public class TicTacToeGame : MonoBehaviour
             dialogueTrigger.OpenDialogue();
         }
     }
+    int Minimax(string[] board, int depth, bool isMaximizing)
+    {
+        int score = Evaluate(board, playerSymbol, aiSymbol);
+
+        if (CheckForWin(aiSymbol))
+        {
+            return 10 - depth;
+        }
+        else if (CheckForWin(playerSymbol))
+        {
+            return depth - 10;
+        }
+        else if (CheckForTie())
+        {
+            return 0;
+        }
+
+        if (isMaximizing)
+        {
+            int bestScore = int.MinValue;
+
+            for (int i = 0; i < board.Length; i++)
+            {
+                if (board[i] == "")
+                {
+                    board[i] = aiSymbol;
+                    int s = Minimax(board, depth + 1, false);
+                    board[i] = "";
+
+                    bestScore = Mathf.Max(bestScore, s);
+                }
+            }
+
+            return bestScore;
+        }
+        else
+        {
+            int bestScore = int.MaxValue;
+
+            for (int i = 0; i < board.Length; i++)
+            {
+                if (board[i] == "")
+                {
+                    board[i] = playerSymbol;
+                    int s = Minimax(board, depth + 1, true);
+                    board[i] = "";
+
+                    bestScore = Mathf.Min(bestScore, s);
+                }
+            }
+
+            return bestScore;
+        }
+    }
+    private int Evaluate(string[] board, string playerSymbol, string aiSymbol)
+    {
+        int score = 0;
+
+        // Check rows
+        for (int i = 0; i < 9; i += 3)
+        {
+            if (board[i] == aiSymbol && board[i + 1] == aiSymbol && board[i + 2] == aiSymbol)
+            {
+                score += 100;
+            }
+            else if (board[i] == playerSymbol && board[i + 1] == playerSymbol && board[i + 2] == playerSymbol)
+            {
+                score -= 100;
+            }
+        }
+
+        // Check columns
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i] == aiSymbol && board[i + 3] == aiSymbol && board[i + 6] == aiSymbol)
+            {
+                score += 100;
+            }
+            else if (board[i] == playerSymbol && board[i + 3] == playerSymbol && board[i + 6] == playerSymbol)
+            {
+                score -= 100;
+            }
+        }
+
+        // Check diagonals
+        if (board[0] == aiSymbol && board[4] == aiSymbol && board[8] == aiSymbol)
+        {
+            score += 100;
+        }
+        else if (board[0] == playerSymbol && board[4] == playerSymbol && board[8] == playerSymbol)
+        {
+            score -= 100;
+        }
+
+        if (board[2] == aiSymbol && board[4] == aiSymbol && board[6] == aiSymbol)
+        {
+            score += 100;
+        }
+        else if (board[2] == playerSymbol && board[4] == playerSymbol && board[6] == playerSymbol)
+        {
+            score -= 100;
+        }
+
+        // Check for open lines
+        for (int i = 0; i < 9; i += 3)
+        {
+            if (board[i] == aiSymbol && board[i + 1] == aiSymbol && board[i + 2] == "")
+            {
+                score += 10;
+            }
+            else if (board[i] == playerSymbol && board[i + 1] == playerSymbol && board[i + 2] == "")
+            {
+                score -= 10;
+            }
+
+            if (board[i] == aiSymbol && board[i + 2] == aiSymbol && board[i + 1] == "")
+            {
+                score += 10;
+            }
+            else if (board[i] == playerSymbol && board[i + 2] == playerSymbol && board[i + 1] == "")
+            {
+                score -= 10;
+            }
+
+            if (board[i + 1] == aiSymbol && board[i + 2] == aiSymbol && board[i] == "")
+            {
+                score += 10;
+            }
+            else if (board[i + 1] == playerSymbol && board[i + 2] == playerSymbol && board[i] == "")
+            {
+                score -= 10;
+            }
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i] == aiSymbol && board[i + 3] == aiSymbol && board[i + 6] == "")
+            {
+                score += 10;
+            }
+            else if (board[i] == playerSymbol && board[i + 3] == playerSymbol && board[i + 6] == "")
+            {
+                score -= 10;
+            }
+        }
+
+        return score;
+    }
 }
+
+
