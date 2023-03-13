@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
     [Header("Icon References")]
     [SerializeField] private Image iconSpawnPoint;
+    [SerializeField] private FadeCanvas iconFadeCanvas;
 
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
@@ -54,6 +55,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
+
+        iconFadeCanvas.FadeOut(0);
     }
 
     public void StartDialogue(DialogueScriptableObject dialogue)
@@ -427,9 +430,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         iconSpawnPoint.sprite = sprite;
-    
-        //// Destroy the coconut sprite after 2 seconds
-        //Destroy(coconutGO, 2f);
+
+        iconFadeCanvas.StartFadeInFadeOutRoutine();
     }
 
     /// <summary>
