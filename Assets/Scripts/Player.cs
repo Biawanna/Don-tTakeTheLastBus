@@ -31,8 +31,6 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("XRI_Right_PrimaryButton"))
         {
-            Debug.Log("Paused");
-
             canvasController.Pause();
         }
     }

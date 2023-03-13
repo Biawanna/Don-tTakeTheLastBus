@@ -98,6 +98,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
                 {
                     inventoryScriptableObject.headPhones = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -117,6 +118,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
                 {
                     inventoryScriptableObject.soul = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -137,6 +139,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -153,6 +156,10 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin ) && inventoryScriptableObject.headPhones == true)
                 {
                     inventoryScriptableObject.dogBone = true;
+                    IncrementDialogueIndex();
+                }
+                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+                {
                     UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
@@ -174,6 +181,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.holyWater = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -189,6 +197,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.catPicture = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -219,6 +228,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
                 {
                     inventoryScriptableObject.coconut = true;
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -244,6 +254,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
@@ -265,6 +276,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(false);
+                    UpdateIconSprite(currentDialogueTrigger.Icon);
                     IncrementDialogueIndex();
                 }
 
