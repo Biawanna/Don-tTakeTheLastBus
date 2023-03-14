@@ -79,12 +79,17 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CheckIfGameComplete()
     {
-        if (dialogueManager.CheckIfPlayerWins())
+        while (true)
         {
-            uICanvasController.GameOver();
-            yield break;
-        }
+            if (dialogueManager.CheckIfPlayerWins())
+            {
+                uICanvasController.GameOver();
+                PauseGame();
 
-        yield return new WaitForSeconds(0.5f);
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

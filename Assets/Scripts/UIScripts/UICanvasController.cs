@@ -62,7 +62,6 @@ public class UICanvasController : MonoBehaviour
     public void GameOver()
     {
         gameOver.SetActive(true);
-        gameManager.PauseGame();
     }
     public void Restart()
     {
