@@ -72,4 +72,9 @@ public class Player : MonoBehaviour
     {
         inventory.coffee = true;
     }
+
+    public void SetPlayerWinsTrue()
+    {
+        inventory.playerWins = true;
+    }
 }

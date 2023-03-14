@@ -297,7 +297,6 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    inventoryScriptableObject.playerWins = true;
                     IncrementDialogueIndex();
                 }
 
@@ -406,7 +405,7 @@ public class DialogueManager : MonoBehaviour
     public void OpenPassengerDialogue()
     {
         StartDialogue(currentDialogueTrigger.CurrentDialogue);
-        //currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
+        currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
     }
 
     public DialogueTrigger GetDialogueTriggerByType(DialoguePerson type)

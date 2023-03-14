@@ -56,10 +56,7 @@ public class DialogueTrigger : MonoBehaviour
     /// </summary>
     public void TriggerDialogue()
     {
-        if (dialogueManager.DialogueText == null && !currentDialogue.dialoguePlayed)
-        {
-            OpenDialogue();
-        }
+        OpenDialogue();
     }
 
     /// <summary>
