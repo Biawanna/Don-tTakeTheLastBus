@@ -297,6 +297,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
+                    inventoryScriptableObject.playerWins = true;
                     IncrementDialogueIndex();
                 }
 
@@ -464,7 +465,8 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.coffee,
         inventoryScriptableObject.dogBone,
         inventoryScriptableObject.popCan,
-        inventoryScriptableObject.newspaper
+        inventoryScriptableObject.newspaper,
+        inventoryScriptableObject.playerWins
         };
 
         return requiredItems.All(item => item);
@@ -481,5 +483,6 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.dogBone = false;
         inventoryScriptableObject.popCan = false;
         inventoryScriptableObject.newspaper = false;
+        inventoryScriptableObject.playerWins = false;
     }
 }

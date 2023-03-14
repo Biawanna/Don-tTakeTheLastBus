@@ -41,8 +41,6 @@ public class GameManager : MonoBehaviour
         autoHandScript = autoHandPlayer.GetComponentInChildren<AutoHandPlayer>();
 
         playerMaxSpeed = autoHandScript.maxMoveSpeed;
-
-        StartCoroutine(CheckIfGameComplete());
     }
    
     public void PauseGame()
@@ -75,21 +73,5 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         dialogueManager.ResetInventory();
-    }
-
-    private IEnumerator CheckIfGameComplete()
-    {
-        while (true)
-        {
-            if (dialogueManager.CheckIfPlayerWins())
-            {
-                uICanvasController.GameOver();
-                PauseGame();
-
-                yield break;
-            }
-
-            yield return new WaitForSeconds(0.5f);
-        }
     }
 }
