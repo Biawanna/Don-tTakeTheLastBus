@@ -62,14 +62,12 @@ public class UICanvasController : MonoBehaviour
     public void GameOver()
     {
         gameOver.SetActive(true);
-        Player.Instance.AutoHandPlayer.maxMoveSpeed = 0f;
-
-        OnGameover?.Invoke();
-
+        gameManager.PauseGame();
     }
     public void Restart()
     {
         gameManager.ResumeGame();
+        gameManager.ResetGame();
         gameOver.SetActive(false);
 
         meshRenderer.enabled = true;
@@ -101,6 +99,7 @@ public class UICanvasController : MonoBehaviour
     {
         gameManager.ResumeGame();
         pauseMenu.SetActive(false);
+        gameOver.SetActive(false);
     }
 
     public void Quit()

@@ -452,7 +452,7 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
-    private bool CheckIfPlayerWins()
+    public bool CheckIfPlayerWins()
     {
         var requiredItems = new[]
         {
@@ -468,5 +468,18 @@ public class DialogueManager : MonoBehaviour
         };
 
         return requiredItems.All(item => item);
+    }
+
+    public void ResetInventory()
+    {
+        inventoryScriptableObject.catPicture = false;
+        inventoryScriptableObject.headPhones = false;
+        inventoryScriptableObject.coconut = false;
+        inventoryScriptableObject.soul = false;
+        inventoryScriptableObject.holyWater = false;
+        inventoryScriptableObject.coffee = false;
+        inventoryScriptableObject.dogBone = false;
+        inventoryScriptableObject.popCan = false;
+        inventoryScriptableObject.newspaper = false;
     }
 }
