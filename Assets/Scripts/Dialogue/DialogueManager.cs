@@ -297,7 +297,6 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    currentDialogueTrigger.ToggleDialogueOptions(false);
                     IncrementDialogueIndex();
                 }
 
