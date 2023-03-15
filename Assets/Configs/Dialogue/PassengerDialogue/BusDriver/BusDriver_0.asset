@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12971dce2536584fadd2e3ca76f0594, type: 3}
   m_Name: BusDriver_0
   m_EditorClassIdentifier: 
-  dialoguePlayed: 0
+  dialoguePlayed: 1
+  icon: {fileID: 0}
   dialogueSentenceType: 17
   dialogueType: 0
   sentences:
-  - Mhmm.
+  - It's a long road ahead.
   - Come back when you've spoken with everyone.

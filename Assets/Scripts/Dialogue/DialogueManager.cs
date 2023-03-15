@@ -299,7 +299,6 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.newspaper))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
-                    IncrementDialogueIndex();
                 }
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
@@ -365,8 +364,6 @@ public class DialogueManager : MonoBehaviour
                 currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
-         
-          
 
             case DialoguePerson.punk:
 
@@ -412,7 +409,6 @@ public class DialogueManager : MonoBehaviour
     public void OpenPassengerDialogue()
     {
         StartDialogue(currentDialogueTrigger.CurrentDialogue);
-        currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
     }
 
     public DialogueTrigger GetDialogueTriggerByType(DialoguePerson type)
@@ -472,7 +468,9 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.dogBone,
         inventoryScriptableObject.popCan,
         inventoryScriptableObject.newspaper,
-        inventoryScriptableObject.playerWins
+        inventoryScriptableObject.coffeeGiven,
+        inventoryScriptableObject.waterGiven,
+        inventoryScriptableObject.newspaperGiven
         };
 
         return requiredItems.All(item => item);
@@ -489,7 +487,9 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.dogBone = false;
         inventoryScriptableObject.popCan = false;
         inventoryScriptableObject.newspaper = false;
-        inventoryScriptableObject.playerWins = false;
+        inventoryScriptableObject.coffeeGiven = false;
+        inventoryScriptableObject.waterGiven = false;
+        inventoryScriptableObject.newspaperGiven = false;
     }
 
     public void SetDialogueInPlay(bool setBool)
