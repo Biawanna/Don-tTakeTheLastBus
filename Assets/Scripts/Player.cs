@@ -1,11 +1,14 @@
 using Autohand;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public static Player Instance;
 
     [SerializeField] private InventoryScriptableObject inventory;
+    [SerializeField] private LineRenderer rightGrabPointer;
+    [SerializeField] private LineRenderer leftGrabPointer;
 
     private AutoHandPlayer autoHandPlayer;
     private SoundManager soundManager;
@@ -25,13 +28,18 @@ public class Player : MonoBehaviour
     private void Start()
     {
         canvasController = UICanvasController.Instance;
+        leftGrabPointer.enabled = false;
+        rightGrabPointer.enabled = false;
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("XRI_Right_PrimaryButton") || Input.GetButtonDown("XRI_Left_PrimaryButton"))
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            canvasController.Pause();
+            if (Input.GetButtonDown("XRI_Right_PrimaryButton") || Input.GetButtonDown("XRI_Left_PrimaryButton"))
+            {
+                canvasController.Pause();
+            }
         }
     }
 
