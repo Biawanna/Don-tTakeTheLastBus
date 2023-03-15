@@ -16,6 +16,6 @@ public class InventoryScriptableObject : ScriptableObject
     public bool catPicture;
     public bool coffeeGiven;
     public bool waterGiven;
-    public bool playerWins;
+    public bool newspaperGiven;
 }
 

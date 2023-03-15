@@ -299,7 +299,6 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.newspaper))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(true);
-                    IncrementDialogueIndex();
                 }
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
@@ -473,7 +472,7 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.newspaper,
         inventoryScriptableObject.coffeeGiven,
         inventoryScriptableObject.waterGiven,
-        inventoryScriptableObject.playerWins
+        inventoryScriptableObject.newspaperGiven
         };
 
         return requiredItems.All(item => item);
@@ -492,7 +491,7 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.newspaper = false;
         inventoryScriptableObject.coffeeGiven = false;
         inventoryScriptableObject.waterGiven = false;
-        inventoryScriptableObject.playerWins = false;
+        inventoryScriptableObject.newspaperGiven = false;
     }
 
     public void SetDialogueInPlay(bool setBool)

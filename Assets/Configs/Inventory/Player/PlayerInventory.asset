@@ -21,4 +21,6 @@ MonoBehaviour:
   coffee: 0
   newspaper: 0
   catPicture: 0
-  playerWins: 0
+  coffeeGiven: 0
+  waterGiven: 0
+  newspaperGiven: 0

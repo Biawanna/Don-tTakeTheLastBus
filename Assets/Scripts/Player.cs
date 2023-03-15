@@ -81,9 +81,9 @@ public class Player : MonoBehaviour
         inventory.coffee = true;
     }
 
-    public void SetPlayerWinsTrue()
+    public void SetNewspaperGivenTrue()
     {
-        inventory.playerWins = true;
+        inventory.newspaperGiven = true;
     }
     public void SetCoffeeGiveTrue()
     {
