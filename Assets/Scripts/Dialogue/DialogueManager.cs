@@ -412,7 +412,6 @@ public class DialogueManager : MonoBehaviour
     public void OpenPassengerDialogue()
     {
         StartDialogue(currentDialogueTrigger.CurrentDialogue);
-        currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
     }
 
     public DialogueTrigger GetDialogueTriggerByType(DialoguePerson type)
@@ -472,6 +471,8 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.dogBone,
         inventoryScriptableObject.popCan,
         inventoryScriptableObject.newspaper,
+        inventoryScriptableObject.coffeeGiven,
+        inventoryScriptableObject.waterGiven,
         inventoryScriptableObject.playerWins
         };
 
@@ -489,6 +490,8 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.dogBone = false;
         inventoryScriptableObject.popCan = false;
         inventoryScriptableObject.newspaper = false;
+        inventoryScriptableObject.coffeeGiven = false;
+        inventoryScriptableObject.waterGiven = false;
         inventoryScriptableObject.playerWins = false;
     }
 

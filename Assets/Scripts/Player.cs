@@ -85,4 +85,12 @@ public class Player : MonoBehaviour
     {
         inventory.playerWins = true;
     }
+    public void SetCoffeeGiveTrue()
+    {
+        inventory.coffeeGiven = true;
+    }
+    public void SetWaterGivenTrue()
+    {
+        inventory.waterGiven = true;
+    }
 }
