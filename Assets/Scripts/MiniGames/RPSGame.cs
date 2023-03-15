@@ -142,6 +142,7 @@ public class RPSGame : MonoBehaviour
         winText.text = "";
         playerScoreText.text = "";
         npcScoreText.text = "";
+        dialogueManager.SetDialogueInPlay(false);
     }
 
     public void EndRPSGame()

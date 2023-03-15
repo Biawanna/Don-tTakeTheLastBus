@@ -1,5 +1,7 @@
 using UnityEngine;
 using Autohand;
+using System.Collections;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -12,9 +14,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject grabPointerR;
     [SerializeField] private GameObject teleportPointer;
 
+    [Header("Script References")]
+    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private UICanvasController uICanvasController;
+
     private float playerMaxSpeed;
     private GameObject autoHandPlayer;
     private AutoHandPlayer autoHandScript;
+   
 
     public GameObject Player
     {
@@ -61,5 +68,10 @@ public class GameManager : MonoBehaviour
     public void SetBool(bool boolToSet, bool set)
     {
         boolToSet = set;
+    }
+
+    public void ResetGame()
+    {
+        dialogueManager.ResetInventory();
     }
 }

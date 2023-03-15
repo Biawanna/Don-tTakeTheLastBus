@@ -182,6 +182,7 @@ public class BlackJackGame : MonoBehaviour
         dealerScoreText.text = "";
         messageText.text = "";
         streakText.text = "";
+        dialogueManager.SetDialogueInPlay(false);
     }
 
     private void PlayerWinsBlackJack()

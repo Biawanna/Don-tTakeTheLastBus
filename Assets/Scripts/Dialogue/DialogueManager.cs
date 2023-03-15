@@ -23,7 +23,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
 
 
-    private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueText = null;
+    [SerializeField] private bool dialogueInPlay;
     private DialogueTrigger currentDialogueTrigger;
     private DialoguePerson dialogueObject;
 
@@ -45,6 +46,12 @@ public class DialogueManager : MonoBehaviour
     {
         get { return inventoryScriptableObject; }
         set { inventoryScriptableObject = value; }
+    }
+
+    public bool DialogueInPlay
+    {
+        get { return dialogueInPlay; }
+        set { dialogueInPlay = value; }
     }
        
     private void Awake()
@@ -297,7 +304,6 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    currentDialogueTrigger.ToggleDialogueOptions(false);
                     IncrementDialogueIndex();
                 }
 
@@ -406,7 +412,7 @@ public class DialogueManager : MonoBehaviour
     public void OpenPassengerDialogue()
     {
         StartDialogue(currentDialogueTrigger.CurrentDialogue);
-        //currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
+        currentDialogueTrigger.CurrentDialogue.dialoguePlayed = true;
     }
 
     public DialogueTrigger GetDialogueTriggerByType(DialoguePerson type)
@@ -453,7 +459,7 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
-    private bool CheckIfPlayerWins()
+    public bool CheckIfPlayerWins()
     {
         var requiredItems = new[]
         {
@@ -465,9 +471,29 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.coffee,
         inventoryScriptableObject.dogBone,
         inventoryScriptableObject.popCan,
-        inventoryScriptableObject.newspaper
+        inventoryScriptableObject.newspaper,
+        inventoryScriptableObject.playerWins
         };
 
         return requiredItems.All(item => item);
+    }
+
+    public void ResetInventory()
+    {
+        inventoryScriptableObject.catPicture = false;
+        inventoryScriptableObject.headPhones = false;
+        inventoryScriptableObject.coconut = false;
+        inventoryScriptableObject.soul = false;
+        inventoryScriptableObject.holyWater = false;
+        inventoryScriptableObject.coffee = false;
+        inventoryScriptableObject.dogBone = false;
+        inventoryScriptableObject.popCan = false;
+        inventoryScriptableObject.newspaper = false;
+        inventoryScriptableObject.playerWins = false;
+    }
+
+    public void SetDialogueInPlay(bool setBool)
+    {
+        dialogueInPlay = setBool;
     }
 }
