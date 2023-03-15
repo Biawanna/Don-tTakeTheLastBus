@@ -364,8 +364,6 @@ public class DialogueManager : MonoBehaviour
                 currentDialogueTrigger.PlayRandomDialogue();
 
                 break;
-         
-          
 
             case DialoguePerson.punk:
 
