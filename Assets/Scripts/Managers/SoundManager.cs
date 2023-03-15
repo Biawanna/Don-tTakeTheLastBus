@@ -9,7 +9,9 @@ public class SoundManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource buttonAudioSource;
+    [SerializeField] private AudioSource screamAudioSource;
     [SerializeField] private AudioClip buttonSound;
+    [SerializeField] private AudioClip[] screamSounds;
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] public AudioClip walkSound;
     [SerializeField] public AudioClip jumpSound;
@@ -56,30 +58,9 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioSource, buttonSound);
     }
 
-    //private void OnEnable()
-    //{
-    //    if (SceneManager.GetActiveScene().buildIndex > 0)
-    //    {
-    //        soundRoutine = StartCoroutine(RandomSoundCoroutine());
-    //    }
-    //}
-
-    //    public IEnumerator RandomSoundCoroutine()
-    //    {
-    //        while (true)
-    //        {
-    //            audioSource.PlayOneShot(RandomSound(audioClips));
-    //            yield return new WaitForSeconds(soundRate);
-    //        }
-    //    }
-    //    public void StopAudio(AudioSource audioSource)
-    //    {
-    //        audioSource.Stop();
-    //    }
-
-    //    public void StopSoundCoroutine()
-    //    {
-    //        StopCoroutine(soundRoutine);
-    //    }
-    //    public AudioClip RandomSound(AudioClip[] audioClips) => audioClips[Random.Range(0, audioClips.Length)];
+    public void PlayRandomScreamSound()
+    {
+        AudioClip audioClip = screamSounds[Random.Range(0, screamSounds.Length)];
+        PlaySound(screamAudioSource, audioClip);
+    }
 }

@@ -25,6 +25,7 @@ public class UICanvasController : MonoBehaviour
     [SerializeField] private GameObject continueButton;
 
     private GameManager gameManager;
+    private SoundManager soundManager;
     private MeshRenderer meshRenderer;
     public UnityEvent OnGameover;
     public UnityEvent OnDead;
@@ -33,6 +34,7 @@ public class UICanvasController : MonoBehaviour
     {
         Instance = this;
         gameManager = GameManager.instance;
+        soundManager = SoundManager.Instance;
         meshRenderer = fadeScreen.GetComponent<MeshRenderer>();
     }
 
@@ -61,7 +63,10 @@ public class UICanvasController : MonoBehaviour
 
     public void GameOver()
     {
+        soundManager.PlayRandomScreamSound();
         gameOver.SetActive(true);
+        gameManager.PauseGame();
+        soundManager.PlayRandomScreamSound();
     }
     public void Restart()
     {
