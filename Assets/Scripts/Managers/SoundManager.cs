@@ -26,6 +26,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private float minButtonPitch;
     [SerializeField] private float maxButtonPitch;
 
+    [Header("Scream Settings")]
+    [SerializeField] private float minScreamPitch;
+    [SerializeField] private float maxScraemPitch;
+
     //private Coroutine soundRoutine;
 
     private void Awake()
@@ -61,6 +65,7 @@ public class SoundManager : MonoBehaviour
     public void PlayRandomScreamSound()
     {
         AudioClip audioClip = screamSounds[Random.Range(0, screamSounds.Length)];
+        RandomPitch(screamAudioSource, minScreamPitch, maxScraemPitch);
         PlaySound(screamAudioSource, audioClip);
     }
 }

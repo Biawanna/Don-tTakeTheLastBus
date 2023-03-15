@@ -115,6 +115,7 @@ public class HangmanGame : MonoBehaviour
             // Player has lost
             wordText.text = word;
             messageText.text = "Game over! You lose!";
+
             uICanvasController.GameOver();
 
             foreach (Button b in letterButtons)
@@ -123,6 +124,8 @@ public class HangmanGame : MonoBehaviour
             }
             ToggleHangmanLetter(false);
             ToggleHangmanRetryButtons(true);
+
+            dialogueTrigger.CloseDialogue();
         }
         else
         {

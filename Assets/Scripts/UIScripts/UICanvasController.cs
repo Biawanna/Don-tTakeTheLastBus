@@ -18,6 +18,7 @@ public class UICanvasController : MonoBehaviour
 
     [Header("Fade References")]
     [SerializeField] FadeScreen fadeScreen;
+    [SerializeField] FadeCanvas jumpScare;
 
     [Header("Menu References")]
     [SerializeField] private GameObject pauseMenu;
@@ -49,6 +50,8 @@ public class UICanvasController : MonoBehaviour
         objectiveText.text = objectiveString;
 
         StartCoroutine(ObjectiveTextRoutine(objectiveTextDestroyTime));
+
+        jumpScare.FadeOut(0);
     }
 
     public void ChangeText(string textString)
@@ -66,6 +69,7 @@ public class UICanvasController : MonoBehaviour
         soundManager.PlayRandomScreamSound();
         gameOver.SetActive(true);
         gameManager.PauseGame();
+        jumpScare.StartFadeInFadeOutRoutine();
         soundManager.PlayRandomScreamSound();
     }
     public void Restart()
