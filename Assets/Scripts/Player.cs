@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("XRI_Right_PrimaryButton"))
+        if (Input.GetButtonDown("XRI_Right_PrimaryButton") || Input.GetButtonDown("XRI_Left_PrimaryButton"))
         {
             canvasController.Pause();
         }
