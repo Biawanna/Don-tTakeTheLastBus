@@ -23,7 +23,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
 
 
-    private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueText = null;
+    [SerializeField] private bool dialogueInPlay;
     private DialogueTrigger currentDialogueTrigger;
     private DialoguePerson dialogueObject;
 
@@ -45,6 +46,12 @@ public class DialogueManager : MonoBehaviour
     {
         get { return inventoryScriptableObject; }
         set { inventoryScriptableObject = value; }
+    }
+
+    public bool DialogueInPlay
+    {
+        get { return dialogueInPlay; }
+        set { dialogueInPlay = value; }
     }
        
     private void Awake()
@@ -483,5 +490,10 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.popCan = false;
         inventoryScriptableObject.newspaper = false;
         inventoryScriptableObject.playerWins = false;
+    }
+
+    public void SetDialogueInPlay(bool setBool)
+    {
+        dialogueInPlay = setBool;
     }
 }

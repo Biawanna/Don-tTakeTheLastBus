@@ -64,11 +64,13 @@ public class DialogueTrigger : MonoBehaviour
     /// </summary>
     public void OpenDialogue()
     {
-        //npc.MoveNpcHead();
-
-        SetDialogueTriggerText();
-        dialogueManager.OpenPassengerDialogue();
-        OpenDialogueSequence();
+        if (!dialogueManager.DialogueInPlay)
+        {
+            SetDialogueTriggerText();
+            dialogueManager.OpenPassengerDialogue();
+            OpenDialogueSequence();
+            dialogueManager.DialogueInPlay = true;
+        }
     }
 
     /// <summary>
@@ -76,10 +78,9 @@ public class DialogueTrigger : MonoBehaviour
     /// </summary>
     public void CloseDialogue()
     {
-        //npc.ResetNpcHead();
-
         CloseDialogueSequence();
         ClearDialogueText(dialogueText);
+        dialogueManager.DialogueInPlay = false;
     }
 
     /// <summary>
@@ -145,6 +146,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         text.text = " ";
         dialogueManager.DialogueText = null;
+        dialogueManager.DialogueInPlay = false;
     }
 
     /// <summary>

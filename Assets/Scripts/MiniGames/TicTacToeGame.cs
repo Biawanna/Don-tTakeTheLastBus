@@ -213,6 +213,7 @@ public class TicTacToeGame : MonoBehaviour
     private void ClearTicTacToeText()
     {
         gameOverText.text = "";
+        dialogueManager.SetDialogueInPlay(false);
     }
 
     private void PlayerWinsTicTacToe()

@@ -164,6 +164,7 @@ public class HangmanGame : MonoBehaviour
 
     private void ClearHangmanText()
     {
+        dialogueManager.SetDialogueInPlay(false);
         messageText.text = "";
         wordText.text = "";
     }
