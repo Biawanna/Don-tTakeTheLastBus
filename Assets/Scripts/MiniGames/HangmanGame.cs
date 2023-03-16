@@ -23,11 +23,13 @@ public class HangmanGame : MonoBehaviour
     private List<char> guessedLetters = new List<char>();
     private DialogueTrigger dialogueTrigger;
     private DialogueManager dialogueManager;
+    private UICanvasController uICanvasController;
 
     private void Start()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
         dialogueManager = DialogueManager.instance;
+        uICanvasController = UICanvasController.Instance;
 
         ToggleHangmanRetryButtons(false);
         ToggleHangmanLetter(false);
@@ -113,12 +115,17 @@ public class HangmanGame : MonoBehaviour
             // Player has lost
             wordText.text = word;
             messageText.text = "Game over! You lose!";
+
+            uICanvasController.GameOver();
+
             foreach (Button b in letterButtons)
             {
                 b.interactable = false;
             }
             ToggleHangmanLetter(false);
             ToggleHangmanRetryButtons(true);
+
+            dialogueTrigger.CloseDialogue();
         }
         else
         {

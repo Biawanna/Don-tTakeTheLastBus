@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private UICanvasController uICanvasController;
 
+    private bool gameOver = false;
     private float playerMaxSpeed;
     private GameObject autoHandPlayer;
     private AutoHandPlayer autoHandScript;
@@ -27,6 +28,12 @@ public class GameManager : MonoBehaviour
     {
         get { return autoHandPlayer; }
         set { autoHandPlayer = value; }
+    }
+
+    public bool GameOver
+    {
+        get { return gameOver; }
+        set { gameOver = value; }
     }
 
     private void Awake()

@@ -18,6 +18,7 @@ public class UICanvasController : MonoBehaviour
 
     [Header("Fade References")]
     [SerializeField] FadeScreen fadeScreen;
+    [SerializeField] FadeCanvas jumpScare;
 
     [Header("Menu References")]
     [SerializeField] private GameObject pauseMenu;
@@ -25,6 +26,7 @@ public class UICanvasController : MonoBehaviour
     [SerializeField] private GameObject continueButton;
 
     private GameManager gameManager;
+    private SoundManager soundManager;
     private MeshRenderer meshRenderer;
     public UnityEvent OnGameover;
     public UnityEvent OnDead;
@@ -33,6 +35,7 @@ public class UICanvasController : MonoBehaviour
     {
         Instance = this;
         gameManager = GameManager.instance;
+        soundManager = SoundManager.Instance;
         meshRenderer = fadeScreen.GetComponent<MeshRenderer>();
     }
 
@@ -47,6 +50,8 @@ public class UICanvasController : MonoBehaviour
         objectiveText.text = objectiveString;
 
         StartCoroutine(ObjectiveTextRoutine(objectiveTextDestroyTime));
+
+        jumpScare.FadeOut(0);
     }
 
     public void ChangeText(string textString)
@@ -61,7 +66,13 @@ public class UICanvasController : MonoBehaviour
 
     public void GameOver()
     {
+        soundManager.PlayRandomScreamSound();
         gameOver.SetActive(true);
+        gameManager.PauseGame();
+        jumpScare.StartFadeInFadeOutRoutine();
+        soundManager.PlayRandomScreamSound();
+
+        gameManager.GameOver = true;
     }
     public void Restart()
     {
@@ -72,6 +83,8 @@ public class UICanvasController : MonoBehaviour
         meshRenderer.enabled = true;
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         StartCoroutine(GoToSceneAsyncRoutine(currentScene));
+
+        gameManager.GameOver = false;
     }
 
     public void MainMenu()
@@ -79,6 +92,8 @@ public class UICanvasController : MonoBehaviour
         gameManager.ResumeGame();
         meshRenderer.enabled = true;
         StartCoroutine(GoToSceneAsyncRoutine(0));
+
+        gameManager.GameOver = false;
     }
 
     public void Play()
