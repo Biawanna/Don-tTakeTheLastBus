@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BusDriver_1
   m_EditorClassIdentifier: 
   dialoguePlayed: 0
+  icon: {fileID: 0}
   dialogueSentenceType: 17
   dialogueType: 0
   sentences:
   - 'It seems like you''ve satisfied the souls of the dead. '
-  - You may leave and rest in peace.
+  - You may leave and live to tell another tale.
