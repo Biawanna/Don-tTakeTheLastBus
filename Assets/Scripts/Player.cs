@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private AutoHandPlayer autoHandPlayer;
     private SoundManager soundManager;
     private UICanvasController canvasController;
+    private GameManager gameManager;
 
     public InventoryScriptableObject Inventory { get { return inventory; } }
 
@@ -28,13 +29,15 @@ public class Player : MonoBehaviour
     private void Start()
     {
         canvasController = UICanvasController.Instance;
+        gameManager = GameManager.instance;
+
         leftGrabPointer.enabled = false;
         rightGrabPointer.enabled = false;
     }
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0 && !gameManager.GameOver)
         {
             if (Input.GetButtonDown("XRI_Right_PrimaryButton") || Input.GetButtonDown("XRI_Left_PrimaryButton"))
             {

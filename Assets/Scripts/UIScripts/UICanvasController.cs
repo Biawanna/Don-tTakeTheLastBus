@@ -71,6 +71,8 @@ public class UICanvasController : MonoBehaviour
         gameManager.PauseGame();
         jumpScare.StartFadeInFadeOutRoutine();
         soundManager.PlayRandomScreamSound();
+
+        gameManager.GameOver = true;
     }
     public void Restart()
     {
@@ -81,6 +83,8 @@ public class UICanvasController : MonoBehaviour
         meshRenderer.enabled = true;
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         StartCoroutine(GoToSceneAsyncRoutine(currentScene));
+
+        gameManager.GameOver = false;
     }
 
     public void MainMenu()
@@ -88,6 +92,8 @@ public class UICanvasController : MonoBehaviour
         gameManager.ResumeGame();
         meshRenderer.enabled = true;
         StartCoroutine(GoToSceneAsyncRoutine(0));
+
+        gameManager.GameOver = false;
     }
 
     public void Play()
