@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
+
     [Header("Icon References")]
     [SerializeField] private Image iconSpawnPoint;
     [SerializeField] private FadeCanvas iconFadeCanvas;
@@ -401,8 +402,11 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(dialogueTypingSpeed);
+            if (letter > 0)
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(dialogueTypingSpeed);
+            }
         }
     }
 

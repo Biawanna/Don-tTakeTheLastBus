@@ -36,13 +36,9 @@ public class Disappear : MonoBehaviour
                 boxCollider = obj.GetComponent<BoxCollider>();
 
                 boxCollider.enabled = false;
-                //float lerp = Mathf.PingPong(Time.time, duration) / duration;
-                //meshRenderer.material.Lerp(material1, material2, lerp);
 
                 meshRenderer.material = material2;
             }
-
-            //yield return new WaitForSeconds(reappearDelay);
 
             foreach (GameObject obj in disappearObjects)
             {
@@ -56,29 +52,4 @@ public class Disappear : MonoBehaviour
             }
         }
     }
-
-    //private void BackToMaterialOne()
-    //{
-    //    foreach (GameObject obj in disappearObjects)
-    //    {
-    //        meshRenderer = obj.GetComponent<MeshRenderer>();
-    //        boxCollider = obj.GetComponent<BoxCollider>();
-    //        boxCollider.enabled = true;
-
-    //        meshRenderer.material = material1;
-    //    }
-    //}
-
-    //private void LerpToTransparentMaterial()
-    //{
-    //    foreach (GameObject obj in disappearObjects)
-    //    {
-    //        meshRenderer = obj.GetComponent<MeshRenderer>();
-    //        boxCollider = obj.GetComponent<BoxCollider>();
-    //        boxCollider.enabled = false;
-
-    //        float lerp = Mathf.PingPong(Time.time, duration) / duration;
-    //        meshRenderer.material.Lerp(material1, material2, lerp);
-    //    }
-    //}
 }

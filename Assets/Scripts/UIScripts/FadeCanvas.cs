@@ -37,7 +37,6 @@ public class FadeCanvas : MonoBehaviour
         spriteRenderer.DOFade(1f, duration);
     }
 
-
     private void FadeOutSprite(float duration, SpriteRenderer spriteRenderer)
     {
         spriteRenderer.DOFade(0f, duration);
@@ -46,7 +45,6 @@ public class FadeCanvas : MonoBehaviour
     {
         tmp.DOFade(1f, duration);
     }
-
 
     private void FadeOutTMP(float duration, TextMeshPro tmp)
     {
@@ -57,7 +55,6 @@ public class FadeCanvas : MonoBehaviour
     {
         spriteRenderer.DOFade(0f, 0f);
     }
-
 
     public void StartFadeInFadeOutRoutine()
     {
@@ -74,7 +71,6 @@ public class FadeCanvas : MonoBehaviour
         FadeOut(FadeOutDuration);
         yield break;
     }
-
     private void Fade(float endValue, float duration, TweenCallback onEnd)
     {
         fadeTween = canvasGroup.DOFade(endValue, duration);

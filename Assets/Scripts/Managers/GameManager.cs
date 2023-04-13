@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     private GameObject autoHandPlayer;
     private AutoHandPlayer autoHandScript;
    
-
     public GameObject Player
     {
         get { return autoHandPlayer; }
@@ -76,7 +75,6 @@ public class GameManager : MonoBehaviour
     {
         boolToSet = set;
     }
-
     public void ResetGame()
     {
         dialogueManager.ResetInventory();
