@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,17 +16,14 @@ public class RoadManager : MonoBehaviour
 
     private List<GameObject> activeTiles;
 
-
-    // Use this for initialization
     private void Start()
     {
-
         activeTiles = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Bus").transform;
 
+        /// Spawns tiles in front of the bus.
         for (int i = 0; i < amnTilesOnScreen; i++)
         {
-
             if (i < 2)
             {
                 SpawnTile(0);
@@ -39,36 +35,19 @@ public class RoadManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private void Update()
     {
-
+        /// Spawns and deletes tiles as the bus is moving.
         if (playerTransform.position.z - safeZone > (spawnZ - amnTilesOnScreen * tileLength))
         {
-
             SpawnTile();
             DeleteTile();
         }
     }
 
-    //private void SpawnTile(int prefabIndex = -1)
-    //{
-
-    //    GameObject go;
-    //    if (prefabIndex == -1)
-    //    {
-    //        go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
-    //    }
-    //    else
-    //    {
-    //        go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
-    //    }
-
-    //    go.transform.SetParent(transform);
-    //    go.transform.position = Vector3.forward * spawnZ;
-    //    spawnZ += tileLength;
-    //    activeTiles.Add(go);
-    //}
+    /// <summary>
+    /// Instantiates a tile from the tile array.
+    /// </summary>
     private void SpawnTile(int prefabIndex = -1)
     {
         GameObject go;
@@ -86,22 +65,25 @@ public class RoadManager : MonoBehaviour
         activeTiles.Add(go);
     }
 
+    /// <summary>
+    /// Destroys a tile at the last index.
+    /// </summary>
     private void DeleteTile()
     {
         Destroy(activeTiles[0]);
         activeTiles.RemoveAt(0);
     }
 
+    /// <summary>
+    /// Returns a random index from the tile array.
+    /// </summary>
     private int RandomPrefabIndex()
     {
-
         if (tilePrefabs.Length <= 1)
         {
 
             return 0;
         }
-
-
 
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)

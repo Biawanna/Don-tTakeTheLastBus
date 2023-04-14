@@ -48,32 +48,33 @@ public class GameManager : MonoBehaviour
         playerMaxSpeed = autoHandScript.maxMoveSpeed;
     }
    
+    /// <summary>
+    /// Stops player movement. Disables player pointers.
+    /// </summary>
     public void PauseGame()
     {
         autoHandScript.maxMoveSpeed = playerStop;
 
-        EnableGameObject(teleportPointer, false);
-        EnableGameObject(grabPointerL, false);
-        EnableGameObject(grabPointerR, false);
+        ToolBox.EnableGameObject(teleportPointer, false);
+        ToolBox.EnableGameObject(grabPointerL, false);
+        ToolBox.EnableGameObject(grabPointerR, false);
     }
 
+    /// <summary>
+    /// Resumes player movement. Enables player pointers.
+    /// </summary>
     public void ResumeGame()
     {
         autoHandScript.maxMoveSpeed = playerMaxSpeed;
 
-        EnableGameObject(teleportPointer, true);
-        EnableGameObject(grabPointerL, true);
-        EnableGameObject(grabPointerR, true);
+        ToolBox.EnableGameObject(teleportPointer, true);
+        ToolBox.EnableGameObject(grabPointerL, true);
+        ToolBox.EnableGameObject(grabPointerR, true);
     }
 
-    public void EnableGameObject(GameObject gameObject, bool enable)
-    {
-        gameObject.SetActive(enable);
-    }
-    public void SetBool(bool boolToSet, bool set)
-    {
-        boolToSet = set;
-    }
+    /// <summary>
+    /// Resets the players inventory.
+    /// </summary>
     public void ResetGame()
     {
         dialogueManager.ResetInventory();

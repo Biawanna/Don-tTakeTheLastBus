@@ -28,8 +28,6 @@ namespace Autohand {
             }
         }
 
-
-
         [AutoHeader("Auto Hand Player")]
         public bool ignoreMe;
 
@@ -374,7 +372,7 @@ namespace Autohand {
                 InterpolateMovement();
                 UpdateTurn(Time.deltaTime);
             }
-            if (moveDirection.z > 0)
+            if (moveDirection.z != 0)
             {
                 isMoving = true;
 
