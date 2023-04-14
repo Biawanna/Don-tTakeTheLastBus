@@ -24,9 +24,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
     [SerializeField] private bool dialogueInPlay;
 
-    [SerializeField] private TextMeshProUGUI dialogueText = null;
+    private TextMeshProUGUI dialogueText = null;
     private DialogueTrigger currentDialogueTrigger;
-    private DialoguePerson dialogueObject;
 
     Queue<string> sentences;
 

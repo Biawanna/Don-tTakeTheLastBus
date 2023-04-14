@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class RoadManager : MonoBehaviour
 {
-
     public GameObject[] tilePrefabs;
 
-    private Transform playerTransform;
+    [Header("Tile Settings")]
     [SerializeField] private float spawnZ = 0.0f;
     [SerializeField] private float spawnX = 5.0f;
     [SerializeField] private float tileLength = 10.0f;
     [SerializeField] private float safeZone = 15.0f;
-    [SerializeField] private int amnTilesOnScreen = 7;
+    [SerializeField] private int tilesOnScreen = 7;
+    
+    private Transform playerTransform;
     private int lastPrefabIndex = 0;
-
     private List<GameObject> activeTiles;
 
     private void Start()
@@ -22,7 +22,7 @@ public class RoadManager : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Bus").transform;
 
         /// Spawns tiles in front of the bus.
-        for (int i = 0; i < amnTilesOnScreen; i++)
+        for (int i = 0; i < tilesOnScreen; i++)
         {
             if (i < 2)
             {
@@ -38,7 +38,7 @@ public class RoadManager : MonoBehaviour
     private void Update()
     {
         /// Spawns and deletes tiles as the bus is moving.
-        if (playerTransform.position.z - safeZone > (spawnZ - amnTilesOnScreen * tileLength))
+        if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * tileLength))
         {
             SpawnTile();
             DeleteTile();

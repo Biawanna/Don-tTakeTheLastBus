@@ -416,7 +416,6 @@ GameObject:
   - component: {fileID: 1620687584}
   - component: {fileID: 1620687585}
   - component: {fileID: 1620687586}
-  - component: {fileID: 1620687588}
   m_Layer: 0
   m_Name: SM_Chr_Emo_Female_01
   m_TagString: Untagged
@@ -645,19 +644,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lockHandOnGrab: 0
---- !u!114 &1620687588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264826857531514}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248c8d3edf4de34408de60d0dc6d8b12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  passengerHead: {fileID: 0}
 --- !u!1 &1284379696596524
 GameObject:
   m_ObjectHideFlags: 0

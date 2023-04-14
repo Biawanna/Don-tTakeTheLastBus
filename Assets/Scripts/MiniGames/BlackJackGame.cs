@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BlackJackGame : MonoBehaviour
 {
+    [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private TextMeshProUGUI dealerScoreText;
     [SerializeField] private TextMeshProUGUI messageText;
@@ -14,6 +15,7 @@ public class BlackJackGame : MonoBehaviour
     [SerializeField] private GameObject retryButtons;
     [SerializeField] private GameObject gameButtons;
 
+    // Game variables
     private Deck deck;
     private List<Card> playerHand;
     private List<Card> dealerHand;

@@ -7,9 +7,9 @@ public class HangmanGame : MonoBehaviour
 {
     [Header("Hangman Settings")]
     [SerializeField] private int numberOfGuesses;
-    [SerializeField] private string[] wordList = { "apple", "banana", "cherry", "orange", "pear" };
+    [SerializeField] private string[] wordList;
 
-    // UI elements
+    [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI wordText;
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private GameObject retryButtons;
