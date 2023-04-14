@@ -22,7 +22,6 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory.coffee = true;
     }
-
     public void SetNewspaperGivenTrue()
     {
         inventory.newspaperGiven = true;
