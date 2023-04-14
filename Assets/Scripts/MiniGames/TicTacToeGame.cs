@@ -166,7 +166,6 @@ public class TicTacToeGame : MonoBehaviour
         }
     }
 
-
     Button buttonAtIndex(int index)
     {
         return transform.Find(index.ToString()).GetComponent<Button>();
