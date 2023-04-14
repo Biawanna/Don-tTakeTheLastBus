@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -47,18 +46,25 @@ public class UICanvasController : MonoBehaviour
     {
         OnStartScene?.Invoke();
 
-        StartCoroutine(ObjectiveTextRoutine(objectiveTextDestroyTime));
+        // Disables objective text.
+        StartCoroutine(ToolBox.TextRoutine(objectiveTextDestroyTime, objectiveText));
 
         jumpScare.FadeOut(0);
 
         objectiveText.text = objectiveString;
     }
 
+    /// <summary>
+    /// Set objective text.
+    /// </summary>
     public void ChangeText(string textString)
     {
         objectiveText.SetText(textString);
     }
 
+    /// <summary>
+    /// Set tool tip text.
+    /// </summary>
     public void ToolTips(string textString)
     {
         dialogueText.SetText(textString);
@@ -163,14 +169,5 @@ public class UICanvasController : MonoBehaviour
         gameManager.ResumeGame();
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
-    }
-
-    private IEnumerator ObjectiveTextRoutine(float destroyTime)
-    {
-        objectiveText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(destroyTime);
-        objectiveText.gameObject.SetActive(false);
-
-        yield break;
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,18 @@ public static class ToolBox
     public static void EnableGameObject(GameObject gameObject, bool enable)
     {
         gameObject.SetActive(enable);
+    }
+
+    /// <summary>
+    /// Disables text after a certain time.
+    /// </summary>
+    public static IEnumerator TextRoutine(float destroyTime, TextMeshProUGUI text)
+    {
+        text.gameObject.SetActive(true);
+        yield return new WaitForSeconds(destroyTime);
+        text.gameObject.SetActive(false);
+
+        yield break;
     }
 
     /// <summary>
