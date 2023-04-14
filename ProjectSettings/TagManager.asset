@@ -11,6 +11,7 @@ TagManager:
   - CheckPointOne
   - CheckPointTwo
   - Bus
+  - Cursor
   layers:
   - Default
   - TransparentFX
