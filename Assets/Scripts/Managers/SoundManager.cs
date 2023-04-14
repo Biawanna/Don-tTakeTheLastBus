@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource buttonAudioSource;
     [SerializeField] private AudioSource screamAudioSource;
+    [SerializeField] private AudioSource walkAudioSource;
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip[] screamSounds;
@@ -35,6 +36,25 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(AudioSource audioSource, AudioClip audioClip)
     {
         audioSource.PlayOneShot(audioClip);
+    }
+
+    /// <summary>
+    /// Plays the walk sound.
+    /// </summary>
+    public void PlayWalkSound()
+    {
+        if (!walkAudioSource.isPlaying)
+        {
+            PlaySound(walkAudioSource, walkSound);
+        }
+    }
+
+    /// <summary>
+    /// Stops the walk sound.
+    /// </summary>
+    public void StopWalkSound()
+    {
+        walkAudioSource.Stop();
     }
 
     /// <summary>
