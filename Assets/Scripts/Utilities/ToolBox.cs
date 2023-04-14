@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public static class ToolBox
 {
@@ -11,6 +12,21 @@ public static class ToolBox
     public static void EnableGameObject(GameObject gameObject, bool enable)
     {
         gameObject.SetActive(enable);
+    }
+
+    /// <summary>
+    /// Updates the icon sprite.
+    /// </summary>
+    public static void UpdateIconSprite(Sprite sprite, Image spawnPoint, FadeCanvas fadeCanvas)
+    {
+        if (sprite == null)
+        {
+            return;
+        }
+
+        spawnPoint.sprite = sprite;
+
+        fadeCanvas.StartFadeInFadeOutRoutine();
     }
 
     /// <summary>

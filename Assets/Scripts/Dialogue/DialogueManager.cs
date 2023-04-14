@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 /// <summary>
 /// This script holds DialogueManager methods.
 /// </summary>
@@ -11,20 +12,19 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
 
+    [Header("Type Settings")]
+    [SerializeField] private float dialogueTypingSpeed;
+
     [Header("Icon References")]
     [SerializeField] private Image iconSpawnPoint;
     [SerializeField] private FadeCanvas iconFadeCanvas;
 
-    [Header("Type Settings")]
-    [SerializeField] private float dialogueTypingSpeed;
-
     [Header("Dialogue Scriptable Objects")]
     [SerializeField] private InventoryScriptableObject inventoryScriptableObject;
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
-
+    [SerializeField] private bool dialogueInPlay;
 
     [SerializeField] private TextMeshProUGUI dialogueText = null;
-    [SerializeField] private bool dialogueInPlay;
     private DialogueTrigger currentDialogueTrigger;
     private DialoguePerson dialogueObject;
 
@@ -108,7 +108,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
                 {
                     inventoryScriptableObject.headPhones = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -128,7 +128,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
                 {
                     inventoryScriptableObject.soul = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -149,7 +149,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -170,7 +170,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -191,7 +191,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.holyWater = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -207,7 +207,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.catPicture = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -238,7 +238,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
                 {
                     inventoryScriptableObject.coconut = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -264,7 +264,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -286,7 +286,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(false);
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -413,7 +413,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
-            if (letter > 0)
+            if(dialogueText != null)
             {
                 dialogueText.text += letter;
                 yield return new WaitForSeconds(dialogueTypingSpeed);
@@ -458,21 +458,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// Updates the icon dialogue sprite.
-    /// </summary>
-    private void UpdateIconSprite(Sprite sprite)
-    {
-        if (sprite == null)
-        {
-            return;
-        }
-
-        iconSpawnPoint.sprite = sprite;
-
-        iconFadeCanvas.StartFadeInFadeOutRoutine();
     }
 
     /// <summary>

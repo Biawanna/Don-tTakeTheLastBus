@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class BlackJackGame : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI playerScoreText;

@@ -1216,7 +1216,7 @@ namespace Autohand {
                         handPoseArea = null;
                     }
                 }
-                catch(MissingReferenceException e)
+                catch(MissingReferenceException )
                 {
                     handPoseArea = null;
                     SetHandPose(preHandPoseAreaPose);

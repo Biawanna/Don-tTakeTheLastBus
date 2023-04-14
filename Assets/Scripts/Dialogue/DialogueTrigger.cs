@@ -19,7 +19,6 @@ public class DialogueTrigger : MonoBehaviour
     private DialogueManager dialogueManager;
     private DialogueSequence sequence;
     private DialogueScriptableObject currentDialogue;
-    private int firstElement = 0;
     private int dialogueIndex = 0;
 
     public int DialogueIndex 
