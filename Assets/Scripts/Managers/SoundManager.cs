@@ -4,24 +4,18 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [SerializeField] private float soundRate;
-
-    [Header("Audio")]
+    [Header("Audio Sources")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource buttonAudioSource;
     [SerializeField] private AudioSource screamAudioSource;
-    [SerializeField] private AudioClip buttonSound;
-    [SerializeField] private AudioClip[] screamSounds;
-    [SerializeField] private AudioClip[] audioClips;
-    [SerializeField] public AudioClip walkSound;
-    [SerializeField] public AudioClip jumpSound;
-    [SerializeField] public AudioClip jumpOnConcreteSound;
-    [SerializeField] public AudioClip jumpOnGrassSound;
-    [SerializeField] public AudioClip jumpOnWaterSound;
-    [SerializeField] public AudioClip walkOnConcreteSound;
-    [SerializeField] public AudioClip walkOnWaterSound;
-    [SerializeField] public AudioClip walkOnGrassSound;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip[] screamSounds;
+    [SerializeField] private AudioClip buttonSound;
+    [SerializeField] public AudioClip walkSound;
+    [SerializeField] public AudioClip jumpOnConcreteSound;
+    [SerializeField] public AudioClip walkOnConcreteSound;
+ 
     [Header("Button Settings")]
     [SerializeField] private float minButtonPitch;
     [SerializeField] private float maxButtonPitch;
@@ -29,8 +23,6 @@ public class SoundManager : MonoBehaviour
     [Header("Scream Settings")]
     [SerializeField] private float minScreamPitch;
     [SerializeField] private float maxScraemPitch;
-
-    //private Coroutine soundRoutine;
 
     private void Awake()
     {
@@ -62,6 +54,9 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioSource, buttonSound);
     }
 
+    /// <summary>
+    /// Plays a random scream sound.
+    /// </summary>
     public void PlayRandomScreamSound()
     {
         AudioClip audioClip = screamSounds[Random.Range(0, screamSounds.Length)];
