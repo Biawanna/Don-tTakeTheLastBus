@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +66,9 @@ public class DialogueManager : MonoBehaviour
         iconFadeCanvas.FadeOut(0);
     }
 
+    /// <summary>
+    /// Starts the dialogue depending on the dialogue person.
+    /// </summary>
     public void StartDialogue(DialogueScriptableObject dialogue)
     {
         sentences.Clear();
@@ -379,6 +381,9 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    /// <summary>
+    /// Displays the next sentence in the dialogue.
+    /// </summary>
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -392,11 +397,17 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+    /// <summary>
+    /// Ends the dialogue.
+    /// </summary>
     public void EndDialogue()
     {
         currentDialogueTrigger.CloseDialogue();
     }
 
+    /// <summary>
+    /// Types the dialogue sentence.
+    /// </summary>
     public IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
@@ -410,11 +421,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Opens the passengers dialogue.
+    /// </summary>
     public void OpenPassengerDialogue()
     {
         StartDialogue(currentDialogueTrigger.CurrentDialogue);
     }
 
+    /// <summary>
+    /// Returns the dialogue person type.
+    /// </summary>
     public DialogueTrigger GetDialogueTriggerByType(DialoguePerson type)
     {
         for (int i = 0; i < dialogueTriggers.Length; i++)
@@ -429,6 +446,9 @@ public class DialogueManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Returns the dialogue sentence type.
+    /// </summary>
     public bool GetDialogueBySentenceType(DialogueSentenceType dialogueSentenceType)
     {
         if (currentDialogueTrigger.CurrentDialogue.dialogueSentenceType == dialogueSentenceType)
@@ -440,6 +460,9 @@ public class DialogueManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Updates the icon dialogue sprite.
+    /// </summary>
     private void UpdateIconSprite(Sprite sprite)
     {
         if (sprite == null)
@@ -459,6 +482,10 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
+
+    /// <summary>
+    /// Checks if the player has won the game.
+    /// </summary>
     public bool CheckIfPlayerWins()
     {
         var requiredItems = new[]
@@ -480,6 +507,9 @@ public class DialogueManager : MonoBehaviour
         return requiredItems.All(item => item);
     }
 
+    /// <summary>
+    /// Resets the players inventory.
+    /// </summary>
     public void ResetInventory()
     {
         inventoryScriptableObject.catPicture = false;
@@ -496,6 +526,9 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.newspaperGiven = false;
     }
 
+    /// <summary>
+    /// Sets the dialogue in play bool.
+    /// </summary>
     public void SetDialogueInPlay(bool setBool)
     {
         dialogueInPlay = setBool;

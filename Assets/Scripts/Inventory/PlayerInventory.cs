@@ -17,7 +17,6 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory.newspaper = true;
     }
-
     public void SetCoffeeTrue()
     {
         inventory.coffee = true;

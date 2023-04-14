@@ -1,6 +1,5 @@
 using UnityEngine;
 using Autohand;
-using System.Collections;
 
 public class GameManager : MonoBehaviour
 {

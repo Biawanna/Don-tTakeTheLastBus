@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-
         leftGrabPointer.enabled = false;
         rightGrabPointer.enabled = false;
     }
