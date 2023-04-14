@@ -847,7 +847,6 @@ GameObject:
   - component: {fileID: 1605690364}
   - component: {fileID: 1605690365}
   - component: {fileID: 876978459}
-  - component: {fileID: 876978460}
   m_Layer: 0
   m_Name: SM_Chr_Hazmat_Male_01
   m_TagString: Untagged
@@ -1081,19 +1080,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animSequence: {fileID: 11400000, guid: bac5794056158f848bcee8a7174d8dd5, type: 2}
   dialogueObject: {fileID: 2860514785589761609}
---- !u!114 &876978460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467590972069000}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248c8d3edf4de34408de60d0dc6d8b12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  passengerHead: {fileID: 4622363414542148}
 --- !u!1 &1471577328106340
 GameObject:
   m_ObjectHideFlags: 0

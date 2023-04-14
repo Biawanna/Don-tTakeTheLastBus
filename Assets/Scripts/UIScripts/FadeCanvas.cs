@@ -14,6 +14,9 @@ public class FadeCanvas : MonoBehaviour
     Tween fadeTween;
     Coroutine fadeInOutRoutine;
 
+    /// <summary>
+    /// Fade in a canvas group.
+    /// </summary>
     public void FadeIn(float duration)
     {
         Fade(1f, duration, () =>
@@ -23,6 +26,9 @@ public class FadeCanvas : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Fade out a canvas group
+    /// </summary>
     public void FadeOut(float duration)
     {
         Fade(0f, duration, () =>
@@ -32,39 +38,58 @@ public class FadeCanvas : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Fade in a sprite.
+    /// </summary>
     private void FadeInSprite(float duration, SpriteRenderer spriteRenderer)
     {
         spriteRenderer.DOFade(1f, duration);
     }
 
-
+    /// <summary>
+    /// Fade out a sprite.
+    /// </summary>
     private void FadeOutSprite(float duration, SpriteRenderer spriteRenderer)
     {
         spriteRenderer.DOFade(0f, duration);
     }
+
+    /// <summary>
+    /// Fade in a Tmp.
+    /// </summary>
     private void FadeInTMP(float duration, TextMeshPro tmp)
     {
         tmp.DOFade(1f, duration);
     }
 
-
+    /// <summary>
+    /// Fade out a Tmp.
+    /// </summary>
     private void FadeOutTMP(float duration, TextMeshPro tmp)
     {
         tmp.DOFade(0f, duration);
     }
 
+    /// <summary>
+    /// Fade out a sprite immediately
+    /// </summary>
     private void FadeOutSpriteImmediately(SpriteRenderer spriteRenderer)
     {
         spriteRenderer.DOFade(0f, 0f);
     }
 
-
+    /// <summary>
+    /// Fade in coroutine.
+    /// </summary>
     public void StartFadeInFadeOutRoutine()
     {
         fadeInOutRoutine = null;
         fadeInOutRoutine = StartCoroutine(FadeInOutSpriteRoutine());
     }
 
+    /// <summary>
+    /// Fade out sprite coroutine.
+    /// </summary>
     private IEnumerator FadeInOutSpriteRoutine()
     {
         FadeIn(FadeInDuration);
@@ -75,6 +100,9 @@ public class FadeCanvas : MonoBehaviour
         yield break;
     }
 
+    /// <summary>
+    /// Fade a canvas group.
+    /// </summary>
     private void Fade(float endValue, float duration, TweenCallback onEnd)
     {
         fadeTween = canvasGroup.DOFade(endValue, duration);

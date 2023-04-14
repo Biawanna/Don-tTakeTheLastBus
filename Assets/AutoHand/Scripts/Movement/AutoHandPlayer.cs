@@ -28,8 +28,6 @@ namespace Autohand {
             }
         }
 
-
-
         [AutoHeader("Auto Hand Player")]
         public bool ignoreMe;
 
@@ -46,6 +44,7 @@ namespace Autohand {
         [AutoToggleHeader("Movement")]
         public bool useMovement = true;
         [EnableIf("useMovement"), FormerlySerializedAs("moveSpeed")]
+        public bool isMoving = false;
         [Tooltip("Movement speed when isGrounded")]
         public float maxMoveSpeed = 1.5f;
         [EnableIf("useMovement")]
@@ -365,11 +364,22 @@ namespace Autohand {
             turningAxis = turnAxis;
         }
 
-        private void Update() {
-            if(useMovement) {
+        private void Update()
+        {
+            if (useMovement)
+            {
                 UpdatePlatform(false);
                 InterpolateMovement();
                 UpdateTurn(Time.deltaTime);
+            }
+            if (moveDirection.z != 0)
+            {
+                isMoving = true;
+
+            }
+            else
+            {
+                isMoving = false;
             }
         }
 
@@ -433,7 +443,6 @@ namespace Autohand {
                     //else if (newVel.z <= maxMoveSpeed) newVel.z = newVel.z;
 
                 }
-
                 body.velocity = newVel;
             }
 

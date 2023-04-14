@@ -16,6 +16,7 @@ public class TicTacToeGame : MonoBehaviour
     [SerializeField] private GameObject retryButtons;
     [SerializeField] private Button[] boardButtons;
 
+    // Game variables
     private string[] board = new string[9];
     private string aiName;
     private string playersName = "Player";
@@ -164,7 +165,6 @@ public class TicTacToeGame : MonoBehaviour
             playerTurn = true;
         }
     }
-
 
     Button buttonAtIndex(int index)
     {

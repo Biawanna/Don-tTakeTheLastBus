@@ -1,32 +1,31 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 /// <summary>
 /// This script holds DialogueManager methods.
 /// </summary>
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
-    [Header("Icon References")]
-    [SerializeField] private Image iconSpawnPoint;
-    [SerializeField] private FadeCanvas iconFadeCanvas;
 
     [Header("Type Settings")]
     [SerializeField] private float dialogueTypingSpeed;
 
+    [Header("Icon References")]
+    [SerializeField] private Image iconSpawnPoint;
+    [SerializeField] private FadeCanvas iconFadeCanvas;
+
     [Header("Dialogue Scriptable Objects")]
     [SerializeField] private InventoryScriptableObject inventoryScriptableObject;
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
-
-
-    [SerializeField] private TextMeshProUGUI dialogueText = null;
     [SerializeField] private bool dialogueInPlay;
+
+    private TextMeshProUGUI dialogueText = null;
     private DialogueTrigger currentDialogueTrigger;
-    private DialoguePerson dialogueObject;
 
     Queue<string> sentences;
 
@@ -66,6 +65,9 @@ public class DialogueManager : MonoBehaviour
         iconFadeCanvas.FadeOut(0);
     }
 
+    /// <summary>
+    /// Starts the dialogue depending on the dialogue person.
+    /// </summary>
     public void StartDialogue(DialogueScriptableObject dialogue)
     {
         sentences.Clear();
@@ -105,7 +107,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
                 {
                     inventoryScriptableObject.headPhones = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -125,7 +127,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
                 {
                     inventoryScriptableObject.soul = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -146,7 +148,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -167,7 +169,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -188,7 +190,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.holyWater = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -204,7 +206,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
                     inventoryScriptableObject.catPicture = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -235,7 +237,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
                 {
                     inventoryScriptableObject.coconut = true;
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -261,7 +263,7 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -283,7 +285,7 @@ public class DialogueManager : MonoBehaviour
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
                 {
                     currentDialogueTrigger.ToggleDialogueOptions(false);
-                    UpdateIconSprite(currentDialogueTrigger.Icon);
+                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
 
@@ -378,6 +380,9 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    /// <summary>
+    /// Displays the next sentence in the dialogue.
+    /// </summary>
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -391,26 +396,41 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+    /// <summary>
+    /// Ends the dialogue.
+    /// </summary>
     public void EndDialogue()
     {
         currentDialogueTrigger.CloseDialogue();
     }
 
+    /// <summary>
+    /// Types the dialogue sentence.
+    /// </summary>
     public IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(dialogueTypingSpeed);
+            if(dialogueText != null)
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(dialogueTypingSpeed);
+            }
         }
     }
 
+    /// <summary>
+    /// Opens the passengers dialogue.
+    /// </summary>
     public void OpenPassengerDialogue()
     {
         StartDialogue(currentDialogueTrigger.CurrentDialogue);
     }
 
+    /// <summary>
+    /// Returns the dialogue person type.
+    /// </summary>
     public DialogueTrigger GetDialogueTriggerByType(DialoguePerson type)
     {
         for (int i = 0; i < dialogueTriggers.Length; i++)
@@ -425,6 +445,9 @@ public class DialogueManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Returns the dialogue sentence type.
+    /// </summary>
     public bool GetDialogueBySentenceType(DialogueSentenceType dialogueSentenceType)
     {
         if (currentDialogueTrigger.CurrentDialogue.dialogueSentenceType == dialogueSentenceType)
@@ -436,18 +459,6 @@ public class DialogueManager : MonoBehaviour
         return false;
     }
 
-    private void UpdateIconSprite(Sprite sprite)
-    {
-        if (sprite == null)
-        {
-            return;
-        }
-
-        iconSpawnPoint.sprite = sprite;
-
-        iconFadeCanvas.StartFadeInFadeOutRoutine();
-    }
-
     /// <summary>
     /// Moves the dialoguetrigggers current index to the next one.
     /// </summary>
@@ -455,6 +466,10 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
+
+    /// <summary>
+    /// Checks if the player has won the game.
+    /// </summary>
     public bool CheckIfPlayerWins()
     {
         var requiredItems = new[]
@@ -476,6 +491,9 @@ public class DialogueManager : MonoBehaviour
         return requiredItems.All(item => item);
     }
 
+    /// <summary>
+    /// Resets the players inventory.
+    /// </summary>
     public void ResetInventory()
     {
         inventoryScriptableObject.catPicture = false;
@@ -492,6 +510,9 @@ public class DialogueManager : MonoBehaviour
         inventoryScriptableObject.newspaperGiven = false;
     }
 
+    /// <summary>
+    /// Sets the dialogue in play bool.
+    /// </summary>
     public void SetDialogueInPlay(bool setBool)
     {
         dialogueInPlay = setBool;

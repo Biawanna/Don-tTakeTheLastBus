@@ -20,6 +20,7 @@ public enum GameResult
 
 public class RPSGame : MonoBehaviour
 {
+    [Header("UI Elements")]
     [SerializeField] private GameObject rpsButtons;
     [SerializeField] private GameObject retryButtons;
 
@@ -28,6 +29,7 @@ public class RPSGame : MonoBehaviour
     public TextMeshProUGUI npcScoreText;
     public int numRounds = 3;
 
+    // Game variables
     private float rpsWaitTime = 0.1f;
     private int playerScore;
     private int npcScore;

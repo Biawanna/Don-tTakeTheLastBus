@@ -17,10 +17,8 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject skipButton;
 
     private DialogueManager dialogueManager;
-    private NPC npc;
     private DialogueSequence sequence;
     private DialogueScriptableObject currentDialogue;
-    private int firstElement = 0;
     private int dialogueIndex = 0;
 
     public int DialogueIndex 
@@ -36,8 +34,6 @@ public class DialogueTrigger : MonoBehaviour
     private void Start()
     {
         dialogueManager = DialogueManager.instance;
-
-        npc = GetComponent<NPC>();
 
         sequence = gameObject.GetComponent<DialogueSequence>();
 
@@ -60,7 +56,7 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Opens the dialogue if dialogue isn't already opened.
     /// </summary>
     public void OpenDialogue()
     {
@@ -121,12 +117,18 @@ public class DialogueTrigger : MonoBehaviour
         nextButton.SetActive(!showOptions);
     }
 
+    /// <summary>
+    /// Toggles the yes and no button options.
+    /// </summary>
     public void ToggleYesNoButtons(bool showOptions)
     {
         yesButton.SetActive(showOptions);
         noButton.SetActive(showOptions);
     }
 
+    /// <summary>
+    /// Toggles the visibility of an array of game objects.
+    /// </summary>
     public void ToggleObjectsVisibilty(bool visibility, GameObject[] gameObject)
     {
         foreach (GameObject obj in gameObject)
@@ -134,6 +136,10 @@ public class DialogueTrigger : MonoBehaviour
             obj.SetActive(visibility);
         }
     }
+
+    /// <summary>
+    /// Toggles the visibility of a gameobject.
+    /// </summary>
     public void ToggleObjectVisibilty(bool visibility, GameObject gameObject)
     {
         gameObject.SetActive(visibility);
@@ -175,6 +181,9 @@ public class DialogueTrigger : MonoBehaviour
         sequence.OpenCloseDialogueSequence(true);
     }
 
+    /// <summary>
+    /// Hides dialogue elements on start.
+    /// </summary>
     private void HideOnStart()
     {
         ToggleDialogueOptions(false);

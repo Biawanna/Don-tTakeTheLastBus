@@ -9,13 +9,11 @@ public class Bus : MonoBehaviour
     {
         player.transform.parent = transform;
     }
-
     void FixedUpdate()
     {
         // Move the bus forward by the busSpeed amount
         transform.Translate(Vector3.forward * Time.deltaTime * busSpeed);
     }
-
 }
 
 

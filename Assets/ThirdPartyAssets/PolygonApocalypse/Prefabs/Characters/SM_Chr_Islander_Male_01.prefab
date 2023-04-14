@@ -608,7 +608,6 @@ GameObject:
   - component: {fileID: 1530360891}
   - component: {fileID: 1530360892}
   - component: {fileID: 1530360893}
-  - component: {fileID: 1530360895}
   m_Layer: 0
   m_Name: SM_Chr_Islander_Male_01
   m_TagString: Untagged
@@ -838,19 +837,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lockHandOnGrab: 0
---- !u!114 &1530360895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398392053594804}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248c8d3edf4de34408de60d0dc6d8b12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  passengerHead: {fileID: 0}
 --- !u!1 &1412405418760970
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -47,23 +46,33 @@ public class UICanvasController : MonoBehaviour
     {
         OnStartScene?.Invoke();
 
-        objectiveText.text = objectiveString;
-
-        StartCoroutine(ObjectiveTextRoutine(objectiveTextDestroyTime));
+        // Disables objective text.
+        StartCoroutine(ToolBox.TextRoutine(objectiveTextDestroyTime, objectiveText));
 
         jumpScare.FadeOut(0);
+
+        objectiveText.text = objectiveString;
     }
 
+    /// <summary>
+    /// Set objective text.
+    /// </summary>
     public void ChangeText(string textString)
     {
         objectiveText.SetText(textString);
     }
 
+    /// <summary>
+    /// Set tool tip text.
+    /// </summary>
     public void ToolTips(string textString)
     {
         dialogueText.SetText(textString);
     }
 
+    /// <summary>
+    /// Triggers game over elements.
+    /// </summary>
     public void GameOver()
     {
         soundManager.PlayRandomScreamSound();
@@ -74,6 +83,10 @@ public class UICanvasController : MonoBehaviour
 
         gameManager.GameOver = true;
     }
+
+    /// <summary>
+    /// Triggers restart button methods.
+    /// </summary>
     public void Restart()
     {
         gameManager.ResumeGame();
@@ -82,33 +95,45 @@ public class UICanvasController : MonoBehaviour
 
         meshRenderer.enabled = true;
         var currentScene = SceneManager.GetActiveScene().buildIndex;
-        StartCoroutine(GoToSceneAsyncRoutine(currentScene));
+        StartCoroutine(ToolBox.GoToSceneAsyncRoutine(currentScene, fadeScreen));
 
         gameManager.GameOver = false;
     }
 
+    /// <summary>
+    /// Triggers Main Menu button methods.
+    /// </summary>
     public void MainMenu()
     {
         gameManager.ResumeGame();
         meshRenderer.enabled = true;
-        StartCoroutine(GoToSceneAsyncRoutine(0));
+        StartCoroutine(ToolBox.GoToSceneAsyncRoutine(0, fadeScreen));
 
         gameManager.GameOver = false;
     }
 
+    /// <summary>
+    /// Triggers play button elements.
+    /// </summary>
     public void Play()
     {
         meshRenderer.enabled = true;
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        StartCoroutine(GoToSceneAsyncRoutine(nextScene));
+        StartCoroutine(ToolBox.GoToSceneAsyncRoutine(nextScene, fadeScreen));
     }
 
+    /// <summary>
+    /// Triggers pause button elements.
+    /// </summary>
     public void Pause()
     {
         gameManager.PauseGame();
         pauseMenu.SetActive(true);
     }
 
+    /// <summary>
+    /// Triggers resume button elements.
+    /// </summary>
     public void Resume()
     {
         gameManager.ResumeGame();
@@ -116,11 +141,17 @@ public class UICanvasController : MonoBehaviour
         gameOver.SetActive(false);
     }
 
+    /// <summary>
+    /// Application quit.
+    /// </summary>
     public void Quit()
     {
         Application.Quit();
     }
 
+    /// <summary>
+    /// Triggers player dead elements.
+    /// </summary>
     public void Dead()
     {
         ToolTips("You died!");
@@ -130,39 +161,13 @@ public class UICanvasController : MonoBehaviour
         OnDead?.Invoke();
     }
 
+    /// <summary>
+    /// Triggers continue button elements.
+    /// </summary>
     public void Continue()
     {
         gameManager.ResumeGame();
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
-    }
-
-    public void ChangeSkyBox(Material material)
-    {
-        RenderSettings.skybox = material;
-    }
-    public IEnumerator GoToSceneAsyncRoutine(int sceneIndex)
-    {
-        fadeScreen.FadeOut();
-
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-        operation.allowSceneActivation = false;
-
-        float timer = 0f;
-        while (timer <= fadeScreen.fadeDuration && !operation.isDone)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        operation.allowSceneActivation = true;
-    }
-
-    private IEnumerator ObjectiveTextRoutine(float destroyTime)
-    {
-        objectiveText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(destroyTime);
-        objectiveText.gameObject.SetActive(false);
-
-        yield break;
     }
 }

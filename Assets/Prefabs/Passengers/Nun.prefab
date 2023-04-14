@@ -1111,7 +1111,6 @@ GameObject:
   - component: {fileID: 8287014618353809954}
   - component: {fileID: 8287014618353810013}
   - component: {fileID: 8287014618353810012}
-  - component: {fileID: 8287014618353810014}
   m_Layer: 0
   m_Name: Nun
   m_TagString: Untagged
@@ -1342,19 +1341,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lockHandOnGrab: 0
---- !u!114 &8287014618353810014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8288303585874885157}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248c8d3edf4de34408de60d0dc6d8b12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  passengerHead: {fileID: 0}
 --- !u!1 &8288434290462742737
 GameObject:
   m_ObjectHideFlags: 0
