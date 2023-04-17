@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    /// <summary>
+    /// This script is responsible for sound.
+    /// </summary>
     public static SoundManager Instance;
 
     [Header("Audio Sources")]

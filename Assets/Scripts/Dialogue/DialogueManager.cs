@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,8 +18,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Image iconSpawnPoint;
     [SerializeField] private FadeCanvas iconFadeCanvas;
 
+    [Header("Inventory")]
+    [SerializeField] private PlayerInventory playerInventory;
+
     [Header("Dialogue Scriptable Objects")]
-    [SerializeField] private InventoryScriptableObject inventoryScriptableObject;
     [SerializeField] private DialogueTrigger[] dialogueTriggers;
     [SerializeField] private bool dialogueInPlay;
 
@@ -43,8 +44,8 @@ public class DialogueManager : MonoBehaviour
 
     public InventoryScriptableObject InventoryScriptableObject
     {
-        get { return inventoryScriptableObject; }
-        set { inventoryScriptableObject = value; }
+        get { return playerInventory.Inventory; }
+        set { playerInventory.Inventory = value; }
     }
 
     public bool DialogueInPlay
@@ -80,7 +81,7 @@ public class DialogueManager : MonoBehaviour
         {
             case DialoguePerson.busDriver:
 
-                if (CheckIfPlayerWins())
+                if (playerInventory.CheckIfPlayerWins())
                 {
                     IncrementDialogueIndex();
                 }
@@ -106,7 +107,9 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
                 {
-                    inventoryScriptableObject.headPhones = true;
+                    playerInventory.SetItemTrue(item => InventoryScriptableObject.headPhones = item, true);
+
+                    //inventoryScriptableObject.headPhones = true;
                     ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
@@ -126,7 +129,9 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
                 {
-                    inventoryScriptableObject.soul = true;
+                    playerInventory.SetItemTrue(item => InventoryScriptableObject.soul = item, true);
+
+                    //inventoryScriptableObject.soul = true;
                     ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
@@ -135,7 +140,7 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.teenBoy:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.soul == true)
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.soul == true)
                 {
                     IncrementDialogueIndex();
                 }
@@ -162,9 +167,11 @@ public class DialogueManager : MonoBehaviour
                     IncrementDialogueIndex();
                 }
 
-                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin ) && inventoryScriptableObject.headPhones == true)
+                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin ) && InventoryScriptableObject.headPhones == true)
                 {
-                    inventoryScriptableObject.dogBone = true;
+                    playerInventory.SetItemTrue(item => InventoryScriptableObject.dogBone = item, true);
+
+                    //inventoryScriptableObject.dogBone = true;
                     IncrementDialogueIndex();
                 }
                 else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
@@ -189,7 +196,9 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
-                    inventoryScriptableObject.holyWater = true;
+                    playerInventory.SetItemTrue(item => InventoryScriptableObject.holyWater = item, true);
+
+                    //inventoryScriptableObject.holyWater = true;
                     ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
@@ -205,7 +214,9 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
                 {
-                    inventoryScriptableObject.catPicture = true;
+                    playerInventory.SetItemTrue(item => InventoryScriptableObject.catPicture = item, true);
+
+                    //inventoryScriptableObject.catPicture = true;
                     ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
@@ -219,7 +230,7 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.emo:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro ) && inventoryScriptableObject.popCan == true)
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro ) && InventoryScriptableObject.popCan == true)
                 {
                     IncrementDialogueIndex();
                 }
@@ -236,7 +247,9 @@ public class DialogueManager : MonoBehaviour
 
                 else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
                 {
-                    inventoryScriptableObject.coconut = true;
+                    playerInventory.SetItemTrue(item => InventoryScriptableObject.coconut = item, true);
+
+                    //inventoryScriptableObject.coconut = true;
                     ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
                     IncrementDialogueIndex();
                 }
@@ -250,7 +263,7 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.islander:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.coconut == true)
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.coconut == true)
                 {
                     IncrementDialogueIndex();
                 }
@@ -271,7 +284,7 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.jock:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.dogBone == true)
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.dogBone == true)
                 {
                     IncrementDialogueIndex();
                 }
@@ -293,7 +306,7 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.homeless:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.newspaper == true)
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.newspaper == true)
                 {
                     IncrementDialogueIndex();
                 }
@@ -312,7 +325,7 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.waitress:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.coffee == true)
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.coffee == true)
                 {
                     IncrementDialogueIndex();
                 }
@@ -332,7 +345,7 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.beagle:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && inventoryScriptableObject.holyWater == true)
+                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.holyWater == true)
                 {
                     IncrementDialogueIndex();
                 }
@@ -467,48 +480,6 @@ public class DialogueManager : MonoBehaviour
         currentDialogueTrigger.IncreaseCurrentDialogueIndex();
     }
 
-    /// <summary>
-    /// Checks if the player has won the game.
-    /// </summary>
-    public bool CheckIfPlayerWins()
-    {
-        var requiredItems = new[]
-        {
-        inventoryScriptableObject.catPicture,
-        inventoryScriptableObject.headPhones,
-        inventoryScriptableObject.coconut,
-        inventoryScriptableObject.soul,
-        inventoryScriptableObject.holyWater,
-        inventoryScriptableObject.coffee,
-        inventoryScriptableObject.dogBone,
-        inventoryScriptableObject.popCan,
-        inventoryScriptableObject.newspaper,
-        inventoryScriptableObject.coffeeGiven,
-        inventoryScriptableObject.waterGiven,
-        inventoryScriptableObject.newspaperGiven
-        };
-
-        return requiredItems.All(item => item);
-    }
-
-    /// <summary>
-    /// Resets the players inventory.
-    /// </summary>
-    public void ResetInventory()
-    {
-        inventoryScriptableObject.catPicture = false;
-        inventoryScriptableObject.headPhones = false;
-        inventoryScriptableObject.coconut = false;
-        inventoryScriptableObject.soul = false;
-        inventoryScriptableObject.holyWater = false;
-        inventoryScriptableObject.coffee = false;
-        inventoryScriptableObject.dogBone = false;
-        inventoryScriptableObject.popCan = false;
-        inventoryScriptableObject.newspaper = false;
-        inventoryScriptableObject.coffeeGiven = false;
-        inventoryScriptableObject.waterGiven = false;
-        inventoryScriptableObject.newspaperGiven = false;
-    }
 
     /// <summary>
     /// Sets the dialogue in play bool.
