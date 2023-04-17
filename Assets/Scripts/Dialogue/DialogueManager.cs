@@ -95,272 +95,62 @@ public class DialogueManager : MonoBehaviour
 
             case DialoguePerson.scout:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSGame))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
-                {
-                    playerInventory.SetItemTrue(item => InventoryScriptableObject.headPhones = item, true);
-
-                    //inventoryScriptableObject.headPhones = true;
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
+                ScoutDialogue();
                 break;
 
             case DialoguePerson.inpatient:
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
-                {
-                    IncrementDialogueIndex();
-                }
 
-                else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackGame))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
-                {
-                    playerInventory.SetItemTrue(item => InventoryScriptableObject.soul = item, true);
-
-                    //inventoryScriptableObject.soul = true;
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
+                InPatientDialogue();
                 break;
 
             case DialoguePerson.teenBoy:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.soul == true)
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
-                {
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
+                TeenBoyDialogue();
                 break;
 
             case DialoguePerson.biker:
 
-                
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin ) && InventoryScriptableObject.headPhones == true)
-                {
-                    playerInventory.SetItemTrue(item => InventoryScriptableObject.dogBone = item, true);
-
-                    //inventoryScriptableObject.dogBone = true;
-                    IncrementDialogueIndex();
-                }
-                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
-                {
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
+                BikerDialogue();
                 break;
 
             case DialoguePerson.nun:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.hangmanGame))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
-                {
-                    playerInventory.SetItemTrue(item => InventoryScriptableObject.holyWater = item, true);
-
-                    //inventoryScriptableObject.holyWater = true;
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
+                NunDialogue();
                 break;
 
             case DialoguePerson.nerd:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
-                {
-                    playerInventory.SetItemTrue(item => InventoryScriptableObject.catPicture = item, true);
-
-                    //inventoryScriptableObject.catPicture = true;
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.none))
-                {
-                    IncrementDialogueIndex();
-                }
-
+                NerdDialogue();
                 break;
 
             case DialoguePerson.emo:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro ) && InventoryScriptableObject.popCan == true)
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.popCan))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.ticTacToeGame))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
-                {
-                    playerInventory.SetItemTrue(item => InventoryScriptableObject.coconut = item, true);
-
-                    //inventoryScriptableObject.coconut = true;
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.none))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
+                EmoDialogue();
                 break;
 
             case DialoguePerson.islander:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.coconut == true)
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.coconut))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
-                {
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
+                IslanderDialogue();
                 break;
 
             case DialoguePerson.jock:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.dogBone == true)
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.dogBone))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(false);
-                    ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
-                    IncrementDialogueIndex();
-                }
-
+                JockDialogue();
                 break;
 
             case DialoguePerson.homeless:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.newspaper == true)
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.newspaper))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
-                {
-                    IncrementDialogueIndex();
-                }
-
+                HomelessDialogue();
                 break;
 
             case DialoguePerson.waitress:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.coffee == true)
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.coffee))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(false);
-                    IncrementDialogueIndex();
-                }
-
+                WaitressDialogue();
                 break;
 
             case DialoguePerson.beagle:
 
-                if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.holyWater == true)
-                {
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.dogWater))
-                {
-                    currentDialogueTrigger.ToggleDialogueOptions(true);
-                    IncrementDialogueIndex();
-                }
-
-                else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
-                {
-                    IncrementDialogueIndex();
-                }
-
+                BeagleDialogue();
                 break;
 
             case DialoguePerson.coolMan:
@@ -392,6 +182,7 @@ public class DialogueManager : MonoBehaviour
 
         DisplayNextSentence();
     }
+
 
     /// <summary>
     /// Displays the next sentence in the dialogue.
@@ -487,5 +278,259 @@ public class DialogueManager : MonoBehaviour
     public void SetDialogueInPlay(bool setBool)
     {
         dialogueInPlay = setBool;
+    }
+
+    // Passenger dialogue methods.
+
+    private void ScoutDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.RPSGame))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin))
+        {
+            playerInventory.SetItemTrue(item => InventoryScriptableObject.headPhones = item, true);
+
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void InPatientDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackGame))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
+        {
+            playerInventory.SetItemTrue(item => InventoryScriptableObject.soul = item, true);
+
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void NunDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.hangmanGame))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
+        {
+            playerInventory.SetItemTrue(item => InventoryScriptableObject.holyWater = item, true);
+
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void BikerDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.RPSWin) && InventoryScriptableObject.headPhones)
+        {
+            playerInventory.SetItemTrue(item => InventoryScriptableObject.dogBone = item, true);
+
+            IncrementDialogueIndex();
+        }
+        else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+        {
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void TeenBoyDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.soul)
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.blackJackWin))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+        {
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void BeagleDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.holyWater)
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.dogWater))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+        {
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void WaitressDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.coffee)
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.coffee))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(false);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void HomelessDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.newspaper)
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.newspaper))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+        {
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void JockDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.dogBone)
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.dogBone))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(false);
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void IslanderDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.coconut)
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.coconut))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.thankYou))
+        {
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+    }
+
+    private void EmoDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro) && InventoryScriptableObject.popCan)
+        {
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.popCan))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.ticTacToeGame))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.ticToeWin))
+        {
+            playerInventory.SetItemTrue(item => InventoryScriptableObject.coconut = item, true);
+
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.none))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+    }
+
+    private void NerdDialogue()
+    {
+        if (GetDialogueBySentenceType(DialogueSentenceType.intro))
+        {
+            currentDialogueTrigger.ToggleDialogueOptions(true);
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.hangManWin))
+        {
+            playerInventory.SetItemTrue(item => InventoryScriptableObject.catPicture = item, true);
+
+            ToolBox.UpdateIconSprite(currentDialogueTrigger.Icon, iconSpawnPoint, iconFadeCanvas);
+            IncrementDialogueIndex();
+        }
+
+        else if (GetDialogueBySentenceType(DialogueSentenceType.none))
+        {
+            IncrementDialogueIndex();
+        }
     }
 }

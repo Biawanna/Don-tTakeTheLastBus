@@ -13,7 +13,7 @@ public class PlayerInventory : MonoBehaviour
         set { inventory = value; }
     }
 
-    // Use a generic method to set a boolean item in the inventory
+    // Use a generic method to set a boolean item in the inventory.
     public void SetItemTrue(System.Action<bool> itemSetter, bool set)
     {
         itemSetter(set);
