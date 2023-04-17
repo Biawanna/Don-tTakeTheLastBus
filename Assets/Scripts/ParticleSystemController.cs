@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ParticleSystemController : MonoBehaviour
 {
-    public new ParticleSystem particleSystem;
-    public float restartTime = 5f;
+    [SerializeField] private new ParticleSystem particleSystem;
+    [SerializeField] private float restartTime = 5f;
 
     private void Start()
     {

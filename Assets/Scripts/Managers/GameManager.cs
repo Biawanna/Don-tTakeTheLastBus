@@ -3,6 +3,9 @@ using Autohand;
 
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// This script is responsible for gameplay methods and keeps a reference to the player.
+    /// </summary>
     public static GameManager instance;
 
     [Header("Player Speed Settings")]
@@ -21,6 +24,7 @@ public class GameManager : MonoBehaviour
     private float playerMaxSpeed;
     private GameObject autoHandPlayer;
     private AutoHandPlayer autoHandScript;
+    private PlayerInventory playerInventory;
    
     public GameObject Player
     {
@@ -46,8 +50,10 @@ public class GameManager : MonoBehaviour
         autoHandScript = autoHandPlayer.GetComponentInChildren<AutoHandPlayer>();
 
         playerMaxSpeed = autoHandScript.maxMoveSpeed;
+
+        playerInventory = autoHandPlayer.GetComponent<PlayerInventory>();
     }
-   
+
     /// <summary>
     /// Stops player movement. Disables player pointers.
     /// </summary>
@@ -77,6 +83,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-        dialogueManager.ResetInventory();
+        playerInventory.ResetInventory();
     }
 }
