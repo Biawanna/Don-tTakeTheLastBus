@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     [Header("Script References")]
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private UICanvasController uICanvasController;
+    [SerializeField] private PlayerInventory inventory;
+
+    [SerializeField] private Transform wayPoint;
 
     private bool gameOver = false;
     private float playerMaxSpeed;
@@ -51,7 +54,7 @@ public class GameManager : MonoBehaviour
 
         playerMaxSpeed = autoHandScript.maxMoveSpeed;
 
-        playerInventory = autoHandPlayer.GetComponent<PlayerInventory>();
+        autoHandPlayer.transform.position = wayPoint.transform.position;
     }
 
     /// <summary>
@@ -83,6 +86,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-        playerInventory.ResetInventory();
+        inventory.ResetInventory();
     }
 }
