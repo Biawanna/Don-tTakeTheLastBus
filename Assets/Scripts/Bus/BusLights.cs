@@ -26,7 +26,7 @@ public class BusLights : MonoBehaviour
             foreach (Light light in lights)
             {
                 float intensity = Random.Range(minIntensity, maxIntensity);
-                if (intensity < turnOffThreshold) // Change this threshold to adjust the frequency of flickering
+                if (intensity < turnOffThreshold) // Change this threshold to adjust the horizontalFrequency of flickering
                 {
                     light.intensity = lightOffIntensity; // Turn off the light
                 }
