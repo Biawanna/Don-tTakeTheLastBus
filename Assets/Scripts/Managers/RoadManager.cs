@@ -11,17 +11,36 @@ public class RoadManager : MonoBehaviour
     [SerializeField] private float tileLength = 10.0f;
     [SerializeField] private float safeZone = 15.0f;
     [SerializeField] private int tilesOnScreen = 7;
-    
+
     private Transform playerTransform;
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
+    private Queue<GameObject> tilePool;
 
     private void Start()
     {
+        InitObjects();
+        SpawnTiles();
+    }
+
+    private void InitObjects()
+    {
         activeTiles = new List<GameObject>();
+        tilePool = new Queue<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Bus").transform;
 
-        /// Spawns tiles in front of the bus.
+        // Instantiate and populate the tile pool
+        for (int i = 0; i < tilePrefabs.Length; i++)
+        {
+            GameObject tile = Instantiate(tilePrefabs[i]);
+            tile.SetActive(false);
+            tilePool.Enqueue(tile);
+        }
+    }
+
+    private void SpawnTiles()
+    {
+        // Spawns tiles in front of the bus.
         for (int i = 0; i < tilesOnScreen; i++)
         {
             if (i < 2)
@@ -37,7 +56,7 @@ public class RoadManager : MonoBehaviour
 
     private void Update()
     {
-        /// Spawns and deletes tiles as the bus is moving.
+        // Spawns and deletes tiles as the bus is moving.
         if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * tileLength))
         {
             SpawnTile();
@@ -45,43 +64,40 @@ public class RoadManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Instantiates a tile from the tile array.
-    /// </summary>
     private void SpawnTile(int prefabIndex = -1)
     {
-        GameObject go;
-        if (prefabIndex == -1)
+        GameObject tile;
+        if (tilePool.Count > 0)
         {
-            go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            tile = tilePool.Dequeue();
         }
         else
         {
-            go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
+            // If the tile pool is empty, instantiate a new tile
+            tile = Instantiate(tilePrefabs[0]);
         }
 
-        go.transform.SetParent(transform);
-        go.transform.position = new Vector3(spawnX, go.transform.position.y,spawnZ += tileLength);
-        activeTiles.Add(go);
+        tile.transform.SetParent(transform);
+        tile.transform.position = new Vector3(spawnX, tile.transform.position.y, spawnZ += tileLength);
+        tile.SetActive(true);
+        activeTiles.Add(tile);
     }
 
-    /// <summary>
-    /// Destroys a tile at the last index.
-    /// </summary>
     private void DeleteTile()
     {
-        Destroy(activeTiles[0]);
-        activeTiles.RemoveAt(0);
+        if (activeTiles.Count > 0)
+        {
+            GameObject tile = activeTiles[0];
+            tile.SetActive(false);
+            activeTiles.RemoveAt(0);
+            tilePool.Enqueue(tile);
+        }
     }
 
-    /// <summary>
-    /// Returns a random index from the tile array.
-    /// </summary>
     private int RandomPrefabIndex()
     {
         if (tilePrefabs.Length <= 1)
         {
-
             return 0;
         }
 
