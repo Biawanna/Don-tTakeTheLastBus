@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UICanvasController uICanvasController;
     [SerializeField] private PlayerInventory inventory;
 
-    [SerializeField] private Transform wayPoint;
-
     private bool gameOver = false;
     private float playerMaxSpeed;
     private GameObject autoHandPlayer;
@@ -53,8 +51,6 @@ public class GameManager : MonoBehaviour
         autoHandScript = autoHandPlayer.GetComponentInChildren<AutoHandPlayer>();
 
         playerMaxSpeed = autoHandScript.maxMoveSpeed;
-
-        autoHandPlayer.transform.position = wayPoint.transform.position;
     }
 
     /// <summary>
